@@ -21,7 +21,15 @@ extension Note {
     @NSManaged public var type: String?
     @NSManaged public var noteItems: NSSet?
 
-    
+    public var wrappedName: String {
+        name ?? "Unknown NOTE name"
+    }
+    public var NoteItemArray: [NoteItem] {
+        let set = noteItems as? Set<NoteItem> ?? []
+        return set.sorted {
+            $0.wrappedName < $1.wrappedName
+        }
+    }
     
 }
 

@@ -20,6 +20,13 @@ extension NoteItem {
     @NSManaged public var text: String?
     @NSManaged public var order: Int16
     @NSManaged public var note: Note?
+    
+    public var wrappedName: String {
+        name ?? "Unknown NoteItem name"
+    }
+    public var wrappedText: String {
+        text ?? "Unknown text"
+    }
 
 }
 
