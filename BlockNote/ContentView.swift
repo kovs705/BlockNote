@@ -10,13 +10,13 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
-
+    @FetchRequest(entity: Note.entity(), sortDescriptors: [NSSortDescriptor(key: "id", ascending: true)]) var notes: FetchedResults<Note>
     
 
     var body: some View {
         List {
-            ForEach(items) { item in
-                Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+            ForEach(notes) { note in
+                Text("\(note)")
             }
             .onDelete(perform: deleteItems)
         }
@@ -26,15 +26,18 @@ struct ContentView: View {
             #endif
 
             Button(action: addItem) {
-                Label("Add Item", systemImage: "plus")
+                Label("Add new Note!", systemImage: "plus")
             }
         }
     }
 
     private func addItem() {
         withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+            let newNote = Note(context: viewContext)
+            newNote.name = "New Note"
+            newNote.level = "N5"
+            
+            newNote.id = (notes.last?.id ?? 0) + 1 // makes the order by id of the note
 
             do {
                 try viewContext.save()

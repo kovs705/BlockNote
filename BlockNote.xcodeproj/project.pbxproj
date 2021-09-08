@@ -48,6 +48,10 @@
 		4E13C4D226E937360089D365 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				4E13C4D326E93E840089D365 /* NoteItem+CoreDataClass.swift */,
+				4E13C4D526E93E840089D365 /* Note+CoreDataClass.swift */,
+				4E13C4D426E93E840089D365 /* NoteItem+CoreDataProperties.swift */,
+				4E13C4D626E93E840089D365 /* Note+CoreDataProperties.swift */,
 				4E901A3726E6813C00249C15 /* BlockNote.xcdatamodeld */,
 			);
 			path = CoreData;
@@ -56,10 +60,6 @@
 		4E901A2026E6813900249C15 = {
 			isa = PBXGroup;
 			children = (
-				4E13C4D326E93E840089D365 /* NoteItem+CoreDataClass.swift */,
-				4E13C4D526E93E840089D365 /* Note+CoreDataClass.swift */,
-				4E13C4D426E93E840089D365 /* NoteItem+CoreDataProperties.swift */,
-				4E13C4D626E93E840089D365 /* Note+CoreDataProperties.swift */,
 				4E901A2B26E6813900249C15 /* BlockNote */,
 				4E901A2A26E6813900249C15 /* Products */,
 			);
