@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="Note" representedClassName=".Note" syncable="YES">
-        <attribute name="level" attributeType="String"/>
-        <attribute name="name" attributeType="String"/>
+        <attribute name="level" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="noteID" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="type" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
         <relationship name="noteItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NoteItem" inverseName="note" inverseEntity="NoteItem"/>
     </entity>
     <entity name="NoteItem" representedClassName=".NoteItem" syncable="YES">
-        <attribute name="name" attributeType="String"/>
-        <attribute name="order" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="text" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="text" optional="YES" attributeType="String"/>
         <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="noteItems" inverseEntity="Note"/>
     </entity>
     <elements>
