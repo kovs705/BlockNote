@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E13C4D726E93E840089D365 /* NoteItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E13C4D326E93E840089D365 /* NoteItem+CoreDataClass.swift */; };
+		4E13C4D826E93E840089D365 /* NoteItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E13C4D426E93E840089D365 /* NoteItem+CoreDataProperties.swift */; };
+		4E13C4D926E93E840089D365 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E13C4D526E93E840089D365 /* Note+CoreDataClass.swift */; };
+		4E13C4DA26E93E840089D365 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E13C4D626E93E840089D365 /* Note+CoreDataProperties.swift */; };
 		4E901A2D26E6813900249C15 /* BlockNoteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E901A2C26E6813900249C15 /* BlockNoteApp.swift */; };
 		4E901A2F26E6813900249C15 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E901A2E26E6813900249C15 /* ContentView.swift */; };
 		4E901A3126E6813C00249C15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E901A3026E6813C00249C15 /* Assets.xcassets */; };
@@ -16,6 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E13C4D326E93E840089D365 /* NoteItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteItem+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4E13C4D426E93E840089D365 /* NoteItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4E13C4D526E93E840089D365 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4E13C4D626E93E840089D365 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4E901A2926E6813900249C15 /* BlockNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlockNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E901A2C26E6813900249C15 /* BlockNoteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockNoteApp.swift; sourceTree = "<group>"; };
 		4E901A2E26E6813900249C15 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -37,9 +45,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E13C4D226E937360089D365 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				4E901A3726E6813C00249C15 /* BlockNote.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		4E901A2026E6813900249C15 = {
 			isa = PBXGroup;
 			children = (
+				4E13C4D326E93E840089D365 /* NoteItem+CoreDataClass.swift */,
+				4E13C4D526E93E840089D365 /* Note+CoreDataClass.swift */,
+				4E13C4D426E93E840089D365 /* NoteItem+CoreDataProperties.swift */,
+				4E13C4D626E93E840089D365 /* Note+CoreDataProperties.swift */,
 				4E901A2B26E6813900249C15 /* BlockNote */,
 				4E901A2A26E6813900249C15 /* Products */,
 			);
@@ -61,7 +81,7 @@
 				4E901A3026E6813C00249C15 /* Assets.xcassets */,
 				4E901A3526E6813C00249C15 /* Persistence.swift */,
 				4E901A3A26E6813C00249C15 /* Info.plist */,
-				4E901A3726E6813C00249C15 /* BlockNote.xcdatamodeld */,
+				4E13C4D226E937360089D365 /* CoreData */,
 				4E901A3226E6813C00249C15 /* Preview Content */,
 			);
 			path = BlockNote;
@@ -145,9 +165,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E901A3626E6813C00249C15 /* Persistence.swift in Sources */,
+				4E13C4D726E93E840089D365 /* NoteItem+CoreDataClass.swift in Sources */,
 				4E901A2F26E6813900249C15 /* ContentView.swift in Sources */,
 				4E901A2D26E6813900249C15 /* BlockNoteApp.swift in Sources */,
+				4E13C4D926E93E840089D365 /* Note+CoreDataClass.swift in Sources */,
 				4E901A3926E6813C00249C15 /* BlockNote.xcdatamodeld in Sources */,
+				4E13C4D826E93E840089D365 /* NoteItem+CoreDataProperties.swift in Sources */,
+				4E13C4DA26E93E840089D365 /* Note+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
