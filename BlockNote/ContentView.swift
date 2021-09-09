@@ -17,7 +17,9 @@ struct ContentView: View {
     var body: some View {
         VStack {
             
-            TextField("Note name...", text: $noteName)
+            TextField("Note name...", text: $noteName, onCommit: {
+                addItem()
+            })
             
             List {
                 ForEach(notes, id: \.self) { note in
@@ -42,7 +44,7 @@ struct ContentView: View {
     private func addItem() {
         withAnimation {
             let newNote = Note(context: viewContext)
-            newNote.name = "New Note"
+            newNote.name = self.noteName
             newNote.level = "N5"
             
             newNote.noteID = (notes.last?.noteID ?? 0) + 1 // makes the order by id of the note
@@ -53,6 +55,7 @@ struct ContentView: View {
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
+            self.noteName = ""
         }
     }
 
