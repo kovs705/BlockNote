@@ -10,25 +10,33 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(entity: Note.entity(), sortDescriptors: [NSSortDescriptor(key: "id", ascending: true)]) var notes: FetchedResults<Note>
+    @FetchRequest(entity: Note.entity(), sortDescriptors: [NSSortDescriptor(key: "noteID", ascending: true)]) var notes: FetchedResults<Note>
     
+    @State private var noteName: String = ""
 
     var body: some View {
-        List {
-            ForEach(notes) { note in
-                Text("\(note)")
+        VStack {
+            
+            TextField("Note name...", text: $noteName)
+            
+            List {
+                ForEach(notes, id: \.self) { note in
+                    // Text("\(note.name) - \(note.id)" ?? "Nothing")
+                    Text(note.name ?? "Unknown name")
+                }
+                .onDelete(perform: deleteItems)
             }
-            .onDelete(perform: deleteItems)
-        }
-        .toolbar {
-            #if os(iOS)
-            EditButton()
-            #endif
-
-            Button(action: addItem) {
-                Label("Add new Note!", systemImage: "plus")
+            .toolbar {
+                #if os(iOS)
+                EditButton()
+                #endif
+                
+                Button(action: addItem) {
+                    Label("Add new Note!", systemImage: "plus")
+                }
             }
         }
+        // end of the toolbar
     }
 
     private func addItem() {
@@ -37,7 +45,7 @@ struct ContentView: View {
             newNote.name = "New Note"
             newNote.level = "N5"
             
-            newNote.id = (notes.last?.id ?? 0) + 1 // makes the order by id of the note
+            newNote.noteID = (notes.last?.noteID ?? 0) + 1 // makes the order by id of the note
 
             do {
                 try viewContext.save()
@@ -62,12 +70,6 @@ struct ContentView: View {
     }
 }
 
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .short
-    return formatter
-}()
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

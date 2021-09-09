@@ -3,18 +3,18 @@
     <entity name="Note" representedClassName=".Note" syncable="YES">
         <attribute name="level" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="noteID" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="noteID" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="type" optional="YES" attributeType="String"/>
         <relationship name="noteItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NoteItem" inverseName="note" inverseEntity="NoteItem"/>
     </entity>
     <entity name="NoteItem" representedClassName=".NoteItem" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="order" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="text" optional="YES" attributeType="String"/>
         <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="noteItems" inverseEntity="Note"/>
     </entity>
     <elements>
-        <element name="Note" positionX="-54" positionY="-9" width="128" height="118"/>
-        <element name="NoteItem" positionX="-36" positionY="9" width="128" height="103"/>
+        <element name="Note" positionX="-54" positionY="-9" width="128" height="104"/>
+        <element name="NoteItem" positionX="-36" positionY="9" width="128" height="89"/>
     </elements>
 </model>
