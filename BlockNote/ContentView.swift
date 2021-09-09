@@ -20,10 +20,10 @@ struct ContentView: View {
             TextField("Note name...", text: $noteName, onCommit: {
                 addItem()
             })
+            .padding()
             
             List {
                 ForEach(notes, id: \.self) { note in
-                    // Text("\(note.name) - \(note.id)" ?? "Nothing")
                     Text(note.name ?? "Unknown name")
                 }
                 .onDelete(perform: deleteItems)

@@ -25,6 +25,7 @@ extension Note {
     public var wrappedName: String {
         name ?? "Unknown NOTE name"
     }
+    
     public var NoteItemArray: [NoteItem] {
         let set = noteItems as? Set<NoteItem> ?? []
         return set.sorted {
