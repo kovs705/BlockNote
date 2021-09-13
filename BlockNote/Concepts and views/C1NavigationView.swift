@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import UIKit
+import Combine
 
 struct C1NavigationView: View {
     
@@ -13,7 +15,10 @@ struct C1NavigationView: View {
     @FetchRequest(entity: Note.entity(), sortDescriptors: [NSSortDescriptor(key: "noteID", ascending: true)]) var notes: FetchedResults<Note>
     
     @State private var noteName: String = ""
+    @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State var timeNow = ""
     @State var greeting: String = ""
+    let dateFormatter = DateFormatter()
     
     var body: some View {
         ZStack {
@@ -37,7 +42,11 @@ struct C1NavigationView: View {
                 
                 // MARK: - Content
                 VStack {
-                    
+                    Text("")
+                        .onReceive(timer) { _ in
+                            self.greeting = dateFormatter.string(from: Date())
+                        }
+                        .onAppear()
                 }
                 .padding()
                 .cornerRadius(20)
@@ -74,6 +83,7 @@ struct C1NavigationView: View {
 extension View {
     public func gradientForegroundColor(colors: [Color]) -> some View {
         self.overlay(LinearGradient(gradient: .init(colors: colors), startPoint: .topLeading, endPoint: .bottomTrailing))
+            .mask(self)
     }
 }
 
