@@ -15,26 +15,31 @@ struct C1NavigationView: View {
     @State private var noteName: String = ""
     
     var body: some View {
-        ScrollView(.vertical) {
-            GeometryReader { geometry in
-                // place a black header here:
-                ZStack {
-                    Color.black
-                }
-                .offset(y: geometry.frame(in: .global).minY > 0 ? -geometry.frame(in: .global).minY : 0)
-                .frame(height: geometry.frame(in: .global).minY > 0 ? UIScreen.main.bounds.height / 2.2 + geometry.frame(in: .global).minY : UIScreen.main.bounds.height / 2.2)
-                
-                VStack {
+        ZStack {
+            Color.black
+            ScrollView(.vertical) {
+                // MARK: - Header
+                GeometryReader { geometry in
+                    // place a black header here:
                     ZStack {
-                        RoundedRectangle(cornerRadius: 20)
-                            .fill(Color.white)
+                        Color.black
                     }
-                    .frame(height: .infinity)
+                    .offset(y: geometry.frame(in: .global).minY > 0 ? -geometry.frame(in: .global).minY : 0)
+                    .frame(height: geometry.frame(in: .global).minY > 0 ? UIScreen.main.bounds.height / 2.2 + geometry.frame(in: .global).minY : UIScreen.main.bounds.height / 2.2)
                 }
-                .background(Color.clear)
+                
+                
+                // MARK: - Content
+                VStack {
+                    
+                }
+                .cornerRadius(20)
+                
             }
+            .edgesIgnoringSafeArea(.top)
+            // end of ScrollView
         }
-        .edgesIgnoringSafeArea(.top)
+        // end of ZStack
     }
     
     
