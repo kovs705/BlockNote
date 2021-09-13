@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E101DF426EF3586009800FB /* C1NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E101DF326EF3586009800FB /* C1NavigationView.swift */; };
 		4E13C4D726E93E840089D365 /* NoteItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E13C4D326E93E840089D365 /* NoteItem+CoreDataClass.swift */; };
 		4E13C4D826E93E840089D365 /* NoteItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E13C4D426E93E840089D365 /* NoteItem+CoreDataProperties.swift */; };
 		4E13C4D926E93E840089D365 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E13C4D526E93E840089D365 /* Note+CoreDataClass.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E101DF326EF3586009800FB /* C1NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NavigationView.swift; sourceTree = "<group>"; };
 		4E13C4D326E93E840089D365 /* NoteItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4E13C4D426E93E840089D365 /* NoteItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4E13C4D526E93E840089D365 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -45,6 +47,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E101DF526EF358A009800FB /* Concepts and views */ = {
+			isa = PBXGroup;
+			children = (
+				4E901A2E26E6813900249C15 /* ContentView.swift */,
+				4E101DF326EF3586009800FB /* C1NavigationView.swift */,
+			);
+			path = "Concepts and views";
+			sourceTree = "<group>";
+		};
 		4E13C4D226E937360089D365 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -77,7 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				4E901A2C26E6813900249C15 /* BlockNoteApp.swift */,
-				4E901A2E26E6813900249C15 /* ContentView.swift */,
+				4E101DF526EF358A009800FB /* Concepts and views */,
 				4E901A3026E6813C00249C15 /* Assets.xcassets */,
 				4E901A3526E6813C00249C15 /* Persistence.swift */,
 				4E901A3A26E6813C00249C15 /* Info.plist */,
@@ -170,6 +181,7 @@
 				4E901A2D26E6813900249C15 /* BlockNoteApp.swift in Sources */,
 				4E13C4D926E93E840089D365 /* Note+CoreDataClass.swift in Sources */,
 				4E901A3926E6813C00249C15 /* BlockNote.xcdatamodeld in Sources */,
+				4E101DF426EF3586009800FB /* C1NavigationView.swift in Sources */,
 				4E13C4D826E93E840089D365 /* NoteItem+CoreDataProperties.swift in Sources */,
 				4E13C4DA26E93E840089D365 /* Note+CoreDataProperties.swift in Sources */,
 			);
