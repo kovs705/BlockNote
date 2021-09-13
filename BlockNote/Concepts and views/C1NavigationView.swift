@@ -13,6 +13,7 @@ struct C1NavigationView: View {
     @FetchRequest(entity: Note.entity(), sortDescriptors: [NSSortDescriptor(key: "noteID", ascending: true)]) var notes: FetchedResults<Note>
     
     @State private var noteName: String = ""
+    @State var greeting: String = ""
     
     var body: some View {
         ZStack {
@@ -23,18 +24,25 @@ struct C1NavigationView: View {
                     // place a black header here:
                     ZStack {
                         Color.black
+                        
+                        VStack(alignment: .trailing) {
+                            
+                        }
+                        
                     }
                     .offset(y: geometry.frame(in: .global).minY > 0 ? -geometry.frame(in: .global).minY : 0)
                     .frame(height: geometry.frame(in: .global).minY > 0 ? UIScreen.main.bounds.height / 2.2 + geometry.frame(in: .global).minY : UIScreen.main.bounds.height / 2.2)
                 }
-                
+                .frame(height: UIScreen.main.bounds.height / 2.2)
                 
                 // MARK: - Content
                 VStack {
                     
                 }
+                .padding()
                 .cornerRadius(20)
                 
+                Spacer()
             }
             .edgesIgnoringSafeArea(.top)
             // end of ScrollView
@@ -42,7 +50,7 @@ struct C1NavigationView: View {
         // end of ZStack
     }
     
-    
+    // MARK: - Functions and Extensions
     private func addItem() {
         withAnimation {
             let newNote = Note(context: viewContext)
@@ -59,6 +67,13 @@ struct C1NavigationView: View {
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
         }
+    }
+    
+}
+// MARK: - Extensions
+extension View {
+    public func gradientForegroundColor(colors: [Color]) -> some View {
+        self.overlay(LinearGradient(gradient: .init(colors: colors), startPoint: .topLeading, endPoint: .bottomTrailing))
     }
 }
 
