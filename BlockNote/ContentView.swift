@@ -36,17 +36,7 @@ struct ContentView: View {
                     }
                     .onDelete(perform: deleteItems)
                 }
-                .toolbar {
-                    #if os(iOS)
-                    EditButton()
-                    #endif
-                    
-                    Button(action: addItem) {
-                        Label("Add new Note!", systemImage: "plus")
-                    }
-                }
             }
-            // end of the toolbar
         }
         // end of NavigationView
     }

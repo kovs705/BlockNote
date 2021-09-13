@@ -3,7 +3,7 @@
     <entity name="Note" representedClassName=".Note" syncable="YES">
         <attribute name="level" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="noteID" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="noteID" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="type" optional="YES" attributeType="String"/>
         <relationship name="noteItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NoteItem" inverseName="note" inverseEntity="NoteItem"/>
     </entity>

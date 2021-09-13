@@ -11,5 +11,5 @@ import CoreData
 
 
 public class Note: NSManagedObject {
-
+    @NSManaged var noteID: Int
 }

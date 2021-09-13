@@ -19,7 +19,7 @@ extension Note {
     @NSManaged public var name: String?
     @NSManaged public var level: String?
     @NSManaged public var type: String?
-    @NSManaged public var noteID: Int
+    // @NSManaged var noteID: Int
     @NSManaged public var noteItems: NSSet?
 
     public var wrappedName: String {
