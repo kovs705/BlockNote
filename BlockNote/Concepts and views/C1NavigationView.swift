@@ -15,10 +15,10 @@ struct C1NavigationView: View {
     @FetchRequest(entity: Note.entity(), sortDescriptors: [NSSortDescriptor(key: "noteID", ascending: true)]) var notes: FetchedResults<Note>
     
     @State private var noteName: String = ""
-    @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    @State var timeNow = ""
+    // @State var timer = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
+    // @State var timeNow = ""
     let hour = Calendar.current.component(.hour, from: Date())
-    @State var greeting: String = ""
+    @State var greeting: String = "Haveeee a great day! ⛅️"
     let dateFormatter = DateFormatter()
     
     var body: some View {
@@ -36,19 +36,33 @@ struct C1NavigationView: View {
                         .offset(y: geometry.frame(in: .global).minY > 0 ? -geometry.frame(in: .global).minY : 0)
                         .frame(height: geometry.frame(in: .global).minY > 0 ? UIScreen.main.bounds.height / 2.2 + geometry.frame(in: .global).minY : UIScreen.main.bounds.height / 2.2)
                     }
-                    .frame(height: UIScreen.main.bounds.height / 2.2)
+                    // .frame(height: UIScreen.main.bounds.height / 2.2)
+                    .frame(height: 200)
                     
                     // MARK: - Content
                     VStack(alignment: .trailing) {
-                        Text("GAV \(greeting)")
+                        Text("\(greeting)")
                             .foregroundColor(.white)
-                            .bold()// or timeNow?
-                            .onReceive(timer) { _ in
-                                self.greeting = dateFormatter.string(from: Date())
-                            }
-                        //.onAppear(perform: {
+                            
+                            .onAppear(perform: {
+                                if hour < 4 || hour > 23 {
+                                    greeting = "Have a good night ✨"
+                                }
+                                else if hour < 12 {
+                                    greeting = "Good morning!☀️"
+                                }
+                                else if hour < 18 {
+                                    greeting = "Have a great day! ⛅️"
+                                }
+                                else if hour < 23 {
+                                    greeting = "Time for the rest 🌇"
+                                }
+                                else {
+                                    greeting = "Have a great day! ⛅️"
+                                }
+                                
+                            })
                         
-                        //})
                     }
                     .padding()
                     .cornerRadius(20)
@@ -89,25 +103,6 @@ extension View {
     public func gradientForegroundColor(colors: [Color]) -> some View {
         self.overlay(LinearGradient(gradient: .init(colors: colors), startPoint: .topLeading, endPoint: .bottomTrailing))
             .mask(self)
-    }
-}
-enum greetingVariation {
-    case morning
-        case afternoon
-            case evening
-                case night
-    
-    var greetingText: String {
-        switch self {
-        case .morning:
-            return String("Good morning!☀️")
-        case .afternoon:
-            return String("Have a great day! ⛅️")
-        case .evening:
-            return String("Time for the rest 🌇")
-        case .night:
-            return String("Have a good night ✨")
-        }
     }
 }
 
