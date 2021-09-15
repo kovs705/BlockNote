@@ -42,11 +42,13 @@ struct C1NavigationView: View {
                 
                 // MARK: - Content
                 VStack {
-                    Text("")
+                    Text(timeNow)
                         .onReceive(timer) { _ in
                             self.greeting = dateFormatter.string(from: Date())
                         }
-                        .onAppear()
+                        .onAppear(perform: {
+                            
+                        })
                 }
                 .padding()
                 .cornerRadius(20)
@@ -59,7 +61,7 @@ struct C1NavigationView: View {
         // end of ZStack
     }
     
-    // MARK: - Functions and Extensions
+    // MARK: - Functions
     private func addItem() {
         withAnimation {
             let newNote = Note(context: viewContext)
@@ -84,6 +86,25 @@ extension View {
     public func gradientForegroundColor(colors: [Color]) -> some View {
         self.overlay(LinearGradient(gradient: .init(colors: colors), startPoint: .topLeading, endPoint: .bottomTrailing))
             .mask(self)
+    }
+}
+enum greetingVariation {
+    case morning
+        case afternoon
+            case evening
+                case night
+    
+    var greetingText: String {
+        switch self {
+        case .morning:
+            return String("Good morning!☀️")
+        case .afternoon:
+            return String("Have a great day! ⛅️")
+        case .evening:
+            return String("Time for the rest 🌇")
+        case .night:
+            return String("Have a good night ✨")
+        }
     }
 }
 
