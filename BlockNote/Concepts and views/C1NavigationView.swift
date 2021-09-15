@@ -17,48 +17,51 @@ struct C1NavigationView: View {
     @State private var noteName: String = ""
     @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State var timeNow = ""
+    let hour = Calendar.current.component(.hour, from: Date())
     @State var greeting: String = ""
     let dateFormatter = DateFormatter()
     
     var body: some View {
-        ZStack {
-            Color.black
-            ScrollView(.vertical) {
-                // MARK: - Header
-                GeometryReader { geometry in
-                    // place a black header here:
-                    ZStack {
-                        Color.black
-                        
-                        VStack(alignment: .trailing) {
+        NavigationView {
+            ZStack {
+                Color.black
+                ScrollView(.vertical) {
+                    // MARK: - Header
+                    GeometryReader { geometry in
+                        // place a black header here:
+                        ZStack {
+                            Color.green
                             
                         }
-                        
+                        .offset(y: geometry.frame(in: .global).minY > 0 ? -geometry.frame(in: .global).minY : 0)
+                        .frame(height: geometry.frame(in: .global).minY > 0 ? UIScreen.main.bounds.height / 2.2 + geometry.frame(in: .global).minY : UIScreen.main.bounds.height / 2.2)
                     }
-                    .offset(y: geometry.frame(in: .global).minY > 0 ? -geometry.frame(in: .global).minY : 0)
-                    .frame(height: geometry.frame(in: .global).minY > 0 ? UIScreen.main.bounds.height / 2.2 + geometry.frame(in: .global).minY : UIScreen.main.bounds.height / 2.2)
+                    .frame(height: UIScreen.main.bounds.height / 2.2)
+                    
+                    // MARK: - Content
+                    VStack(alignment: .trailing) {
+                        Text("GAV \(greeting)")
+                            .foregroundColor(.white)
+                            .bold()// or timeNow?
+                            .onReceive(timer) { _ in
+                                self.greeting = dateFormatter.string(from: Date())
+                            }
+                        //.onAppear(perform: {
+                        
+                        //})
+                    }
+                    .padding()
+                    .cornerRadius(20)
+                    
+                    Spacer()
                 }
-                .frame(height: UIScreen.main.bounds.height / 2.2)
-                
-                // MARK: - Content
-                VStack {
-                    Text(timeNow)
-                        .onReceive(timer) { _ in
-                            self.greeting = dateFormatter.string(from: Date())
-                        }
-                        .onAppear(perform: {
-                            
-                        })
-                }
-                .padding()
-                .cornerRadius(20)
-                
-                Spacer()
+                .edgesIgnoringSafeArea(.top)
+                // end of ScrollView
             }
-            .edgesIgnoringSafeArea(.top)
-            // end of ScrollView
+            // end of ZStack
+            .navigationBarHidden(true)
         }
-        // end of ZStack
+        // end of NavView
     }
     
     // MARK: - Functions
