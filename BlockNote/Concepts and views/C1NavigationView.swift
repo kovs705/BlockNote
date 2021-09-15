@@ -15,17 +15,20 @@ struct C1NavigationView: View {
     @FetchRequest(entity: Note.entity(), sortDescriptors: [NSSortDescriptor(key: "noteID", ascending: true)]) var notes: FetchedResults<Note>
     
     @State private var noteName: String = ""
-    // @State var timer = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
-    // @State var timeNow = ""
+    
     let hour = Calendar.current.component(.hour, from: Date())
     @State var greeting: String = "Haveeee a great day! ⛅️"
+    
     let dateFormatter = DateFormatter()
+    @State var time = Timer.publish(every: 0.1, on: .current, in: .tracking).autoconnect()
+    @State var showHeader = false
     
     var body: some View {
         NavigationView {
-            ZStack {
-                Color.black
-                ScrollView(.vertical) {
+            ZStack(alignment: .top) {
+                Color.darkBack
+                
+                ScrollView(.vertical, showsIndicators: false) {
                     // MARK: - Header
                     GeometryReader { geometry in
                         // place a black header here:
@@ -35,9 +38,19 @@ struct C1NavigationView: View {
                         }
                         .offset(y: geometry.frame(in: .global).minY > 0 ? -geometry.frame(in: .global).minY : 0)
                         .frame(height: geometry.frame(in: .global).minY > 0 ? UIScreen.main.bounds.height / 2.2 + geometry.frame(in: .global).minY : UIScreen.main.bounds.height / 2.2)
+                        .onReceive(self.time) { (_) in
+                            // to see if user scrolled downwards and doesn't see the header:
+                            let Y = geometry.frame(in: .global).minY
+                            if -Y > (UIScreen.main.bounds.height / 2.2) - 50 {
+                                self.showHeader = true
+                            } else {
+                                self.showHeader = false
+                            }
+                            
+                        }
                     }
                     // .frame(height: UIScreen.main.bounds.height / 2.2)
-                    .frame(height: 200)
+                    .frame(height: UIScreen.main.bounds.height / 2.2)
                     
                     // MARK: - Content
                     VStack(alignment: .trailing) {
@@ -69,11 +82,11 @@ struct C1NavigationView: View {
                     
                     Spacer()
                 }
-                .edgesIgnoringSafeArea(.top)
                 // end of ScrollView
             }
             // end of ZStack
             .navigationBarHidden(true)
+            .edgesIgnoringSafeArea(.all)
         }
         // end of NavView
     }
@@ -104,6 +117,10 @@ extension View {
         self.overlay(LinearGradient(gradient: .init(colors: colors), startPoint: .topLeading, endPoint: .bottomTrailing))
             .mask(self)
     }
+}
+
+extension Color {
+    static let darkBack = Color("DarkBackground")
 }
 
 struct C1NavigationView_Previews: PreviewProvider {
