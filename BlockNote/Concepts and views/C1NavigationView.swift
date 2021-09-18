@@ -17,7 +17,7 @@ struct C1NavigationView: View {
     @State private var noteName: String = ""
     
     let hour = Calendar.current.component(.hour, from: Date())
-    @State var greeting: String = "Haveeee a great day! ⛅️"
+    @State var greeting: String = "BlockNote"
     
     let dateFormatter = DateFormatter()
     @State var time = Timer.publish(every: 0.1, on: .current, in: .tracking).autoconnect()
@@ -25,64 +25,40 @@ struct C1NavigationView: View {
     
     var body: some View {
         NavigationView {
-            ZStack(alignment: .top) {
+            ZStack {
                 Color.darkBack
                 
-                ScrollView(.vertical, showsIndicators: false) {
-                    // MARK: - Header
-                    GeometryReader { geometry in
-                        // place a black header here:
-                        ZStack {
-                            Color.green
-                            
-                        }
-                        .offset(y: geometry.frame(in: .global).minY > 0 ? -geometry.frame(in: .global).minY : 0)
-                        .frame(height: geometry.frame(in: .global).minY > 0 ? UIScreen.main.bounds.height / 2.2 + geometry.frame(in: .global).minY : UIScreen.main.bounds.height / 2.2)
-                        .onReceive(self.time) { (_) in
-                            // to see if user scrolled downwards and doesn't see the header:
-                            let Y = geometry.frame(in: .global).minY
-                            if -Y > (UIScreen.main.bounds.height / 2.2) - 50 {
-                                self.showHeader = true
-                            } else {
-                                self.showHeader = false
-                            }
-                            
-                        }
+                ScrollView(.vertical, showsIndicators: false, content: {
+                    HStack {
+                        // empty space
                     }
-                    // .frame(height: UIScreen.main.bounds.height / 2.2)
-                    .frame(height: UIScreen.main.bounds.height / 2.2)
+                    .frame(height: 100)
                     
-                    // MARK: - Content
-                    VStack(alignment: .trailing) {
-                        Text("\(greeting)")
-                            .foregroundColor(.white)
-                            
+                    VStack {
+                        Text(greeting)
                             .onAppear(perform: {
-                                if hour < 4 || hour > 23 {
-                                    greeting = "Have a good night ✨"
+                                withAnimation {
+                                    if hour < 4 {
+                                        greeting = "Have a good night ✨"
+                                    }
+                                    else if hour < 12 {
+                                        greeting = "Good morning!☀️"
+                                    }
+                                    else if hour < 18 {
+                                        greeting = "Have a great day! ⛅️"
+                                    }
+                                    else if hour < 23 {
+                                        greeting = "Time for the rest 🌇"
+                                    }
+                                    else {
+                                        greeting = "Have a good night ✨"
+                                    }
                                 }
-                                else if hour < 12 {
-                                    greeting = "Good morning!☀️"
-                                }
-                                else if hour < 18 {
-                                    greeting = "Have a great day! ⛅️"
-                                }
-                                else if hour < 23 {
-                                    greeting = "Time for the rest 🌇"
-                                }
-                                else {
-                                    greeting = "Have a great day! ⛅️"
-                                }
-                                
                             })
-                        
                     }
-                    .padding()
-                    .cornerRadius(20)
                     
-                    Spacer()
-                }
-                // end of ScrollView
+                })
+                
             }
             // end of ZStack
             .navigationBarHidden(true)
@@ -128,3 +104,37 @@ struct C1NavigationView_Previews: PreviewProvider {
         C1NavigationView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
+
+/*
+ .onAppear(perform: {
+     if hour < 4 {
+         greeting = "Have a good night ✨"
+     }
+     else if hour < 12 {
+         greeting = "Good morning!☀️"
+     }
+     else if hour < 18 {
+         greeting = "Have a great day! ⛅️"
+     }
+     else if hour < 23 {
+         greeting = "Time for the rest 🌇"
+     }
+     else {
+         greeting = "Have a good night ✨"
+     }
+ })
+ */
+
+
+/*
+ .onReceive(self.time) { (_) in
+     // to see if user scrolled downwards and doesn't see the header:
+     let Y = geometry.frame(in: .global).minY
+     if -Y > (UIScreen.main.bounds.height / 3) - 50 {
+         self.showHeader = true
+     } else {
+         self.showHeader = false
+     }
+     
+ }
+ */
