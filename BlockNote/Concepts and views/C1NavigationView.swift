@@ -24,11 +24,10 @@ struct C1NavigationView: View {
     @State var showHeader = false
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                Color.darkBack
-                
-                ScrollView(.vertical, showsIndicators: false, content: {
+        ZStack {
+            Color.darkBack
+            NavigationView {
+                ScrollView(.vertical, showsIndicators: false) {
                     HStack {
                         // empty space
                     }
@@ -36,37 +35,46 @@ struct C1NavigationView: View {
                     
                     VStack {
                         Text(greeting)
+                            .bold()
+                            .lineLimit(1)
+                            .font(.system(size: 27))
                             .onAppear(perform: {
-                                withAnimation {
-                                    if hour < 4 {
-                                        greeting = "Have a good night ✨"
-                                    }
-                                    else if hour < 12 {
-                                        greeting = "Good morning!☀️"
-                                    }
-                                    else if hour < 18 {
-                                        greeting = "Have a great day! ⛅️"
-                                    }
-                                    else if hour < 23 {
-                                        greeting = "Time for the rest 🌇"
-                                    }
-                                    else {
-                                        greeting = "Have a good night ✨"
-                                    }
+                                //withAnimation {
+                                if hour < 4 {
+                                    greeting = "Have a good night ✨"
                                 }
+                                else if hour < 12 {
+                                    greeting = "Good morning!☀️"
+                                }
+                                else if hour < 18 {
+                                    greeting = "Have a great day! ⛅️"
+                                }
+                                else if hour < 23 {
+                                    greeting = "Time for the rest 🌇"
+                                }
+                                else {
+                                    greeting = "Have a good night ✨"
+                                }
+                                // }
                             })
                     }
                     
-                })
-                
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(Color.lightPart)
+                            .frame(width: UIScreen.main.bounds.width - 40, height: 250)
+                    }
+                    .frame(width: UIScreen.main.bounds.width - 40, height: 250)
+                    
+                }
+                .ignoresSafeArea(.all)
+                // end of VStack
             }
-            // end of ZStack
-            .navigationBarHidden(true)
             .edgesIgnoringSafeArea(.all)
         }
-        // end of NavView
+        .navigationBarHidden(true)
     }
-    
+
     // MARK: - Functions
     private func addItem() {
         withAnimation {
@@ -97,6 +105,17 @@ extension View {
 
 extension Color {
     static let darkBack = Color("DarkBackground")
+    static let lightPart = Color("LightPart")
+    
+    public static var darkBlue: Color {
+        return Color(red: 28 / 255, green: 46 / 255, blue: 74 / 255)
+    }
+    public static var veryDarkBlue: Color {
+        return Color(red: 10 / 255, green: 20 / 255, blue: 50 / 255)
+    }
+    public static var darkGold: Color {
+        return Color(red: 133 / 255, green: 94 / 255, blue: 60 / 255)
+    }
 }
 
 struct C1NavigationView_Previews: PreviewProvider {
@@ -104,27 +123,6 @@ struct C1NavigationView_Previews: PreviewProvider {
         C1NavigationView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
-
-/*
- .onAppear(perform: {
-     if hour < 4 {
-         greeting = "Have a good night ✨"
-     }
-     else if hour < 12 {
-         greeting = "Good morning!☀️"
-     }
-     else if hour < 18 {
-         greeting = "Have a great day! ⛅️"
-     }
-     else if hour < 23 {
-         greeting = "Time for the rest 🌇"
-     }
-     else {
-         greeting = "Have a good night ✨"
-     }
- })
- */
-
 
 /*
  .onReceive(self.time) { (_) in
