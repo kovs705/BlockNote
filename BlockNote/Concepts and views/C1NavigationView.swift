@@ -142,6 +142,16 @@ extension Color {
     static let darkBack = Color("DarkBackground")
     static let lightPart = Color("LightPart")
     
+    // pastel colors:
+    static let rosePink = Color("RosePink")
+    static let greenAvocado = Color("GreenAvocado")
+    static let blueBerry = Color("BlueBerry")
+    static let yellowLemon = Color("YellowLemon")
+    static let redStrawBerry = Color("RedStrawBerry")
+    static let purpleBlackBerry = Color("PurpleBlackBerry")
+    static let greyCloud = Color("GreyCloud")
+    static let brownSugar = Color("BrownSugar")
+    
     public static var darkBlue: Color {
         return Color(red: 28 / 255, green: 46 / 255, blue: 74 / 255)
     }
@@ -167,12 +177,39 @@ struct GridObject : View{
         case rosePink; case greenAvocado; case blueBerry
         case yellowLemon; case redStrawberry
         case purpleBlackBerry; case greyCloud; case brownSugar
+        // different-colored circles with the color names when you put your finger on it
+        
+        var ObjectColorString: Color {
+            switch self {
+            case .rosePink:
+                return Color.rosePink
+            case .greenAvocado:
+                return Color.greenAvocado
+            case .blueBerry:
+                return Color.blueBerry
+            case .yellowLemon:
+                return Color.yellowLemon
+            case .redStrawberry:
+                return Color.redStrawBerry
+            case .purpleBlackBerry:
+                return Color.purpleBlackBerry
+            case .greyCloud:
+                return Color.greyCloud
+            case .brownSugar:
+                return Color.brownSugar
+            }
+        }
     }
+    
+    struct ObjectColorStruct {
+        var color: ObjectColor
+    }
+    @Binding var objectStructColor: ObjectColorStruct
     
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
-                .fill()
+                .fill(objectStructColor.color.ObjectColorString)
         }
         .frame(width: 100, height: 100)
     }
