@@ -93,11 +93,7 @@ struct C1NavigationView: View {
                         
                         LazyVGrid(columns: columns, spacing: 20) {
                             ForEach(notes, id: \.self) { note in
-                                ZStack {
-                                    RoundedRectangle(cornerRadius: 20)
-                                        .fill()
-                                }
-                                .frame(width: 100, height: 100)
+                                
                             }
                         }
                         
@@ -162,6 +158,26 @@ struct C1NavigationView_Previews: PreviewProvider {
         C1NavigationView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
+
+// MARK: - GridItem object
+struct GridObject : View{
+    
+    enum ObjectColor {
+        // about 5-8 pastel
+        case rosePink; case greenAvocado; case blueBerry
+        case yellowLemon; case redStrawberry
+        case purpleBlackBerry; case greyCloud; case brownSugar
+    }
+    
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 20)
+                .fill()
+        }
+        .frame(width: 100, height: 100)
+    }
+}
+
 
 /*
  .onReceive(self.time) { (_) in
