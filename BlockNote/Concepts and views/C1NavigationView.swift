@@ -9,6 +9,15 @@ import SwiftUI
 import UIKit
 import Combine
 
+// MARK: - Instructions
+    ///
+    /// 20.09.2021 - Making this istructions-block
+    /// think about what to add or how to group Notes
+    ///
+    ///
+    ///
+//
+
 struct C1NavigationView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
@@ -23,23 +32,25 @@ struct C1NavigationView: View {
     @State var time = Timer.publish(every: 0.1, on: .current, in: .tracking).autoconnect()
     @State var showHeader = false
     
+    let columns = [GridItem(.flexible()), GridItem(.flexible())]
+    
+    // MARK: - Body
     var body: some View {
         ZStack {
             Color.darkBack
-            NavigationView {
                 ScrollView(.vertical, showsIndicators: false) {
                     HStack {
                         // empty space
                     }
-                    .frame(height: 100)
-                    
+                    .frame(height: 90)
+                    // MARK: - Greeting
                     VStack {
                         Text(greeting)
                             .bold()
                             .lineLimit(1)
-                            .font(.system(size: 27))
+                            .font(.system(size: 28))
                             .onAppear(perform: {
-                                //withAnimation {
+                                
                                 if hour < 4 {
                                     greeting = "Have a good night ✨"
                                 }
@@ -55,24 +66,52 @@ struct C1NavigationView: View {
                                 else {
                                     greeting = "Have a good night ✨"
                                 }
-                                // }
+                                
                             })
+                            .animation(.easeInOut)
                     }
-                    
+                    .frame(height: 40)
+                    // MARK: - Block for statistics
                     ZStack {
                         RoundedRectangle(cornerRadius: 20)
                             .fill(Color.lightPart)
-                            .frame(width: UIScreen.main.bounds.width - 40, height: 250)
+                            .frame(width: UIScreen.main.bounds.width - 85, height: 200)
+                            .shadow(color: Color.black.opacity(0.3), radius: 10, x: 0, y: 5)
                     }
-                    .frame(width: UIScreen.main.bounds.width - 40, height: 250)
+                    .frame(height: 250)
+                    
+                    
+                    // MARK: - Grouped notes
+                    VStack {
+                        HStack {
+                            Text("List of groups")
+                                .font(.system(size: 22))
+                                .bold()
+                            Spacer()
+                        }
+                        .frame(width: UIScreen.main.bounds.width - 50)
+                        
+                        LazyVGrid(columns: columns, spacing: 20) {
+                            ForEach(notes, id: \.self) { note in
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .fill()
+                                }
+                                .frame(width: 100, height: 100)
+                            }
+                        }
+                        
+                        
+                        // end of HStack
+                    }
+                    // end of VStack
                     
                 }
                 .ignoresSafeArea(.all)
                 // end of VStack
-            }
-            .edgesIgnoringSafeArea(.all)
         }
         .navigationBarHidden(true)
+        .ignoresSafeArea(.all)
     }
 
     // MARK: - Functions

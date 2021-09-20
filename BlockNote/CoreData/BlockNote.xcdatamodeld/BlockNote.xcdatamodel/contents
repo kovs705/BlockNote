@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="GroupType" representedClassName=".GroupType" syncable="YES">
+        <attribute name="color" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="number" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
     <entity name="Note" representedClassName=".Note" syncable="YES">
         <attribute name="level" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
@@ -16,5 +21,6 @@
     <elements>
         <element name="Note" positionX="-54" positionY="-9" width="128" height="104"/>
         <element name="NoteItem" positionX="-36" positionY="9" width="128" height="89"/>
+        <element name="GroupType" positionX="-45" positionY="36" width="128" height="74"/>
     </elements>
 </model>
