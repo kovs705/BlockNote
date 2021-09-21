@@ -18,6 +18,34 @@ extension GroupType {
 
     @NSManaged public var name: String?
     @NSManaged public var color: String?
+    @NSManaged public var noteTypes: NSSet?
+    
+    public var wrappedNumber: Int {
+        number
+    }
+    
+    public var typesArray: [Note] {
+        let set = noteTypes as? Set<Note> ?? []
+        return set.sorted {
+            $0.wrappedType < $1.wrappedType
+        }
+    }
+}
+
+// MARK: Generated accessors for Note
+extension Note {
+
+    @objc(addNoteObject:)
+    @NSManaged public func addToNote(_ value: Note)
+
+    @objc(removeNoteObject:)
+    @NSManaged public func removeFromNote(_ value: Note)
+
+    @objc(addNote:)
+    @NSManaged public func addToNote(_ values: NSSet)
+
+    @objc(removeNote:)
+    @NSManaged public func removeFromNote(_ values: NSSet)
 
 }
 

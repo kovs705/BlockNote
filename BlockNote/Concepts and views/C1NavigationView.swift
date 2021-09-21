@@ -13,8 +13,8 @@ import Combine
     ///
     /// 20.09.2021 - Making this istructions-block
     /// think about what to add or how to group Notes
-    ///
-    ///
+    /// сделать ColorPicker в виде линии цветных шариков, при наведении пальца на которые пользователь
+    /// будет видеть название того или иного цвета
     ///
 //
 
@@ -61,7 +61,7 @@ struct C1NavigationView: View {
                                     greeting = "Have a great day! ⛅️"
                                 }
                                 else if hour < 23 {
-                                    greeting = "Time for the rest 🌇"
+                                    greeting = "Good evening 🌇"
                                 }
                                 else {
                                     greeting = "Have a good night ✨"
@@ -205,12 +205,24 @@ struct GridObject : View{
         var color: ObjectColor
     }
     @Binding var objectStructColor: ObjectColorStruct
+    var groupType: GroupType
     
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
                 .fill(objectStructColor.color.ObjectColorString)
+                .frame(width: 100, height: 100)
+            VStack {
+                Spacer()
+                HStack {
+                    // text content here:
+                    
+                    Spacer()
+                }
+            }
+            // end of VStack
         }
+        // end of ZStack
         .frame(width: 100, height: 100)
     }
 }

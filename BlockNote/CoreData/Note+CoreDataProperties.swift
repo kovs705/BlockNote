@@ -20,7 +20,13 @@ extension Note {
     @NSManaged public var level: String?
     @NSManaged public var type: String?
     @NSManaged public var noteItems: NSSet?
+    
+    @NSManaged public var typeOfNote: GroupType?
 
+    public var wrappedType: String {
+        type ?? "Unknown type"
+    }
+    
     public var wrappedName: String {
         name ?? "Unknown NOTE name"
     }
