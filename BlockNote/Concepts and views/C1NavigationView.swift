@@ -82,6 +82,11 @@ struct C1NavigationView: View {
                             .fill(Color.lightPart)
                             .frame(width: UIScreen.main.bounds.width - 85, height: 200)
                             .shadow(color: Color.black.opacity(0.3), radius: 10, x: 0, y: 5)
+                        Button(action: {
+                            addItem()
+                        }) {
+                            Text("Add group")
+                        }
                     }
                     .frame(height: 250)
                     
@@ -99,6 +104,9 @@ struct C1NavigationView: View {
                         LazyVGrid(columns: columns, spacing: 20) {
                             ForEach(types, id: \.self) { type in
                                 GridObject(groupType: type)
+                                    .onTapGesture {
+                                        // perform deleting
+                                    }
                             }
                         }
                         
@@ -119,15 +127,20 @@ struct C1NavigationView: View {
     private func addItem() {
         withAnimation {
             let newNote = Note(context: viewContext)
-            newNote.name = self.noteName
+            let newGroup = GroupType(context: viewContext)
+            
+            newNote.name = "Test"
             newNote.level = "N5"
             newNote.typeOfNote?.color = "rosePink"
+            // newGroup.color = "rosePink"
+            newGroup.name = "Checking.."
+            newGroup.number = (types.last?.number ?? 0) + 1
             
             newNote.noteID = (notes.last?.noteID ?? 0) + 1 // makes the order by id of the note
             
             do {
                 try self.viewContext.save()
-                noteName = ""
+                // noteName = ""
             } catch {
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
