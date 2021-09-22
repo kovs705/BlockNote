@@ -20,6 +20,7 @@
 		4E901A3426E6813C00249C15 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E901A3326E6813C00249C15 /* Preview Assets.xcassets */; };
 		4E901A3626E6813C00249C15 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E901A3526E6813C00249C15 /* Persistence.swift */; };
 		4E901A3926E6813C00249C15 /* BlockNote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E901A3726E6813C00249C15 /* BlockNote.xcdatamodeld */; };
+		4EF0ABAB26FB9458008EF8AE /* ObjectColorStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0ABAA26FB9458008EF8AE /* ObjectColorStruct.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		4E901A3526E6813C00249C15 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		4E901A3826E6813C00249C15 /* BlockNote.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BlockNote.xcdatamodel; sourceTree = "<group>"; };
 		4E901A3A26E6813C00249C15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4EF0ABAA26FB9458008EF8AE /* ObjectColorStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectColorStruct.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 			children = (
 				4E901A2C26E6813900249C15 /* BlockNoteApp.swift */,
 				4E101DF526EF358A009800FB /* Concepts and views */,
+				4EF0ABAC26FB9B69008EF8AE /* Objects */,
 				4E901A3026E6813C00249C15 /* Assets.xcassets */,
 				4E901A3526E6813C00249C15 /* Persistence.swift */,
 				4E901A3A26E6813C00249C15 /* Info.plist */,
@@ -110,6 +113,14 @@
 				4E901A3326E6813C00249C15 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4EF0ABAC26FB9B69008EF8AE /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				4EF0ABAA26FB9458008EF8AE /* ObjectColorStruct.swift */,
+			);
+			path = Objects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,6 +201,7 @@
 				4E901A3926E6813C00249C15 /* BlockNote.xcdatamodeld in Sources */,
 				4E101DF426EF3586009800FB /* C1NavigationView.swift in Sources */,
 				4E13C4D826E93E840089D365 /* NoteItem+CoreDataProperties.swift in Sources */,
+				4EF0ABAB26FB9458008EF8AE /* ObjectColorStruct.swift in Sources */,
 				4E13C4DA26E93E840089D365 /* Note+CoreDataProperties.swift in Sources */,
 				4E2D626B26F9234500C079D7 /* GroupType+CoreDataClass.swift in Sources */,
 			);

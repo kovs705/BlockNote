@@ -15,6 +15,8 @@ import Combine
     /// think about what to add or how to group Notes
     /// сделать ColorPicker в виде линии цветных шариков, при наведении пальца на которые пользователь
     /// будет видеть название того или иного цвета
+    /// посмотрите свои уроки за неделю, которые вы прошли
+    /// "время повторить уроки!"
     ///
 //
 
@@ -22,6 +24,8 @@ struct C1NavigationView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(entity: Note.entity(), sortDescriptors: [NSSortDescriptor(key: "noteID", ascending: true)]) var notes: FetchedResults<Note>
+    
+    @FetchRequest(entity: GroupType.entity(), sortDescriptors: [NSSortDescriptor(key: "number", ascending: true)]) var types: FetchedResults<GroupType>
     
     @State private var noteName: String = ""
     
@@ -31,6 +35,8 @@ struct C1NavigationView: View {
     let dateFormatter = DateFormatter()
     @State var time = Timer.publish(every: 0.1, on: .current, in: .tracking).autoconnect()
     @State var showHeader = false
+    
+    @State var typeName: String = ""
     
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     
@@ -50,7 +56,6 @@ struct C1NavigationView: View {
                             .lineLimit(1)
                             .font(.system(size: 28))
                             .onAppear(perform: {
-                                
                                 if hour < 4 {
                                     greeting = "Have a good night ✨"
                                 }
@@ -92,8 +97,8 @@ struct C1NavigationView: View {
                         .frame(width: UIScreen.main.bounds.width - 50)
                         
                         LazyVGrid(columns: columns, spacing: 20) {
-                            ForEach(notes, id: \.self) { note in
-                                
+                            ForEach(types, id: \.self) { type in
+                                GridObject(groupType: type)
                             }
                         }
                         
@@ -116,6 +121,7 @@ struct C1NavigationView: View {
             let newNote = Note(context: viewContext)
             newNote.name = self.noteName
             newNote.level = "N5"
+            newNote.typeOfNote?.color = "rosePink"
             
             newNote.noteID = (notes.last?.noteID ?? 0) + 1 // makes the order by id of the note
             
@@ -166,64 +172,6 @@ extension Color {
 struct C1NavigationView_Previews: PreviewProvider {
     static var previews: some View {
         C1NavigationView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-    }
-}
-
-// MARK: - GridItem object
-struct GridObject : View{
-    
-    enum ObjectColor {
-        // about 5-8 pastel
-        case rosePink; case greenAvocado; case blueBerry
-        case yellowLemon; case redStrawberry
-        case purpleBlackBerry; case greyCloud; case brownSugar
-        // different-colored circles with the color names when you put your finger on it
-        
-        var ObjectColorString: Color {
-            switch self {
-            case .rosePink:
-                return Color.rosePink
-            case .greenAvocado:
-                return Color.greenAvocado
-            case .blueBerry:
-                return Color.blueBerry
-            case .yellowLemon:
-                return Color.yellowLemon
-            case .redStrawberry:
-                return Color.redStrawBerry
-            case .purpleBlackBerry:
-                return Color.purpleBlackBerry
-            case .greyCloud:
-                return Color.greyCloud
-            case .brownSugar:
-                return Color.brownSugar
-            }
-        }
-    }
-    
-    struct ObjectColorStruct {
-        var color: ObjectColor
-    }
-    @Binding var objectStructColor: ObjectColorStruct
-    var groupType: GroupType
-    
-    var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 20)
-                .fill(objectStructColor.color.ObjectColorString)
-                .frame(width: 100, height: 100)
-            VStack {
-                Spacer()
-                HStack {
-                    // text content here:
-                    
-                    Spacer()
-                }
-            }
-            // end of VStack
-        }
-        // end of ZStack
-        .frame(width: 100, height: 100)
     }
 }
 

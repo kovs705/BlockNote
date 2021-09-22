@@ -24,6 +24,10 @@ extension GroupType {
         number
     }
     
+    public var wrappedName: String {
+        name ?? "Unknown name of the group"
+    }
+    
     public var typesArray: [Note] {
         let set = noteTypes as? Set<Note> ?? []
         return set.sorted {
