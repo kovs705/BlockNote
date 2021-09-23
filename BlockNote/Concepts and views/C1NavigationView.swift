@@ -38,7 +38,7 @@ struct C1NavigationView: View {
     
     let dateFormatter = DateFormatter()
     @State var time = Timer.publish(every: 0, on: .main, in: .tracking).autoconnect()
-    @State var showBar = false
+    @State var showBar: Bool = false
     
     @State var typeName: String = ""
     
@@ -60,10 +60,6 @@ struct C1NavigationView: View {
     var body: some View {
         ZStack {
             
-            // MARK: - TabBar
-                BarButton()
-                    
-            
             Color.darkBack
                 ScrollView(.vertical, showsIndicators: false) {
                     HStack {
@@ -74,8 +70,8 @@ struct C1NavigationView: View {
                     
                     // MARK: - Greeting
                     GeometryReader { geometry in
-                        HStack {
-                            Spacer()
+                      //  HStack {
+                           // Spacer()
                             VStack(alignment: .center) {
                                 Text(greeting)
                                     .bold()
@@ -110,8 +106,8 @@ struct C1NavigationView: View {
                                     self.showBar = false
                                 }
                             }
-                            Spacer()
-                        }
+                           // Spacer()
+                        //}
                         // end of HStack
                     }
                     .frame(height: 40)
@@ -187,6 +183,22 @@ struct C1NavigationView: View {
                 }
                 .ignoresSafeArea(.all)
                 // end of VStack
+            
+            // MARK: - TabBar
+            if showBar {
+                VStack {
+                    HStack {
+                        //BarButton()
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(Color.white)
+                            .frame(width: 250, height: 250)
+                    }
+                    .padding()
+                }
+                .padding()
+                .zIndex(-5)
+                
+            }
         }
         .navigationBarHidden(true)
         .ignoresSafeArea(.all)
