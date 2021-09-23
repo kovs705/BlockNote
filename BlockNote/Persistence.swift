@@ -74,10 +74,19 @@ struct BlurView: UIViewRepresentable {
         ])
         return view
     }
-    
     func updateUIView(_ uiView: UIView,
                       context: UIViewRepresentableContext<BlurView>) {
-        
+    }
+}
+struct WhiteView: UIViewRepresentable {
+    func makeUIView(context: UIViewRepresentableContext<WhiteView>) -> UIView {
+        let view = UIView(frame: .zero)
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 10
+        return view
+    }
+    
+    func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<WhiteView>) {
     }
 }
 

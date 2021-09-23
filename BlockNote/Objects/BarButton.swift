@@ -19,13 +19,17 @@ struct BarButton: View {
             }) {
                 ZStack {
                     VStack {
-                        
+                        Image(systemName: "paintbrush.fill")
+                            .foregroundColor(.white)
+                            .font(.system(size: 33))
+                            .padding()
                     }
                 }
             }
             .buttonStyle(BluredButtonInTabBar())
             // end of the Themes button
             
+            Spacer()
             
         }
         .background(BlurView(style: .regular))

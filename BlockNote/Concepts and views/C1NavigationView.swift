@@ -37,8 +37,8 @@ struct C1NavigationView: View {
     @State var greeting: String = "BlockNote"
     
     let dateFormatter = DateFormatter()
-    @State var time = Timer.publish(every: 0.1, on: .current, in: .tracking).autoconnect()
-    @State var showHeader = false
+    @State var time = Timer.publish(every: 0, on: .main, in: .tracking).autoconnect()
+    @State var showBar = false
     
     @State var typeName: String = ""
     
@@ -61,27 +61,8 @@ struct C1NavigationView: View {
         ZStack {
             
             // MARK: - TabBar
-            ZStack {
-                HStack {
-                    // 4 buttons: Tasks, Search, Themes, Settings:
-                    Button(action: {
-                        // Themes:
-                    }) {
-                        ZStack {
-                            VStack {
-                                
-                            }
-                        }
-                    }
-                    .buttonStyle(BluredButtonInTabBar())
-                    // end of the Themes button
+                BarButton()
                     
-                    
-                }
-            }
-            .background(BlurView(style: .regular))
-            .cornerRadius(20)
-            .frame(width: UIScreen.main.bounds.width - 30, height: 110)
             
             Color.darkBack
                 ScrollView(.vertical, showsIndicators: false) {
@@ -89,33 +70,53 @@ struct C1NavigationView: View {
                         // empty space
                     }
                     .frame(height: 90)
+                    
+                    
                     // MARK: - Greeting
-                    VStack {
-                        Text(greeting)
-                            .bold()
-                            .lineLimit(1)
-                            .font(.system(size: 28))
-                            .onAppear(perform: {
-                                if hour < 4 {
-                                    greeting = "Have a good night ✨"
+                    GeometryReader { geometry in
+                        HStack {
+                            Spacer()
+                            VStack(alignment: .center) {
+                                Text(greeting)
+                                    .bold()
+                                    .lineLimit(1)
+                                    .font(.system(size: 28))
+                                    .onAppear(perform: {
+                                        if hour < 4 {
+                                            greeting = "Have a good night ✨"
+                                        }
+                                        else if hour < 12 {
+                                            greeting = "Good morning!☀️"
+                                        }
+                                        else if hour < 18 {
+                                            greeting = "Have a great day! ⛅️"
+                                        }
+                                        else if hour < 23 {
+                                            greeting = "Good evening 🌇"
+                                        }
+                                        else {
+                                            greeting = "Have a good night ✨"
+                                        }
+                                        
+                                    })
+                                    .animation(.easeInOut)
+                            }
+                            .onReceive(self.time) { (_) in
+                                // to see if user scrolled downwards and doesn't see the greeting:
+                                let Y = geometry.frame(in: .global).minY
+                                if -Y > (UIScreen.main.bounds.height / 8) - 80 {
+                                    self.showBar = true
+                                } else {
+                                    self.showBar = false
                                 }
-                                else if hour < 12 {
-                                    greeting = "Good morning!☀️"
-                                }
-                                else if hour < 18 {
-                                    greeting = "Have a great day! ⛅️"
-                                }
-                                else if hour < 23 {
-                                    greeting = "Good evening 🌇"
-                                }
-                                else {
-                                    greeting = "Have a good night ✨"
-                                }
-                                
-                            })
-                            .animation(.easeInOut)
+                            }
+                            Spacer()
+                        }
+                        // end of HStack
                     }
                     .frame(height: 40)
+                    
+                    
                     // MARK: - Block for statistics
                     ZStack {
                         RoundedRectangle(cornerRadius: 20)
@@ -228,7 +229,7 @@ extension View {
 struct BluredButtonInTabBar: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .padding(10)
+            .padding(20)
             .background(BlurView(style: .prominent))
             .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
             .frame(width: 90, height: 90)
