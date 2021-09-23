@@ -70,8 +70,8 @@ struct C1NavigationView: View {
                     
                     // MARK: - Greeting
                     GeometryReader { geometry in
-                      //  HStack {
-                           // Spacer()
+                        HStack {
+                            Spacer()
                             VStack(alignment: .center) {
                                 Text(greeting)
                                     .bold()
@@ -106,9 +106,9 @@ struct C1NavigationView: View {
                                     self.showBar = false
                                 }
                             }
-                           // Spacer()
-                        //}
-                        // end of HStack
+                        Spacer()
+                    }
+                    // end of HStack
                     }
                     .frame(height: 40)
                     
@@ -198,6 +198,8 @@ struct C1NavigationView: View {
                 .padding()
                 .zIndex(-5)
                 
+            } else {
+                BarButton()
             }
         }
         .navigationBarHidden(true)
@@ -242,9 +244,10 @@ struct BluredButtonInTabBar: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .padding(20)
-            .background(BlurView(style: .prominent))
-            .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
-            .frame(width: 90, height: 90)
+            .cornerRadius(25)
+            .background(BlurView(style: .regular))
+            // .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
+            .frame(width: 70, height: 70)
     }
 }
 
@@ -261,6 +264,7 @@ extension Color {
     static let purpleBlackBerry = Color("PurpleBlackBerry")
     static let greyCloud = Color("GreyCloud")
     static let brownSugar = Color("BrownSugar")
+    static let textForeground = Color("TextForeground")
     
     public static var darkBlue: Color {
         return Color(red: 28 / 255, green: 46 / 255, blue: 74 / 255)
