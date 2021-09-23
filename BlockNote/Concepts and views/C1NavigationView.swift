@@ -40,6 +40,18 @@ struct C1NavigationView: View {
     
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     
+    func deleteGroup(at offsets: IndexSet) {
+        for index in offsets {
+            let type = types[index]
+            viewContext.delete(type)
+        }
+        do {
+            try self.viewContext.save()
+        } catch {
+            print("something happened on deleting the group!")
+        }
+    }
+    
     // MARK: - Body
     var body: some View {
         ZStack {
@@ -104,10 +116,9 @@ struct C1NavigationView: View {
                         LazyVGrid(columns: columns, spacing: 20) {
                             ForEach(types, id: \.self) { type in
                                 GridObject(groupType: type)
-                                    .onTapGesture {
-                                        // perform deleting
-                                    }
                             }
+                            .onDelete(perform: deleteGroup) // edit to make it onTap
+                            
                         }
                         
                         
