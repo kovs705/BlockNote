@@ -17,7 +17,9 @@ import Combine
     /// будет видеть название того или иного цвета
     /// посмотрите свои уроки за неделю, которые вы прошли
     /// "время повторить уроки!"
-    ///
+    ///  окошко при удалении
+    ///  окно приветствия как в сбере (со сменой дизайна в зависимости от времени суток)
+    /// task page with two islands: incompleted and completed tasks
 //
 
 struct C1NavigationView: View {
@@ -26,6 +28,8 @@ struct C1NavigationView: View {
     @FetchRequest(entity: Note.entity(), sortDescriptors: [NSSortDescriptor(key: "noteID", ascending: true)]) var notes: FetchedResults<Note>
     
     @FetchRequest(entity: GroupType.entity(), sortDescriptors: [NSSortDescriptor(key: "number", ascending: true)]) var types: FetchedResults<GroupType>
+    
+    @State var isEditing = false
     
     @State private var noteName: String = ""
     
@@ -55,6 +59,30 @@ struct C1NavigationView: View {
     // MARK: - Body
     var body: some View {
         ZStack {
+            
+            // MARK: - TabBar
+            ZStack {
+                HStack {
+                    // 4 buttons: Tasks, Search, Themes, Settings:
+                    Button(action: {
+                        // Themes:
+                    }) {
+                        ZStack {
+                            VStack {
+                                
+                            }
+                        }
+                    }
+                    .buttonStyle(BluredButtonInTabBar())
+                    // end of the Themes button
+                    
+                    
+                }
+            }
+            .background(BlurView(style: .regular))
+            .cornerRadius(20)
+            .frame(width: UIScreen.main.bounds.width - 30, height: 110)
+            
             Color.darkBack
                 ScrollView(.vertical, showsIndicators: false) {
                     HStack {
@@ -103,23 +131,52 @@ struct C1NavigationView: View {
                     .frame(height: 250)
                     
                     
-                    // MARK: - Grouped notes
+                    // MARK: - Buttons
                     VStack {
                         HStack {
                             Text("List of groups")
                                 .font(.system(size: 22))
                                 .bold()
                             Spacer()
+                            // MARK: - Edit button
+                            Button(action: {
+                                // put the action here:
+                                
+                            }) {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .fill(Color.lightPart)
+                                        .frame(width: 35, height: 35)
+                                    Image(systemName: "pencil")
+                                        .foregroundColor(.white)
+                                }
+                            }
+                            
+                            // MARK: - Changing view button
+                            Button(action: {
+                                
+                            }) {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .fill(Color.lightPart)
+                                        .frame(width: 35, height: 35)
+                                    Image(systemName: "lineweight")
+                                        .foregroundColor(.white)
+                                }
+                            }
+                            
                         }
                         .frame(width: UIScreen.main.bounds.width - 50)
                         
-                        LazyVGrid(columns: columns, spacing: 20) {
+                        // MARK: - Groups
+                        
+                        LazyVGrid(columns: columns, spacing: 10) {
                             ForEach(types, id: \.self) { type in
                                 GridObject(groupType: type)
                             }
                             .onDelete(perform: deleteGroup) // edit to make it onTap
-                            
                         }
+                        .padding()
                         
                         
                         // end of HStack
@@ -165,6 +222,16 @@ extension View {
     public func gradientForegroundColor(colors: [Color]) -> some View {
         self.overlay(LinearGradient(gradient: .init(colors: colors), startPoint: .topLeading, endPoint: .bottomTrailing))
             .mask(self)
+    }
+}
+
+struct BluredButtonInTabBar: ButtonStyle {
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .padding(10)
+            .background(BlurView(style: .prominent))
+            .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
+            .frame(width: 90, height: 90)
     }
 }
 
