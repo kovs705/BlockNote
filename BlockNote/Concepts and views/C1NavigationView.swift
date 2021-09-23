@@ -44,6 +44,8 @@ struct C1NavigationView: View {
     
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     
+    @State var onDeleting: Bool = false
+    
     func deleteGroup(at offsets: IndexSet) {
         for index in offsets {
             let type = types[index]
@@ -100,13 +102,17 @@ struct C1NavigationView: View {
                             .onReceive(self.time) { (_) in
                                 // to see if user scrolled downwards and doesn't see the greeting:
                                 let Y = geometry.frame(in: .global).minY
-                                if -Y > (UIScreen.main.bounds.height / 8) - 80 {
-                                    self.showBar = true
+                                if -Y > (UIScreen.main.bounds.height / 8) - 90 {
+                                    withAnimation(.easeInOut) {
+                                        self.showBar = true
+                                    }
                                 } else {
-                                    self.showBar = false
+                                    withAnimation(.easeInOut) {
+                                        self.showBar = false
+                                    }
                                 }
                             }
-                        Spacer()
+                            Spacer()
                     }
                     // end of HStack
                     }
@@ -138,7 +144,7 @@ struct C1NavigationView: View {
                             // MARK: - Edit button
                             Button(action: {
                                 // put the action here:
-                                
+                                self.onDeleting.toggle()
                             }) {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 10)
@@ -169,7 +175,30 @@ struct C1NavigationView: View {
                         
                         LazyVGrid(columns: columns, spacing: 10) {
                             ForEach(types, id: \.self) { type in
-                                GridObject(groupType: type)
+                                ZStack {
+                                    if onDeleting {
+                                        Button(action: {
+                                            // deleting action here:
+                                            
+                                        }) {
+                                            ZStack {
+                                                RoundedRectangle(cornerRadius: 20)
+                                                    .fill(Color.red)
+                                                    .frame(width: 30, height: 30)
+                                                    .zIndex(-4)
+                                                Image(systemName: "minus")
+                                                    .foregroundColor(.white)
+                                                    .font(.system(size: 18))
+                                                    .zIndex(-4)
+                                            }
+                                        }
+                                        .environment(\.editMode, .constant(self.isEditing ? EditMode.active : EditMode.inactive)).animation(.spring())
+                                        .zIndex(-4)
+                                    }
+                                    GridObject(groupType: type)
+                                        .zIndex(-5)
+                                }
+                                .frame(width: 150, height: 150)
                             }
                             .onDelete(perform: deleteGroup) // edit to make it onTap
                         }
@@ -187,19 +216,13 @@ struct C1NavigationView: View {
             // MARK: - TabBar
             if showBar {
                 VStack {
-                    HStack {
-                        //BarButton()
-                        RoundedRectangle(cornerRadius: 20)
-                            .fill(Color.white)
-                            .frame(width: 250, height: 250)
-                    }
-                    .padding()
+                    Spacer()
+                        BarButton()
                 }
-                .padding()
-                .zIndex(-5)
-                
+                .transition(.move(edge: .bottom))
+                .padding(.vertical)
             } else {
-                BarButton()
+                // BarButton()
             }
         }
         .navigationBarHidden(true)
@@ -283,16 +306,9 @@ struct C1NavigationView_Previews: PreviewProvider {
     }
 }
 
-
 /*
- .onReceive(self.time) { (_) in
-     // to see if user scrolled downwards and doesn't see the header:
-     let Y = geometry.frame(in: .global).minY
-     if -Y > (UIScreen.main.bounds.height / 3) - 50 {
-         self.showHeader = true
-     } else {
-         self.showHeader = false
-     }
-     
- }
+ LinearGradient(gradient: Gradient(colors: [.pink, .blue]),
+                startPoint: .top,
+                endPoint: .bottom)
+     .mask(Text("your text"))
  */
