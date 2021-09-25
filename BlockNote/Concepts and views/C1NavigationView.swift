@@ -60,9 +60,10 @@ struct C1NavigationView: View {
     
     // MARK: - Body
     var body: some View {
-        ZStack {
-            
-            Color.darkBack
+        NavigationView {
+            ZStack {
+                
+                Color.darkBack
                 ScrollView(.vertical, showsIndicators: false) {
                     HStack {
                         // empty space
@@ -113,8 +114,8 @@ struct C1NavigationView: View {
                                 }
                             }
                             Spacer()
-                    }
-                    // end of HStack
+                        }
+                        // end of HStack
                     }
                     .frame(height: 40)
                     
@@ -151,7 +152,7 @@ struct C1NavigationView: View {
                                         .fill(Color.lightPart)
                                         .frame(width: 35, height: 35)
                                     Image(systemName: "pencil")
-                                        .foregroundColor(.white)
+                                        .foregroundColor(Color.textForeground)
                                 }
                             }
                             
@@ -164,7 +165,7 @@ struct C1NavigationView: View {
                                         .fill(Color.lightPart)
                                         .frame(width: 35, height: 35)
                                     Image(systemName: "lineweight")
-                                        .foregroundColor(.white)
+                                        .foregroundColor(Color.textForeground)
                                 }
                             }
                             
@@ -175,30 +176,17 @@ struct C1NavigationView: View {
                         
                         LazyVGrid(columns: columns, spacing: 10) {
                             ForEach(types, id: \.self) { type in
-                                ZStack {
-                                    if onDeleting {
-                                        Button(action: {
-                                            // deleting action here:
-                                            
-                                        }) {
-                                            ZStack {
-                                                RoundedRectangle(cornerRadius: 20)
-                                                    .fill(Color.red)
-                                                    .frame(width: 30, height: 30)
-                                                    .zIndex(-4)
-                                                Image(systemName: "minus")
-                                                    .foregroundColor(.white)
-                                                    .font(.system(size: 18))
-                                                    .zIndex(-4)
-                                            }
-                                        }
-                                        .environment(\.editMode, .constant(self.isEditing ? EditMode.active : EditMode.inactive)).animation(.spring())
-                                        .zIndex(-4)
+                                Button(action: {
+                                    // transition to the DetailView
+                                }) {
+                                    ZStack {
+                                        GridObject(groupType: type)
+                                            .foregroundColor(Color.textForeground)
+                                            .zIndex(-5)
                                     }
-                                    GridObject(groupType: type)
-                                        .zIndex(-5)
+                                    .frame(width: 180, height: 180)
                                 }
-                                .frame(width: 150, height: 150)
+                                .buttonStyle(AnimatedButton())
                             }
                             .onDelete(perform: deleteGroup) // edit to make it onTap
                         }
@@ -212,23 +200,27 @@ struct C1NavigationView: View {
                 }
                 .ignoresSafeArea(.all)
                 // end of VStack
-            
-            // MARK: - TabBar
-            if showBar {
-                VStack {
-                    Spacer()
-                        BarButton()
-                }
-                .transition(.move(edge: .bottom))
-                .padding(.vertical)
-            } else {
-                // BarButton()
+                
+                // MARK: - TabBar
+                    if showBar {
+                        VStack {
+                            Spacer()
+                            BarButton()
+                        }
+                        .transition(.move(edge: .bottom))
+                        .animation(.spring())
+                        .padding(.vertical)
+                    } else {
+                        // BarButton()
+                    }
+                    // end of if else
             }
+            .navigationBarHidden(true)
+            .ignoresSafeArea(.all)
         }
-        .navigationBarHidden(true)
-        .ignoresSafeArea(.all)
+        .navigationTitle("")
     }
-
+    
     // MARK: - Functions
     private func addItem() {
         withAnimation {
@@ -311,4 +303,25 @@ struct C1NavigationView_Previews: PreviewProvider {
                 startPoint: .top,
                 endPoint: .bottom)
      .mask(Text("your text"))
+ */
+
+/*                                    if onDeleting {
+                                        Button(action: {
+                                            // deleting action here:
+                                            // deleteGroup(at: )
+                                        }) {
+                                            ZStack {
+                                                RoundedRectangle(cornerRadius: 20)
+                                                    .fill(Color.red)
+                                                    .frame(width: 30, height: 30)
+                                                    .zIndex(-4)
+                                                Image(systemName: "minus")
+                                                    .foregroundColor(.white)
+                                                    .font(.system(size: 18))
+                                                    .zIndex(-4)
+                                            }
+                                        }
+                                        .environment(\.editMode, .constant(self.isEditing ? EditMode.active : EditMode.inactive)).animation(.spring())
+                                        .zIndex(-4)
+                                    }
  */

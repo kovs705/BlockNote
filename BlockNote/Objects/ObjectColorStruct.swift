@@ -16,20 +16,35 @@ struct GridObject: View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
                 .fill(returnColorFromString(nameOfColor: groupType.color ?? "YellowLemon"))
-                .frame(width: 150, height: 150)
+                .frame(width: 180, height: 180)
             VStack {
                 Spacer()
                 HStack {
-                    // text content here:
+                    // name of the group:
                     Text(groupType.name ?? "Test name")
+                        .bold()
+                        .lineLimit(2)
                     Spacer()
+                }
+                // number of notes inside:
+                if groupType.noteTypes?.count == 1 {
+                    HStack {
+                        Text("1 note")
+                        Spacer()
+                    }
+                } else {
+                    HStack {
+                        Text("\(groupType.wrappedNumber)")
+                        Text(" notes")
+                        Spacer()
+                    }
                 }
             }
             .padding()
             // end of VStack
         }
         // end of ZStack
-        .frame(width: 150, height: 150)
+        .frame(width: 175, height: 175)
     }
 }
 

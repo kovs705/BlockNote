@@ -78,6 +78,7 @@ struct BlurView: UIViewRepresentable {
                       context: UIViewRepresentableContext<BlurView>) {
     }
 }
+
 struct WhiteView: UIViewRepresentable {
     func makeUIView(context: UIViewRepresentableContext<WhiteView>) -> UIView {
         let view = UIView(frame: .zero)
@@ -87,6 +88,14 @@ struct WhiteView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<WhiteView>) {
+    }
+}
+
+struct AnimatedButton: ButtonStyle {
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
+            .animation(.spring())
     }
 }
 
