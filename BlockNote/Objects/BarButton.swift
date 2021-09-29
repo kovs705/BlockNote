@@ -10,6 +10,7 @@ import SwiftUI
 struct BarButton: View {
     
     // 4 buttons: Themes, Search, Tasks, Settings:
+    @Environment(\.colorScheme) public var detectTheme
     
     var body: some View {
         
@@ -80,17 +81,16 @@ struct BarButton: View {
                             .font(.system(size: 30))
                     }
                 }
-                // .padding()
+                
             }
-            
             .cornerRadius(20)
             .buttonStyle(BluredButtonInTabBar())
-            .padding(5)
-            .padding(.vertical, 5)
+            .padding(3)
+            .padding(.vertical, 4)
             
             Spacer()
         }
-        .background(BlurView(style: .regular))
+        .background(BlurView(style: .systemMaterial))
         .cornerRadius(20)
         .frame(width: UIScreen.main.bounds.width - 30, height: 120)
     }

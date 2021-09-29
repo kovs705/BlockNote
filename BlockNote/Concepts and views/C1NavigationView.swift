@@ -206,7 +206,7 @@ struct C1NavigationView: View {
                             Spacer()
                             BarButton()
                         }
-                        .transition(.move(edge: .bottom))
+                        // .transition(.move(edge: .bottom))
                         .offset(y: showBar ? UIScreen.main.bounds.height : 0)
                         .animation(.spring())
                         .padding(.vertical)
@@ -258,16 +258,16 @@ struct BluredButtonInTabBar: ButtonStyle {
         if detectTheme == .dark {
         configuration.label
             .padding(20)
-            .cornerRadius(25)
+            .cornerRadius(20)
             .background(BlurView(style: .regular))
             // .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
-            .frame(width: 70, height: 70)
+            .frame(width: 70, height: 69)
         } else {
             configuration.label
                 .padding(20)
-                .cornerRadius(25)
+                .cornerRadius(20)
                 .background(Color.white)
-                .frame(width: 70, height: 70)
+                .frame(width: 70, height: 69)
                 .shadow(color: .black.opacity(0.3), radius: 10, y: -5)
         }
     }
