@@ -202,18 +202,14 @@ struct C1NavigationView: View {
                 // end of VStack
                 
                 // MARK: - TabBar
-                    if showBar {
                         VStack {
                             Spacer()
                             BarButton()
                         }
                         .transition(.move(edge: .bottom))
+                        .offset(y: showBar ? UIScreen.main.bounds.height : 0)
                         .animation(.spring())
                         .padding(.vertical)
-                    } else {
-                        // BarButton()
-                    }
-                    // end of if else
             }
             .navigationBarHidden(true)
             .ignoresSafeArea(.all)
@@ -256,13 +252,24 @@ extension View {
 }
 
 struct BluredButtonInTabBar: ButtonStyle {
+    @Environment(\.colorScheme) public var detectTheme
+    
     func makeBody(configuration: Self.Configuration) -> some View {
+        if detectTheme == .dark {
         configuration.label
             .padding(20)
             .cornerRadius(25)
             .background(BlurView(style: .regular))
             // .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
             .frame(width: 70, height: 70)
+        } else {
+            configuration.label
+                .padding(20)
+                .cornerRadius(25)
+                .background(Color.white)
+                .frame(width: 70, height: 70)
+                .shadow(color: .black.opacity(0.3), radius: 10, y: -5)
+        }
     }
 }
 
