@@ -20,6 +20,8 @@ import Combine
     ///  окошко при удалении
     ///  окно приветствия как в сбере (со сменой дизайна в зависимости от времени суток)
     /// task page with two islands: incompleted and completed tasks
+    /// сделать редактирование групп на отдельной странице (раз уж не хочет работать, лол)
+    ///
 //
 
 struct C1NavigationView: View {
@@ -290,6 +292,9 @@ extension Color {
     
     public static var darkBlue: Color {
         return Color(red: 28 / 255, green: 46 / 255, blue: 74 / 255)
+    }
+    public static var offWhite: Color {
+        return Color(red: 225 / 255, green: 225 / 255, blue: 235 / 255)
     }
     public static var veryDarkBlue: Color {
         return Color(red: 10 / 255, green: 20 / 255, blue: 50 / 255)
