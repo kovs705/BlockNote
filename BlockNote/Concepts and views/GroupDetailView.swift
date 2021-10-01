@@ -25,27 +25,36 @@ struct GroupDetailView: View {
             VStack {
                 // MARK: - TopBar Statistics
                 ZStack {
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(returnColorFromString(nameOfColor: groupType.color ?? "GreenAvocado"))
+                        .shadow(color: .black.opacity(0.2), radius: 10, y: 5)
+                        .cornerRadius(20)
+                        .frame(width: UIScreen.main.bounds.width - 40, height: 70, alignment: .center)
+                    
                     HStack {
                         Text("Number of words: ")
                             .bold()
-                            .font(.system(size: 18))
+                            .font(.system(size: 16))
+                            .foregroundColor(Color.textForeground)
                         Text("\(groupType.typesArray.count)") // that should work, I guess..
-                        
+                            .font(.system(size: 16))
+
                         Spacer()
                         
                         Text("You've learned: ")
+                            .foregroundColor(Color.textForeground)
+
                             .bold()
-                            .font(.system(size: 18))
+                            .font(.system(size: 16))
                         Text("Nothing yet! Keep working on code, Eugene")
+                            .font(.system(size: 14))
                         
                         Spacer()
-                        Spacer()
                     }
+                    .padding()
+                    
                 }
-                .shadow(color: .black.opacity(0.2), radius: 10, y: 5)
-                .cornerRadius(20)
-                .background(returnColorFromString(nameOfColor: groupType.color ?? "GreenAvocado"))
-                .frame(width: UIScreen.main.bounds.width - 40, height: 70, alignment: .center)
+                .frame(width: UIScreen.main.bounds.width - 30, height: 90, alignment: .center)
                 
                 List {
                     ForEach(groupType.typesArray, id: \.self) { note in
@@ -104,6 +113,12 @@ struct GroupDetailView: View {
                 
             }
         }
+        .navigationBarItems(leading: Button(action: {
+            
+        }) {
+            Image(systemName: "plus.circle.fill")
+                .font(.system(size: 16))
+        })
         .navigationTitle(groupType.wrappedName)
     }
 }
