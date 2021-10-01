@@ -34,7 +34,7 @@ struct GridObject: View {
                     }
                 } else {
                     HStack {
-                        Text("\(groupType.wrappedNumber)")
+                        Text("\(groupType.typesArray.count)")
                         Text(" notes")
                         Spacer()
                     }

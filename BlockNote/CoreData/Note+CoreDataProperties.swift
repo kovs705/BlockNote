@@ -20,6 +20,7 @@ extension Note {
     @NSManaged public var level: String?
     @NSManaged public var type: String?
     @NSManaged public var noteItems: NSSet?
+    @NSManaged public var isMarked: Bool
     
     @NSManaged public var typeOfNote: GroupType?
 

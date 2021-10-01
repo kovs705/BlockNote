@@ -7,6 +7,7 @@
         <relationship name="noteTypes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Note" inverseName="typeOfNote" inverseEntity="Note"/>
     </entity>
     <entity name="Note" representedClassName=".Note" syncable="YES">
+        <attribute name="isMarked" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="level" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="noteID" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
@@ -22,7 +23,7 @@
     </entity>
     <elements>
         <element name="GroupType" positionX="-45" positionY="36" width="128" height="89"/>
-        <element name="Note" positionX="-54" positionY="-9" width="128" height="119"/>
+        <element name="Note" positionX="-54" positionY="-9" width="128" height="134"/>
         <element name="NoteItem" positionX="-36" positionY="9" width="128" height="89"/>
     </elements>
 </model>

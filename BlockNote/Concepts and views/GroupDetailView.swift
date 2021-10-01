@@ -18,7 +18,7 @@ import CoreData
 
 struct GroupDetailView: View {
     @ObservedObject var groupType: GroupType
-    // @ObservedObject var note: Note
+    @Environment(\.managedObjectContext) private var viewContext
     
     var body: some View {
         ScrollView(.vertical) {
@@ -55,14 +55,47 @@ struct GroupDetailView: View {
                                 .bold()
                                 .foregroundColor(Color.textForeground)
                             Spacer()
-                            VStack {
-                                // put a red flag here:
-                                
-                                Spacer()
+                            Spacer()
+                            
+                            if note.isMarked == true {
+                                VStack {
+                                    // put a red flag here:
+                                    Image(systemName: "bookmark.fill")
+                                        .foregroundColor(.red)
+                                        .font(.system(size: 20))
+                                    Spacer()
+                                }
                             }
+                            
                             Image(systemName: "chevron.forward")
                                 .foregroundColor(.gray)
                                 .font(.system(size: 18))
+                                .padding()
+                        }
+                        .contextMenu {
+                            Button(action: {
+                                if note.isMarked == false {
+                                    
+                                    note.isMarked = true // change the isMarked value to true
+                                    do {
+                                        try self.viewContext.save()
+                                    } catch {
+                                        // MARK: - CHANGE (!!!)
+                                        let nsError = error as NSError
+                                        fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                                    }
+                                } else {
+                                    note.isMarked = false // change the isMarked value to false
+                                    do {
+                                        try self.viewContext.save()
+                                    } catch {
+                                        let nsError = error as NSError
+                                        fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                                    }
+                                }
+                            }, label: {
+                                
+                            })
                         }
                         .frame(height: 40)
                     }
@@ -74,7 +107,6 @@ struct GroupDetailView: View {
         .navigationTitle(groupType.wrappedName)
     }
 }
-
 
 // /*
 struct GroupDetailView_Previews: PreviewProvider {
