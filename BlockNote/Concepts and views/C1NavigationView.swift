@@ -8,6 +8,7 @@
 import SwiftUI
 import UIKit
 import Combine
+import CoreData
 
 // MARK: - Instructions
     ///
@@ -178,9 +179,8 @@ struct C1NavigationView: View {
                         
                         LazyVGrid(columns: columns, spacing: 10) {
                             ForEach(types, id: \.self) { type in
-                                Button(action: {
-                                    // transition to the DetailView
-                                }) {
+                                // transition to the DetailView:
+                                NavigationLink(destination: GroupDetailView(groupType: type)) {
                                     ZStack {
                                         GridObject(groupType: type)
                                             .foregroundColor(Color.textForeground)

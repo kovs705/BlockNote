@@ -14,9 +14,11 @@ import CoreData
     /// make an ability to put a red flag on notes that are important
     /// --------------------------------
 
+
+
 struct GroupDetailView: View {
-    let groupType: GroupType
-    let note: Note
+    @ObservedObject var groupType: GroupType
+    // @ObservedObject var note: Note
     
     var body: some View {
         ScrollView(.vertical) {
@@ -80,12 +82,11 @@ struct GroupDetailView_Previews: PreviewProvider {
  
     static var previews: some View {
         let groupType = GroupType(context: moc)
-        let note = Note(context: moc)
         groupType.name = "Test Group name"
         groupType.color = "greenAvocado"
         
         return NavigationView {
-            GroupDetailView(groupType: groupType, note: note)
+            GroupDetailView(groupType: groupType)
         }
     }
 }
