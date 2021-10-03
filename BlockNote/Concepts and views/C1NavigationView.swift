@@ -186,7 +186,7 @@ struct C1NavigationView: View {
                                             .foregroundColor(Color.textForeground)
                                             .zIndex(-5)
                                     }
-                                    .frame(width: 180, height: 180)
+                                    .frame(width: 175, height: 175)
                                 }
                                 .buttonStyle(AnimatedButton())
                             }

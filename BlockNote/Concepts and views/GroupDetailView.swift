@@ -19,42 +19,90 @@ import CoreData
 struct GroupDetailView: View {
     @ObservedObject var groupType: GroupType
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.colorScheme) public var detectTheme
     
     var body: some View {
         ScrollView(.vertical) {
             VStack {
                 // MARK: - TopBar Statistics
-                ZStack {
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(returnColorFromString(nameOfColor: groupType.color ?? "GreenAvocado"))
-                        .shadow(color: .black.opacity(0.2), radius: 10, y: 5)
-                        .cornerRadius(20)
-                        .frame(width: UIScreen.main.bounds.width - 40, height: 70, alignment: .center)
-                    
-                    HStack {
-                        Text("Number of words: ")
-                            .bold()
-                            .font(.system(size: 16))
-                            .foregroundColor(Color.textForeground)
-                        Text("\(groupType.typesArray.count)") // that should work, I guess..
-                            .font(.system(size: 16))
-
-                        Spacer()
+                GeometryReader { geometry in
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(returnColorFromString(nameOfColor: groupType.color ?? "GreenAvocado"))
+                            .cornerRadius(20)
+                            .frame(width: UIScreen.main.bounds.width - 40, height: 150, alignment: .center)
+                            .shadow(color: .black.opacity(0.2), radius: 10, y: 5)
                         
-                        Text("You've learned: ")
-                            .foregroundColor(Color.textForeground)
-
-                            .bold()
-                            .font(.system(size: 16))
-                        Text("Nothing yet! Keep working on code, Eugene")
-                            .font(.system(size: 14))
                         
-                        Spacer()
+                        HStack {
+                            VStack {
+                                Spacer()
+                                Text("Notes: ")
+                                    .bold()
+                                    .font(.system(size: 16))
+                                    .foregroundColor(Color.textForeground)
+                                
+                                Spacer()
+                                
+                                Text("You've completed: ")
+                                    .foregroundColor(Color.textForeground)
+                                    
+                                    .bold()
+                                    .font(.system(size: 16))
+                                Spacer()
+                            }
+                            VStack {
+                                Spacer()
+                                Text("\(groupType.typesArray.count)") // that should work, I guess..
+                                    .font(.system(size: 16))
+                                Spacer()
+                                Text("Nothing yet!")
+                                    .font(.system(size: 14))
+                                    .padding(.horizontal)
+                                Spacer()
+                            }
+                            
+                            Spacer()
+                            
+                            VStack {
+                                Button(action: {
+                                    // action to open Tasks of the group:
+                                }) {
+                                    ZStack {
+                                        RoundedRectangle(cornerRadius: 20)
+                                            .fill(returnColorFromString(nameOfColor: groupType.color ?? "GreenAvocado"))
+                                            .frame(width: 75, height: 75)
+                                            .shadow(color: .black.opacity(0.2), radius: 10, y: 5)
+                                        Image(systemName: "list.bullet.rectangle")
+                                            .font(.system(size: 32))
+                                            .foregroundColor(Color.textForeground)
+                                    }
+                                }
+                                .buttonStyle(AnimatedButton())
+                                Button(action: {
+                                    // action to create an empty note:
+                                }) {
+                                    ZStack {
+                                        RoundedRectangle(cornerRadius: 20)
+                                            .fill(returnColorFromString(nameOfColor: groupType.color ?? "GreenAvocado"))
+                                            .frame(width: 75, height: 75)
+                                            .shadow(color: .black.opacity(0.2), radius: 10, y: 5)
+                                        Image(systemName: "plus")
+                                            .font(.system(size: 32))
+                                            .foregroundColor(Color.textForeground)
+                                    }
+                                }
+                                .buttonStyle(AnimatedButton())
+                            }
+                            Spacer()
+                        }
+                        .padding()
+                        
                     }
-                    .padding()
-                    
+                    .frame(width: UIScreen.main.bounds.width - 30, height: 150, alignment: .center)
+                    // end of ZStack
                 }
-                .frame(width: UIScreen.main.bounds.width - 30, height: 90, alignment: .center)
+                .padding()
                 
                 List {
                     ForEach(groupType.typesArray, id: \.self) { note in

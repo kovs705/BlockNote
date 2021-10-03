@@ -16,7 +16,7 @@ struct GridObject: View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
                 .fill(returnColorFromString(nameOfColor: groupType.color ?? "YellowLemon"))
-                .frame(width: 180, height: 180)
+                .frame(width: 175, height: 175)
             VStack {
                 Spacer()
                 HStack {
@@ -34,8 +34,7 @@ struct GridObject: View {
                     }
                 } else {
                     HStack {
-                        Text("\(groupType.typesArray.count)")
-                        Text(" notes")
+                        Text("\(groupType.typesArray.count) notes")
                         Spacer()
                     }
                 }
@@ -44,7 +43,7 @@ struct GridObject: View {
             // end of VStack
         }
         // end of ZStack
-        .frame(width: 175, height: 175)
+        .frame(width: 170, height: 170)
     }
 }
 
