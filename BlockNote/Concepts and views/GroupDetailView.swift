@@ -113,11 +113,12 @@ struct GroupDetailView: View {
                 
             }
         }
-        .navigationBarItems(leading: Button(action: {
+        .navigationBarItems(trailing: Button(action: {
+            // to add a new Note
             
         }) {
             Image(systemName: "plus.circle.fill")
-                .font(.system(size: 16))
+                .font(.system(size: 20))
         })
         .navigationTitle(groupType.wrappedName)
     }
