@@ -14,11 +14,10 @@ import CoreData
     /// make an ability to put a red flag on notes that are important
     /// --------------------------------
 
-
-
 struct GroupDetailView: View {
+    @FetchRequest(entity: Note.entity(), sortDescriptors: [NSSortDescriptor(key: "noteID", ascending: true)]) var notes: FetchedResults<Note>
     @ObservedObject var groupType: GroupType
-    @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.managedObjectContext) var viewContext
     @Environment(\.colorScheme) public var detectTheme
     
     var body: some View {
@@ -31,9 +30,9 @@ struct GroupDetailView: View {
                             .fill(returnColorFromString(nameOfColor: groupType.color ?? "GreenAvocado"))
                             .cornerRadius(20)
                             .frame(width: UIScreen.main.bounds.width - 40, height: 150, alignment: .center)
-                            .shadow(color: .black.opacity(0.2), radius: 10, y: 5)
+                            .shadow(color: returnColorFromString(nameOfColor: groupType.color ?? "GreenAvocado"), radius: 10, y: 5)
                         
-                        
+                        // MARK: - Words and Numbers
                         HStack {
                             VStack {
                                 Spacer()
@@ -64,6 +63,7 @@ struct GroupDetailView: View {
                             
                             Spacer()
                             
+                            // MARK: - Buttons
                             VStack {
                                 Button(action: {
                                     // action to open Tasks of the group:
@@ -72,7 +72,7 @@ struct GroupDetailView: View {
                                         RoundedRectangle(cornerRadius: 20)
                                             .fill(returnColorFromString(nameOfColor: groupType.color ?? "GreenAvocado"))
                                             .frame(width: 75, height: 75)
-                                            .shadow(color: .black.opacity(0.2), radius: 10, y: 5)
+                                            .shadow(color: .black.opacity(0.25), radius: 10, y: 5)
                                         Image(systemName: "list.bullet.rectangle")
                                             .font(.system(size: 32))
                                             .foregroundColor(Color.textForeground)
@@ -81,12 +81,14 @@ struct GroupDetailView: View {
                                 .buttonStyle(AnimatedButton())
                                 Button(action: {
                                     // action to create an empty note:
+                                    createNote()
+                                    // MARK: Put a navigationLink here:
                                 }) {
                                     ZStack {
                                         RoundedRectangle(cornerRadius: 20)
                                             .fill(returnColorFromString(nameOfColor: groupType.color ?? "GreenAvocado"))
                                             .frame(width: 75, height: 75)
-                                            .shadow(color: .black.opacity(0.2), radius: 10, y: 5)
+                                            .shadow(color: .black.opacity(0.25), radius: 10, y: 5)
                                         Image(systemName: "plus")
                                             .font(.system(size: 32))
                                             .foregroundColor(Color.textForeground)
@@ -103,7 +105,7 @@ struct GroupDetailView: View {
                     // end of ZStack
                 }
                 .padding()
-                
+                // MARK: - List of notes
                 List {
                     ForEach(groupType.typesArray, id: \.self) { note in
                         HStack {
@@ -129,6 +131,7 @@ struct GroupDetailView: View {
                                 .font(.system(size: 18))
                                 .padding()
                         }
+                        // MARK: - Context menu
                         .contextMenu {
                             Button(action: {
                                 if note.isMarked == false {
@@ -151,6 +154,7 @@ struct GroupDetailView: View {
                                     }
                                 }
                             }, label: {
+                                // MARK: - ADD LABEL HERE
                                 
                             })
                         }
@@ -163,19 +167,37 @@ struct GroupDetailView: View {
         }
         .navigationBarItems(trailing: Button(action: {
             // to add a new Note
-            
+            // MARK: - Do something with it
         }) {
             Image(systemName: "plus.circle.fill")
                 .font(.system(size: 20))
         })
         .navigationTitle(groupType.wrappedName)
     }
+    // MARK: - Functions
+    func createNote() {
+        withAnimation {
+            let newNote = Note(context: viewContext)
+            newNote.name = ""
+            newNote.level = ""
+            newNote.noteID = (notes.last?.noteID ?? 0) + 1
+            newNote.isMarked = false
+            
+            do {
+                try self.viewContext.save()
+                
+            } catch {
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
+        }
+    }
 }
 
-// /*
+// MARK: - Preview
 struct GroupDetailView_Previews: PreviewProvider {
     static let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
- 
+    
     static var previews: some View {
         let groupType = GroupType(context: moc)
         groupType.name = "Test Group name"
@@ -186,4 +208,3 @@ struct GroupDetailView_Previews: PreviewProvider {
         }
     }
 }
-//  */
