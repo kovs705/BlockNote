@@ -155,7 +155,11 @@ struct GroupDetailView: View {
                                 }
                             }, label: {
                                 // MARK: - ADD LABEL HERE
-                                
+                                if note.isMarked == true {
+                                    Label("Mark the note", systemImage: "bookmark.fill")
+                                } else {
+                                    Label("Mark the note", systemImage: "bookmark")
+                                }
                             })
                         }
                         .frame(height: 40)

@@ -6,6 +6,11 @@
         <attribute name="number" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="noteTypes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Note" inverseName="typeOfNote" inverseEntity="Note"/>
     </entity>
+    <entity name="ItemList" representedClassName="ItemList" syncable="YES" codeGenerationType="class">
+        <attribute name="row" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="translation" optional="YES" attributeType="String"/>
+        <attribute name="word" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="Note" representedClassName=".Note" syncable="YES">
         <attribute name="isMarked" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="level" optional="YES" attributeType="String"/>
@@ -16,6 +21,7 @@
         <relationship name="typeOfNote" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GroupType" inverseName="noteTypes" inverseEntity="GroupType"/>
     </entity>
     <entity name="NoteItem" representedClassName=".NoteItem" syncable="YES">
+        <attribute name="itemType" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="order" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="text" optional="YES" attributeType="String"/>
@@ -24,6 +30,7 @@
     <elements>
         <element name="GroupType" positionX="-45" positionY="36" width="128" height="89"/>
         <element name="Note" positionX="-54" positionY="-9" width="128" height="134"/>
-        <element name="NoteItem" positionX="-36" positionY="9" width="128" height="89"/>
+        <element name="NoteItem" positionX="-36" positionY="9" width="128" height="104"/>
+        <element name="ItemList" positionX="-45" positionY="54" width="128" height="74"/>
     </elements>
 </model>
