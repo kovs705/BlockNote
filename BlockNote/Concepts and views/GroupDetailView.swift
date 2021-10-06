@@ -194,11 +194,14 @@ struct GroupDetailView: View {
     // MARK: - Functions
     func createNote() {
         withAnimation {
-            let newNote = Note(context: viewContext)
-            newNote.name = ""
-            newNote.level = ""
-            newNote.noteID = (notes.last?.noteID ?? 0) + 1
-            newNote.isMarked = false
+            let newNote = Note(context: self.viewContext)
+            newNote.typeOfNote = GroupType(context: self.viewContext)
+            newNote.typeOfNote?.name = self.groupType.wrappedName // name of the group will be the same as on the page, which is opened by user
+            
+            newNote.name = "" // note name
+            newNote.level = "" // note lvl or whatever it can be for user
+            newNote.noteID = (notes.last?.noteID ?? 0) + 1 // note id, which will place notes in the right order
+            newNote.isMarked = false // note isn't marked yet, so user can do it later
             
             do {
                 try self.viewContext.save()

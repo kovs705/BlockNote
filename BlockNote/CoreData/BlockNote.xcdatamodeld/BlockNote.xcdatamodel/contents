@@ -29,8 +29,8 @@
     </entity>
     <elements>
         <element name="GroupType" positionX="-45" positionY="36" width="128" height="89"/>
+        <element name="ItemList" positionX="-45" positionY="54" width="128" height="74"/>
         <element name="Note" positionX="-54" positionY="-9" width="128" height="134"/>
         <element name="NoteItem" positionX="-36" positionY="9" width="128" height="104"/>
-        <element name="ItemList" positionX="-45" positionY="54" width="128" height="74"/>
     </elements>
 </model>
