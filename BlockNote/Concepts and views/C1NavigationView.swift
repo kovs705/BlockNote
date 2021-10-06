@@ -160,9 +160,7 @@ struct C1NavigationView: View {
                             }
                             
                             // MARK: - Changing view button
-                            Button(action: {
-                                
-                            }) {
+                            NavigationLink(destination: NoteListDebug()) {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 10)
                                         .fill(Color.lightPart)

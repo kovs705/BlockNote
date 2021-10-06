@@ -68,7 +68,8 @@ struct GroupDetailView: View {
                             // MARK: - Buttons
                             VStack {
                                 Button(action: {
-                                    // action to open Tasks of the group:
+                                // action to open Tasks of the group:
+                                    
                                 }) {
                                     ZStack {
                                         RoundedRectangle(cornerRadius: 20)
@@ -85,6 +86,7 @@ struct GroupDetailView: View {
                                     // action to create an empty note:
                                     createNote()
                                     // MARK: Put a navigationLink here:
+                                    // 
                                 }) {
                                     ZStack {
                                         RoundedRectangle(cornerRadius: 20)
@@ -109,7 +111,7 @@ struct GroupDetailView: View {
                 .padding()
                 // MARK: - List of notes
                 List {
-                    ForEach(groupType.typesArray, id: \.self) { note in
+                    ForEach(notes, id: \.self) { note in
                         if note.wrappedName == "" {
                             // if note is just created and doesn't even have a name:
                             HStack {

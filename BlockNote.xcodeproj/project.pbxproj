@@ -23,6 +23,7 @@
 		4E901A3426E6813C00249C15 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E901A3326E6813C00249C15 /* Preview Assets.xcassets */; };
 		4E901A3626E6813C00249C15 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E901A3526E6813C00249C15 /* Persistence.swift */; };
 		4E901A3926E6813C00249C15 /* BlockNote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E901A3726E6813C00249C15 /* BlockNote.xcdatamodeld */; };
+		4EAE6FD8270E14140018072C /* NoteListDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAE6FD7270E14140018072C /* NoteListDebug.swift */; };
 		4EF0ABAB26FB9458008EF8AE /* ObjectColorStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0ABAA26FB9458008EF8AE /* ObjectColorStruct.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		4E901A3526E6813C00249C15 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		4E901A3826E6813C00249C15 /* BlockNote.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BlockNote.xcdatamodel; sourceTree = "<group>"; };
 		4E901A3A26E6813C00249C15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4EAE6FD7270E14140018072C /* NoteListDebug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListDebug.swift; sourceTree = "<group>"; };
 		4EF0ABAA26FB9458008EF8AE /* ObjectColorStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectColorStruct.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,6 +67,7 @@
 				4E901A2E26E6813900249C15 /* ContentView.swift */,
 				4E101DF326EF3586009800FB /* C1NavigationView.swift */,
 				4E7588A2270513E9004B38C1 /* GroupDetailView.swift */,
+				4EAE6FD7270E14140018072C /* NoteListDebug.swift */,
 				4E6F7744270A326700613FCE /* NoteView.swift */,
 			);
 			path = "Concepts and views";
@@ -208,6 +211,7 @@
 				4E2D626C26F9234500C079D7 /* GroupType+CoreDataProperties.swift in Sources */,
 				4E901A2D26E6813900249C15 /* BlockNoteApp.swift in Sources */,
 				4E13C4D926E93E840089D365 /* Note+CoreDataClass.swift in Sources */,
+				4EAE6FD8270E14140018072C /* NoteListDebug.swift in Sources */,
 				4E901A3926E6813C00249C15 /* BlockNote.xcdatamodeld in Sources */,
 				4E101DF426EF3586009800FB /* C1NavigationView.swift in Sources */,
 				4E60007D26FD0F7800AFE192 /* BarButton.swift in Sources */,
