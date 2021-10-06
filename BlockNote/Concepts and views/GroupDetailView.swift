@@ -20,6 +20,8 @@ struct GroupDetailView: View {
     @Environment(\.managedObjectContext) var viewContext
     @Environment(\.colorScheme) public var detectTheme
     
+    @State var funcWithNavLink: Bool = false
+    
     var body: some View {
         ScrollView(.vertical) {
             VStack {
@@ -108,62 +110,73 @@ struct GroupDetailView: View {
                 // MARK: - List of notes
                 List {
                     ForEach(groupType.typesArray, id: \.self) { note in
-                        HStack {
-                            Text("\(note.wrappedName)")
-                                .font(.system(size: 18))
-                                .bold()
-                                .foregroundColor(Color.textForeground)
-                            Spacer()
-                            Spacer()
-                            
-                            if note.isMarked == true {
-                                VStack {
-                                    // put a red flag here:
-                                    Image(systemName: "bookmark.fill")
-                                        .foregroundColor(.red)
-                                        .font(.system(size: 20))
-                                    Spacer()
-                                }
+                        if note.wrappedName == "" {
+                            // if note is just created and doesn't even have a name:
+                            HStack {
+                                Text("Click to open the note")
+                                    .foregroundColor(Color.gray)
+                                    .padding(.horizontal)
                             }
-                            
-                            Image(systemName: "chevron.forward")
-                                .foregroundColor(.gray)
-                                .font(.system(size: 18))
-                                .padding()
-                        }
-                        // MARK: - Context menu
-                        .contextMenu {
-                            Button(action: {
-                                if note.isMarked == false {
-                                    
-                                    note.isMarked = true // change the isMarked value to true
-                                    do {
-                                        try self.viewContext.save()
-                                    } catch {
-                                        // MARK: - CHANGE (!!!)
-                                        let nsError = error as NSError
-                                        fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-                                    }
-                                } else {
-                                    note.isMarked = false // change the isMarked value to false
-                                    do {
-                                        try self.viewContext.save()
-                                    } catch {
-                                        let nsError = error as NSError
-                                        fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-                                    }
-                                }
-                            }, label: {
-                                // MARK: - ADD LABEL HERE
+                        } else {
+                            HStack {
+                                Text("\(note.wrappedName)")
+                                    .font(.system(size: 18))
+                                    .bold()
+                                    .foregroundColor(Color.textForeground)
+                                Spacer()
+                                Spacer()
+                                
                                 if note.isMarked == true {
-                                    Label("Mark the note", systemImage: "bookmark.fill")
-                                } else {
-                                    Label("Mark the note", systemImage: "bookmark")
+                                    VStack {
+                                        // put a red flag here:
+                                        Image(systemName: "bookmark.fill")
+                                            .foregroundColor(.red)
+                                            .font(.system(size: 20))
+                                        Spacer()
+                                    }
                                 }
-                            })
+                                
+                                Image(systemName: "chevron.forward")
+                                    .foregroundColor(.gray)
+                                    .font(.system(size: 18))
+                                    .padding()
+                            }
+                            // MARK: - Context menu
+                            .contextMenu {
+                                Button(action: {
+                                    if note.isMarked == false {
+                                        
+                                        note.isMarked = true // change the isMarked value to true
+                                        do {
+                                            try self.viewContext.save()
+                                        } catch {
+                                            // MARK: - CHANGE (!!!)
+                                            let nsError = error as NSError
+                                            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                                        }
+                                    } else {
+                                        note.isMarked = false // change the isMarked value to false
+                                        do {
+                                            try self.viewContext.save()
+                                        } catch {
+                                            let nsError = error as NSError
+                                            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                                        }
+                                    }
+                                }, label: {
+                                    // MARK: - ADD LABEL HERE
+                                    if note.isMarked == true {
+                                        Label("Mark the note", systemImage: "bookmark.fill")
+                                    } else {
+                                        Label("Mark the note", systemImage: "bookmark")
+                                    }
+                                })
+                            }
+                            .frame(height: 40)
+                            // end
                         }
-                        .frame(height: 40)
                     }
+                    // end of ForEach
                 }
                 .padding(.horizontal)
                 
