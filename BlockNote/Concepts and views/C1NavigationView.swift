@@ -220,17 +220,11 @@ struct C1NavigationView: View {
     // MARK: - Functions
     private func addItem() {
         withAnimation {
-            let newNote = Note(context: viewContext)
+            // let newNote = Note(context: viewContext)
             let newGroup = GroupType(context: viewContext)
             
-            newNote.name = "Test"
-            newNote.level = "N5"
-            newNote.typeOfNote?.color = "rosePink"
-            // newGroup.color = "rosePink"
             newGroup.name = "Checking.."
             newGroup.number = (types.last?.number ?? 0) + 1
-            
-            newNote.noteID = (notes.last?.noteID ?? 0) + 1 // makes the order by id of the note
             
             do {
                 try self.viewContext.save()

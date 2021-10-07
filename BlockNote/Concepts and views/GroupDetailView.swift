@@ -112,6 +112,7 @@ struct GroupDetailView: View {
                 // MARK: - List of notes
                 List {
                     ForEach(notes, id: \.self) { note in
+                        
                         if note.wrappedName == "" {
                             // if note is just created and doesn't even have a name:
                             HStack {
@@ -177,6 +178,7 @@ struct GroupDetailView: View {
                             .frame(height: 40)
                             // end
                         }
+                        // end of If statement
                     }
                     // end of ForEach
                 }
