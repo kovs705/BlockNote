@@ -53,6 +53,7 @@ struct C1NavigationView: View {
         for index in offsets {
             let type = types[index]
             viewContext.delete(type)
+            // MARK: - delete notes of this group with it
         }
         do {
             try self.viewContext.save()

@@ -12,6 +12,7 @@
 		4E13C4D826E93E840089D365 /* NoteItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E13C4D426E93E840089D365 /* NoteItem+CoreDataProperties.swift */; };
 		4E13C4D926E93E840089D365 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E13C4D526E93E840089D365 /* Note+CoreDataClass.swift */; };
 		4E13C4DA26E93E840089D365 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E13C4D626E93E840089D365 /* Note+CoreDataProperties.swift */; };
+		4E143215270F0BBD0041A989 /* ListForGroupDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E143214270F0BBD0041A989 /* ListForGroupDetail.swift */; };
 		4E2D626B26F9234500C079D7 /* GroupType+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2D626926F9234500C079D7 /* GroupType+CoreDataClass.swift */; };
 		4E2D626C26F9234500C079D7 /* GroupType+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2D626A26F9234500C079D7 /* GroupType+CoreDataProperties.swift */; };
 		4E60007D26FD0F7800AFE192 /* BarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E60007C26FD0F7800AFE192 /* BarButton.swift */; };
@@ -33,6 +34,7 @@
 		4E13C4D426E93E840089D365 /* NoteItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4E13C4D526E93E840089D365 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4E13C4D626E93E840089D365 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4E143214270F0BBD0041A989 /* ListForGroupDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListForGroupDetail.swift; sourceTree = "<group>"; };
 		4E2D626926F9234500C079D7 /* GroupType+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GroupType+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4E2D626A26F9234500C079D7 /* GroupType+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GroupType+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4E60007C26FD0F7800AFE192 /* BarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarButton.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				4E901A2E26E6813900249C15 /* ContentView.swift */,
 				4E101DF326EF3586009800FB /* C1NavigationView.swift */,
 				4E7588A2270513E9004B38C1 /* GroupDetailView.swift */,
+				4E143214270F0BBD0041A989 /* ListForGroupDetail.swift */,
 				4EAE6FD7270E14140018072C /* NoteListDebug.swift */,
 				4E6F7744270A326700613FCE /* NoteView.swift */,
 			);
@@ -219,6 +222,7 @@
 				4E6F7745270A326700613FCE /* NoteView.swift in Sources */,
 				4EF0ABAB26FB9458008EF8AE /* ObjectColorStruct.swift in Sources */,
 				4E13C4DA26E93E840089D365 /* Note+CoreDataProperties.swift in Sources */,
+				4E143215270F0BBD0041A989 /* ListForGroupDetail.swift in Sources */,
 				4E2D626B26F9234500C079D7 /* GroupType+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

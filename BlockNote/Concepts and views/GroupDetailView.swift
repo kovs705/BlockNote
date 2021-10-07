@@ -110,79 +110,8 @@ struct GroupDetailView: View {
                 }
                 .padding()
                 // MARK: - List of notes
-                List {
-                    ForEach(notes, id: \.self) { note in
-                        
-                        if note.wrappedName == "" {
-                            // if note is just created and doesn't even have a name:
-                            HStack {
-                                Text("Click to open the note")
-                                    .foregroundColor(Color.gray)
-                                    .padding(.horizontal)
-                            }
-                        } else {
-                            HStack {
-                                Text("\(note.wrappedName)")
-                                    .font(.system(size: 18))
-                                    .bold()
-                                    .foregroundColor(Color.textForeground)
-                                Spacer()
-                                Spacer()
-                                
-                                if note.isMarked == true {
-                                    VStack {
-                                        // put a red flag here:
-                                        Image(systemName: "bookmark.fill")
-                                            .foregroundColor(.red)
-                                            .font(.system(size: 20))
-                                        Spacer()
-                                    }
-                                }
-                                
-                                Image(systemName: "chevron.forward")
-                                    .foregroundColor(.gray)
-                                    .font(.system(size: 18))
-                                    .padding()
-                            }
-                            // MARK: - Context menu
-                            .contextMenu {
-                                Button(action: {
-                                    if note.isMarked == false {
-                                        
-                                        note.isMarked = true // change the isMarked value to true
-                                        do {
-                                            try self.viewContext.save()
-                                        } catch {
-                                            // MARK: - CHANGE (!!!)
-                                            let nsError = error as NSError
-                                            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-                                        }
-                                    } else {
-                                        note.isMarked = false // change the isMarked value to false
-                                        do {
-                                            try self.viewContext.save()
-                                        } catch {
-                                            let nsError = error as NSError
-                                            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-                                        }
-                                    }
-                                }, label: {
-                                    // MARK: - ADD LABEL HERE
-                                    if note.isMarked == true {
-                                        Label("Mark the note", systemImage: "bookmark.fill")
-                                    } else {
-                                        Label("Mark the note", systemImage: "bookmark")
-                                    }
-                                })
-                            }
-                            .frame(height: 40)
-                            // end
-                        }
-                        // end of If statement
-                    }
-                    // end of ForEach
-                }
-                .padding(.horizontal)
+                ListForGroupDetail()
+                    .frame(width: UIScreen.main.bounds.width - 30)
                 
             }
         }
@@ -199,8 +128,8 @@ struct GroupDetailView: View {
     func createNote() {
         withAnimation {
             let newNote = Note(context: self.viewContext)
-            newNote.typeOfNote = GroupType(context: self.viewContext)
-            newNote.typeOfNote?.name = self.groupType.wrappedName // name of the group will be the same as on the page, which is opened by user
+            // newNote.typeOfNote = GroupType(context: self.viewContext)
+            // newNote.typeOfNote?.name = self.groupType.wrappedName // name of the group will be the same as on the page, which is opened by user
             
             newNote.name = "" // note name
             newNote.level = "" // note lvl or whatever it can be for user
