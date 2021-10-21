@@ -44,15 +44,15 @@ extension Color {
     static let lightPart = Color("LightPart")
     
     // pastel colors:
-    static let rosePink = Color("RosePink")
-    static let greenAvocado = Color("GreenAvocado")
-    static let blueBerry = Color("BlueBerry")
-    static let yellowLemon = Color("YellowLemon")
-    static let redStrawBerry = Color("RedStrawBerry")
-    static let purpleBlackBerry = Color("PurpleBlackBerry")
-    static let greyCloud = Color("GreyCloud")
-    static let brownSugar = Color("BrownSugar")
-    static let textForeground = Color("TextForeground")
+    static let rosePink = Color("RosePink") // rose
+    static let greenAvocado = Color("GreenAvocado") // green
+    static let blueBerry = Color("BlueBerry") // blue
+    static let yellowLemon = Color("YellowLemon") // yellow
+    static let redStrawBerry = Color("RedStrawBerry") // red
+    static let purpleBlackBerry = Color("PurpleBlackBerry") // purple
+    static let greyCloud = Color("GreyCloud") // grey
+    static let brownSugar = Color("BrownSugar") // brown
+    static let textForeground = Color("TextForeground") // text based on theme (dark and light)
     
     public static var darkBlue: Color {
         return Color(red: 28 / 255, green: 46 / 255, blue: 74 / 255)

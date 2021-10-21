@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="GroupType" representedClassName=".GroupType" syncable="YES">
-        <attribute name="color" optional="YES" attributeType="String"/>
+        <attribute name="groupColor" optional="YES" attributeType="String"/>
         <attribute name="groupName" optional="YES" attributeType="String"/>
         <attribute name="number" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="noteTypes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Note" inverseName="typeOfNote" inverseEntity="Note"/>
@@ -12,8 +12,8 @@
         <attribute name="word" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Note" representedClassName=".Note" syncable="YES">
-        <attribute name="isMarked" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="noteID" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="noteIsMarked" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="noteLevel" optional="YES" attributeType="String"/>
         <attribute name="noteName" optional="YES" attributeType="String"/>
         <attribute name="noteType" optional="YES" attributeType="String"/>

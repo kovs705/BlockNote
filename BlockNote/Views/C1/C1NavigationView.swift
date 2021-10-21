@@ -190,6 +190,7 @@ struct C1NavigationView: View {
             
             newGroup.groupName = "Checking.."
             newGroup.number = (types.last?.number ?? 0) + 1
+            newGroup.groupColor = "RedStrawBerry"
             
             do {
                 try self.viewContext.save()

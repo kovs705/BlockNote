@@ -15,7 +15,7 @@ struct GridObject: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
-                .fill(returnColorFromString(nameOfColor: groupType.color ?? "YellowLemon"))
+                .fill(returnColorFromString(nameOfColor: groupType.groupColor ?? "YellowLemon"))
                 .frame(width: 175, height: 175)
             VStack {
                 Spacer()

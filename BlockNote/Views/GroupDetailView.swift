@@ -29,10 +29,10 @@ struct GroupDetailView: View {
                 GeometryReader { geometry in
                     ZStack {
                         RoundedRectangle(cornerRadius: 20)
-                            .fill(returnColorFromString(nameOfColor: groupType.color ?? "GreenAvocado"))
+                            .fill(returnColorFromString(nameOfColor: groupType.groupColor ?? "GreenAvocado"))
                             .cornerRadius(20)
                             .frame(width: UIScreen.main.bounds.width - 40, height: 150, alignment: .center)
-                            .shadow(color: returnColorFromString(nameOfColor: groupType.color ?? "GreenAvocado"), radius: 10, y: 5)
+                            .shadow(color: returnColorFromString(nameOfColor: groupType.groupColor ?? "GreenAvocado"), radius: 10, y: 5)
                         
                         // MARK: - Words and Numbers
                         HStack {
@@ -73,7 +73,7 @@ struct GroupDetailView: View {
                                 }) {
                                     ZStack {
                                         RoundedRectangle(cornerRadius: 20)
-                                            .fill(returnColorFromString(nameOfColor: groupType.color ?? "GreenAvocado"))
+                                            .fill(returnColorFromString(nameOfColor: groupType.groupColor ?? "GreenAvocado"))
                                             .frame(width: 75, height: 75)
                                             .shadow(color: .black.opacity(0.25), radius: 10, y: 5)
                                         Image(systemName: "list.bullet.rectangle")
@@ -90,7 +90,7 @@ struct GroupDetailView: View {
                                 }) {
                                     ZStack {
                                         RoundedRectangle(cornerRadius: 20)
-                                            .fill(returnColorFromString(nameOfColor: groupType.color ?? "GreenAvocado"))
+                                            .fill(returnColorFromString(nameOfColor: groupType.groupColor ?? "GreenAvocado"))
                                             .frame(width: 75, height: 75)
                                             .shadow(color: .black.opacity(0.25), radius: 10, y: 5)
                                         Image(systemName: "plus")
@@ -109,6 +109,8 @@ struct GroupDetailView: View {
                     // end of ZStack
                 }
                 .padding()
+                
+                
                 // MARK: - List of notes
                 ListForGroupDetail()
                     .frame(width: UIScreen.main.bounds.width - 30)
@@ -124,6 +126,10 @@ struct GroupDetailView: View {
         })
         .navigationTitle(groupType.wrappedGroupName)
     }
+    
+    
+    
+    
     // MARK: - Creating NOTE
     func createNote() {
         withAnimation {
@@ -158,7 +164,7 @@ struct GroupDetailView_Previews: PreviewProvider {
     static var previews: some View {
         let groupType = GroupType(context: moc)
         groupType.groupName = "Test Group name"
-        groupType.color = "greenAvocado"
+        groupType.groupColor = "GreenAvocado"
         
         return NavigationView {
             GroupDetailView(groupType: groupType)

@@ -17,7 +17,7 @@ extension GroupType {
     }
 
     @NSManaged public var groupName: String?
-    @NSManaged public var color: String?
+    @NSManaged public var groupColor: String?
     @NSManaged public var noteTypes: NSSet?
     
     public var wrappedNumber: Int {
