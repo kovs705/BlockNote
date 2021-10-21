@@ -124,12 +124,16 @@ struct GroupDetailView: View {
         })
         .navigationTitle(groupType.wrappedName)
     }
-    // MARK: - Functions
+    // MARK: - Creating NOTE
     func createNote() {
         withAnimation {
             let newNote = Note(context: self.viewContext)
-            // newNote.typeOfNote = GroupType(context: self.viewContext)
+            newNote.typeOfNote = GroupType(context: self.viewContext)
             // newNote.typeOfNote?.name = self.groupType.wrappedName // name of the group will be the same as on the page, which is opened by user
+            
+            // MARK: - Check IF this group exists or not:
+            // check for existing name of the group, if not - create a new one
+            // also create the name of the group as the name on DetailView of the exact group
             
             newNote.name = "" // note name
             newNote.level = "" // note lvl or whatever it can be for user

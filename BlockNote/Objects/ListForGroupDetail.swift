@@ -76,8 +76,10 @@ struct ListForGroupDetail: View {
                             // MARK: - ADD LABEL HERE
                             if note.isMarked == true {
                                 Label("Mark the note", systemImage: "bookmark.fill")
+                                    .foregroundColor(.red)
                             } else {
                                 Label("Mark the note", systemImage: "bookmark")
+                                    .foregroundColor(.gray)
                             }
                         })
                     }
