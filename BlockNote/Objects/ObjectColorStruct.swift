@@ -21,7 +21,7 @@ struct GridObject: View {
                 Spacer()
                 HStack {
                     // name of the group:
-                    Text(groupType.name ?? "Test name")
+                    Text(groupType.groupName ?? "Test name")
                         .bold()
                         .lineLimit(2)
                     Spacer()
@@ -34,7 +34,7 @@ struct GridObject: View {
                     }
                 } else {
                     HStack {
-                        Text("\(groupType.typesArray.count) notes")
+                        Text("\(groupType.typesOfNoteArray.count) notes")
                         Spacer()
                     }
                 }

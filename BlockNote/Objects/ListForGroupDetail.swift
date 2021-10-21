@@ -19,7 +19,7 @@ struct ListForGroupDetail: View {
         List {
             ForEach(notes, id: \.self) { note in
                 
-                if note.wrappedName == "" {
+                if note.wrappedNoteName == "" {
                     // if note is just created and doesn't even have a name:
                     HStack {
                         Text("Click to open the note")
@@ -28,14 +28,14 @@ struct ListForGroupDetail: View {
                     }
                 } else {
                     HStack {
-                        Text("\(note.wrappedName)")
+                        Text("\(note.wrappedNoteName)")
                             .font(.system(size: 18))
                             .bold()
                             .foregroundColor(Color.textForeground)
                         Spacer()
                         Spacer()
                         
-                        if note.isMarked == true {
+                        if note.noteIsMarked == true {
                             VStack {
                                 // put a red flag here:
                                 Image(systemName: "bookmark.fill")
@@ -53,9 +53,9 @@ struct ListForGroupDetail: View {
                     // MARK: - Context menu
                     .contextMenu {
                         Button(action: {
-                            if note.isMarked == false {
+                            if note.noteIsMarked == false {
                                 
-                                note.isMarked = true // change the isMarked value to true
+                                note.noteIsMarked = true // change the isMarked value to true
                                 do {
                                     try self.viewContext.save()
                                 } catch {
@@ -64,7 +64,7 @@ struct ListForGroupDetail: View {
                                     fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
                                 }
                             } else {
-                                note.isMarked = false // change the isMarked value to false
+                                note.noteIsMarked = false // change the isMarked value to false
                                 do {
                                     try self.viewContext.save()
                                 } catch {
@@ -74,7 +74,7 @@ struct ListForGroupDetail: View {
                             }
                         }, label: {
                             // MARK: - ADD LABEL HERE
-                            if note.isMarked == true {
+                            if note.noteIsMarked == true {
                                 Label("Mark the note", systemImage: "bookmark.fill")
                                     .foregroundColor(.red)
                             } else {

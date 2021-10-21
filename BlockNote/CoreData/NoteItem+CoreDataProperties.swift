@@ -16,19 +16,19 @@ extension NoteItem {
         return NSFetchRequest<NoteItem>(entityName: "NoteItem")
     }
 
-    @NSManaged public var name: String?
-    @NSManaged public var text: String?
-    @NSManaged public var order: Int
+    @NSManaged public var noteItemName: String?
+    @NSManaged public var NoteItemText: String?
+    @NSManaged public var noteItemOrder: Int
     @NSManaged public var note: Note?
     
-    public var wrappedName: String {
-        name ?? "Unknown NoteItem name"
+    public var wrappedNoteItemName: String {
+        noteItemName ?? "Unknown NoteItem name"
     }
-    public var wrappedText: String {
-        text ?? "Unknown text"
+    public var wrappedNoteItemText: String {
+        NoteItemText ?? "Unknown text"
     }
-    public var wrappedOrder: Int {
-        order
+    public var wrappedNoteItemOrder: Int {
+        noteItemOrder
     }
 
 }

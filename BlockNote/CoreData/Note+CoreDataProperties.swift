@@ -16,26 +16,26 @@ extension Note {
         return NSFetchRequest<Note>(entityName: "Note")
     }
 
-    @NSManaged public var name: String?
-    @NSManaged public var level: String?
-    @NSManaged public var type: String?
+    @NSManaged public var noteName: String?
+    @NSManaged public var noteLevel: String?
+    @NSManaged public var noteType: String?
     @NSManaged public var noteItems: NSSet?
-    @NSManaged public var isMarked: Bool
+    @NSManaged public var noteIsMarked: Bool
     
     @NSManaged public var typeOfNote: GroupType?
 
-    public var wrappedType: String {
-        type ?? "Unknown type"
+    public var wrappedNoteType: String {
+        noteType ?? "Unknown type"
     }
     
-    public var wrappedName: String {
-        name ?? "Unknown NOTE name"
+    public var wrappedNoteName: String {
+        noteName ?? "Unknown NOTE name"
     }
     
     public var NoteItemArray: [NoteItem] {
         let set = noteItems as? Set<NoteItem> ?? []
         return set.sorted {
-            $0.wrappedName < $1.wrappedName
+            $0.wrappedNoteItemName < $1.wrappedNoteItemName
         }
     }
     

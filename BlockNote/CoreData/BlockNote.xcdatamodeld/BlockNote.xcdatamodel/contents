@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="GroupType" representedClassName=".GroupType" syncable="YES">
         <attribute name="color" optional="YES" attributeType="String"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="groupName" optional="YES" attributeType="String"/>
         <attribute name="number" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="noteTypes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Note" inverseName="typeOfNote" inverseEntity="Note"/>
     </entity>
@@ -13,18 +13,18 @@
     </entity>
     <entity name="Note" representedClassName=".Note" syncable="YES">
         <attribute name="isMarked" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="level" optional="YES" attributeType="String"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="noteID" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="noteLevel" optional="YES" attributeType="String"/>
+        <attribute name="noteName" optional="YES" attributeType="String"/>
+        <attribute name="noteType" optional="YES" attributeType="String"/>
         <relationship name="noteItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NoteItem" inverseName="note" inverseEntity="NoteItem"/>
         <relationship name="typeOfNote" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GroupType" inverseName="noteTypes" inverseEntity="GroupType"/>
     </entity>
     <entity name="NoteItem" representedClassName=".NoteItem" syncable="YES">
         <attribute name="itemType" optional="YES" attributeType="String"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="order" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="text" optional="YES" attributeType="String"/>
+        <attribute name="noteItemName" optional="YES" attributeType="String"/>
+        <attribute name="noteItemOrder" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="NoteItemText" optional="YES" attributeType="String"/>
         <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="noteItems" inverseEntity="Note"/>
     </entity>
     <elements>

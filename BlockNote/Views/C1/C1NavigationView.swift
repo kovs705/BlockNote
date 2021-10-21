@@ -188,7 +188,7 @@ struct C1NavigationView: View {
             // let newNote = Note(context: viewContext)
             let newGroup = GroupType(context: viewContext)
             
-            newGroup.name = "Checking.."
+            newGroup.groupName = "Checking.."
             newGroup.number = (types.last?.number ?? 0) + 1
             
             do {

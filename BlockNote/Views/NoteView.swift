@@ -14,12 +14,12 @@ struct NoteView: View {
     
     var body: some View {
         VStack(alignment: .center) {
-            Text(note.wrappedName)
+            Text(note.wrappedNoteName)
             Text("\(note.noteID)")
-            Text(note.level ?? "Nothing on level")
-            Text(note.wrappedType)
+            Text(note.noteLevel ?? "Nothing on level")
+            Text(note.wrappedNoteType)
             VStack {
-                Text(note.typeOfNote?.name ?? "Unknown name of the group")
+                Text(note.typeOfNote?.groupName ?? "Unknown name of the group")
             }
             .padding(.vertical)
         }
@@ -32,9 +32,9 @@ struct NoteView_Previews: PreviewProvider {
     
     static var previews: some View {
         let note = Note(context: moc)
-        note.isMarked = true
-        note.level = "N5"
-        note.name = "Test name"
+        note.noteIsMarked = true
+        note.noteLevel = "N5"
+        note.noteName = "Test name"
         
         return NavigationView {
             NoteView(note: note)

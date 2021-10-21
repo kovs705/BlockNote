@@ -32,7 +32,7 @@ struct ContentView: View {
                 
                 List {
                     ForEach(notes, id: \.self) { note in
-                        Text(note.name ?? "Unknown name")
+                        Text(note.noteName ?? "Unknown name")
                     }
                     .onDelete(perform: deleteItems)
                 }
@@ -44,8 +44,8 @@ struct ContentView: View {
     private func addItem() {
         withAnimation {
             let newNote = Note(context: viewContext)
-            newNote.name = self.noteName
-            newNote.level = "N5"
+            newNote.noteName = self.noteName
+            newNote.noteLevel = "N5"
             
             newNote.noteID = (notes.last?.noteID ?? 0) + 1 // makes the order by id of the note
 

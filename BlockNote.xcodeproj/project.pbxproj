@@ -150,10 +150,10 @@
 			children = (
 				4E901A2C26E6813900249C15 /* BlockNoteApp.swift */,
 				4E901A2E26E6813900249C15 /* ContentView.swift */,
-				4E5984EA272158AF006F6A7B /* Extensions.swift */,
 				4E101DF526EF358A009800FB /* Views */,
 				4EF0ABAC26FB9B69008EF8AE /* Objects */,
 				4E901A3026E6813C00249C15 /* Assets.xcassets */,
+				4E5984EA272158AF006F6A7B /* Extensions.swift */,
 				4E901A3526E6813C00249C15 /* Persistence.swift */,
 				4E901A3A26E6813C00249C15 /* Info.plist */,
 				4E13C4D226E937360089D365 /* CoreData */,

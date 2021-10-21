@@ -16,7 +16,7 @@ extension GroupType {
         return NSFetchRequest<GroupType>(entityName: "GroupType")
     }
 
-    @NSManaged public var name: String?
+    @NSManaged public var groupName: String?
     @NSManaged public var color: String?
     @NSManaged public var noteTypes: NSSet?
     
@@ -24,14 +24,14 @@ extension GroupType {
         number
     }
     
-    public var wrappedName: String {
-        name ?? "Unknown name of the group"
+    public var wrappedGroupName: String {
+        groupName ?? "Unknown name of the group"
     }
     
-    public var typesArray: [Note] {
+    public var typesOfNoteArray: [Note] {
         let set = noteTypes as? Set<Note> ?? []
         return set.sorted {
-            $0.wrappedName < $1.wrappedName
+            $0.wrappedNoteName < $1.wrappedNoteName
         }
     }
 }

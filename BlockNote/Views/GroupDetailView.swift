@@ -54,7 +54,7 @@ struct GroupDetailView: View {
                             }
                             VStack {
                                 Spacer()
-                                Text("\(groupType.typesArray.count)") // that should work, I guess..
+                                Text("\(groupType.typesOfNoteArray.count)") // that should work, I guess..
                                     .font(.system(size: 16))
                                 Spacer()
                                 Text("Nothing yet!")
@@ -122,7 +122,7 @@ struct GroupDetailView: View {
             Image(systemName: "plus.circle.fill")
                 .font(.system(size: 20))
         })
-        .navigationTitle(groupType.wrappedName)
+        .navigationTitle(groupType.wrappedGroupName)
     }
     // MARK: - Creating NOTE
     func createNote() {
@@ -135,10 +135,10 @@ struct GroupDetailView: View {
             // check for existing name of the group, if not - create a new one
             // also create the name of the group as the name on DetailView of the exact group
             
-            newNote.name = "" // note name
-            newNote.level = "" // note lvl or whatever it can be for user
+            newNote.noteName = "" // note name
+            newNote.noteLevel = "" // note lvl or whatever it can be for user
             newNote.noteID = (notes.last?.noteID ?? 0) + 1 // note id, which will place notes in the right order
-            newNote.isMarked = false // note isn't marked yet, so user can do it later
+            newNote.noteIsMarked = false // note isn't marked yet, so user can do it later
             
             do {
                 try self.viewContext.save()
@@ -157,7 +157,7 @@ struct GroupDetailView_Previews: PreviewProvider {
     
     static var previews: some View {
         let groupType = GroupType(context: moc)
-        groupType.name = "Test Group name"
+        groupType.groupName = "Test Group name"
         groupType.color = "greenAvocado"
         
         return NavigationView {

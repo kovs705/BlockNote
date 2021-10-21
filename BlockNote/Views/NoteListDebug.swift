@@ -17,7 +17,7 @@ struct NoteListDebug: View {
             List {
                 ForEach(notes, id: \.self) { note in
                     HStack {
-                        Text("\(note.wrappedName)")
+                        Text("\(note.wrappedNoteName)")
                     }
                 }
                 .onDelete(perform: deleteItems)
