@@ -28,9 +28,9 @@ import CoreData
 
 struct C1NavigationView: View {
     
-    @FetchRequest(entity: Note.entity(), sortDescriptors: [NSSortDescriptor(key: "noteID", ascending: true)]) var notes: FetchedResults<Note>
+    @FetchRequest(entity: Note.entity(), sortDescriptors: [NSSortDescriptor(key: "noteID", ascending: true)], predicate: nil) var notes: FetchedResults<Note>
     
-    @FetchRequest(entity: GroupType.entity(), sortDescriptors: [NSSortDescriptor(key: "number", ascending: true)]) var types: FetchedResults<GroupType>
+    @FetchRequest(entity: GroupType.entity(), sortDescriptors: [NSSortDescriptor(key: "groupName", ascending: true)]) var types: FetchedResults<GroupType>
     
     @Environment(\.managedObjectContext) private var viewContext
     
@@ -144,12 +144,16 @@ struct C1NavigationView: View {
                             ForEach(types, id: \.self) { type in
                                 // transition to the DetailView:
                                 NavigationLink(destination: GroupDetailView(groupType: type)) {
+                                    
+                                    // TODO: - sort objects to avoid the same types:
+                                    
                                     ZStack {
                                         GridObject(groupType: type)
                                             .foregroundColor(Color.textForeground)
                                             .zIndex(-5)
                                     }
                                     .frame(width: 175, height: 180)
+                                    // end of ZStack with GridObject
                                 }
                                 .buttonStyle(AnimatedButton())
                             }

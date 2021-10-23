@@ -4,7 +4,7 @@
         <attribute name="groupColor" optional="YES" attributeType="String"/>
         <attribute name="groupName" optional="YES" attributeType="String"/>
         <attribute name="number" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="noteTypes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Note" inverseName="typeOfNote" inverseEntity="Note"/>
+        <relationship name="noteTypes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Note" inverseName="typeOfNote" inverseEntity="Note"/>
     </entity>
     <entity name="ItemList" representedClassName="ItemList" syncable="YES" codeGenerationType="class">
         <attribute name="row" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>

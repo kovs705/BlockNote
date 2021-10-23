@@ -12,6 +12,7 @@ struct ListForGroupDetail: View {
     
     // @ObservedObject var noteList: Note
     @FetchRequest(entity: Note.entity(), sortDescriptors: [NSSortDescriptor(key: "noteID", ascending: true)]) var notes: FetchedResults<Note>
+    @FetchRequest(entity: GroupType.entity(), sortDescriptors: [NSSortDescriptor(key: "number", ascending: true)]) var types: FetchedResults<GroupType>
     @Environment(\.managedObjectContext) var viewContext
     // @ObservedObject var noteList: Note
     
@@ -93,6 +94,7 @@ struct ListForGroupDetail: View {
         .padding(.horizontal)
     }
 }
+
 /*
 struct ListForGroupDetail_Previews: PreviewProvider {
     

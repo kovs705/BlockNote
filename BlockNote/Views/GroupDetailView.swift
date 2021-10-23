@@ -17,6 +17,7 @@ import CoreData
 struct GroupDetailView: View {
     @FetchRequest(entity: Note.entity(), sortDescriptors: [NSSortDescriptor(key: "noteID", ascending: true)]) var notes: FetchedResults<Note>
     @ObservedObject var groupType: GroupType
+    
     @Environment(\.managedObjectContext) var viewContext
     @Environment(\.colorScheme) public var detectTheme
     
@@ -109,6 +110,7 @@ struct GroupDetailView: View {
                     // end of ZStack
                 }
                 .padding()
+                // end of the TopBar Statistics
                 
                 
                 // MARK: - List of notes
@@ -118,17 +120,47 @@ struct GroupDetailView: View {
             }
         }
         .navigationBarItems(trailing: Button(action: {
-            // to add a new Note
-            // MARK: - Do something with it
+            // to add a new Note // delete note for now
+            deleteGroup(groupName: groupType.wrappedGroupName)
         }) {
-            Image(systemName: "plus.circle.fill")
+            Image(systemName: "trash")
                 .font(.system(size: 20))
         })
         .navigationTitle(groupType.wrappedGroupName)
+        
     }
     
     
     
+    // MARK: - delete the group and its notes
+    func deleteGroup(groupName: String) {
+        
+        if groupType.wrappedGroupName == groupName {
+            
+            let note = Note(context: viewContext)
+            
+            // if note.noteType == groupName {
+                // self.viewContext.delete(note)
+                // self.groupType.typesOfNoteArray.contains(note)
+            if self.groupType.typesOfNoteArray.contains(note) {
+                self.viewContext.delete(note)
+            } else {
+                print("Something wrong on deleting notes!!!")
+            }
+            
+            self.viewContext.delete(self.groupType)
+            
+            
+            
+            do {
+                try self.viewContext.save()
+            } catch {
+                print("Something gone wrong while deleting the group adn note!!")
+            }
+        } else {
+            print("Something wrong on checking the name of the group!")
+        }
+    }
     
     // MARK: - Creating NOTE
     func createNote() {
@@ -136,6 +168,8 @@ struct GroupDetailView: View {
             let newNote = Note(context: self.viewContext)
             newNote.typeOfNote = GroupType(context: self.viewContext)
             // newNote.typeOfNote?.name = self.groupType.wrappedName // name of the group will be the same as on the page, which is opened by user
+            guard let groupNameForNote = newNote.typeOfNote?.groupName else { return }
+            newNote.noteType = groupNameForNote
             
             // MARK: - Check IF this group exists or not:
             // check for existing name of the group, if not - create a new one
