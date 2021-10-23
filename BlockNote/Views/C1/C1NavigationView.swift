@@ -189,7 +189,6 @@ struct C1NavigationView: View {
     // MARK: - Functions
     private func addItem() {
         withAnimation {
-            // let newNote = Note(context: viewContext)
             let newGroup = GroupType(context: viewContext)
             
             newGroup.groupName = "Checking.."
@@ -198,7 +197,7 @@ struct C1NavigationView: View {
             
             do {
                 try self.viewContext.save()
-                // noteName = ""
+                print("Group is added!")
             } catch {
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
