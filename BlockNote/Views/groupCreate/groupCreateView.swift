@@ -15,13 +15,20 @@ import SwiftUI
 //
 
 struct groupCreateView: View {
+    
+    
+    
     var body: some View {
         ZStack {
             Color.darkBack // background
-            
-            VStack(alignment: .center) {
+            VStack {
+                
+                VStack(alignment: .center) {
+                    
+                }
                 
             }
+            // main VStack
         }
         // ZStack
     }
