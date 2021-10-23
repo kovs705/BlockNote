@@ -27,7 +27,9 @@
 		4E901A3626E6813C00249C15 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E901A3526E6813C00249C15 /* Persistence.swift */; };
 		4E901A3926E6813C00249C15 /* BlockNote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E901A3726E6813C00249C15 /* BlockNote.xcdatamodeld */; };
 		4EAE6FD8270E14140018072C /* NoteListDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAE6FD7270E14140018072C /* NoteListDebug.swift */; };
-		4EF0ABAB26FB9458008EF8AE /* ObjectColorStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0ABAA26FB9458008EF8AE /* ObjectColorStruct.swift */; };
+		4EF0ABAB26FB9458008EF8AE /* GridObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0ABAA26FB9458008EF8AE /* GridObject.swift */; };
+		4EF65CA52724B17A00708A61 /* groupCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF65CA42724B17A00708A61 /* groupCreateView.swift */; };
+		4EF65CA92724B1BE00708A61 /* groupCreateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF65CA82724B1BE00708A61 /* groupCreateModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +66,9 @@
 		4E901A3826E6813C00249C15 /* BlockNote.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BlockNote.xcdatamodel; sourceTree = "<group>"; };
 		4E901A3A26E6813C00249C15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EAE6FD7270E14140018072C /* NoteListDebug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListDebug.swift; sourceTree = "<group>"; };
-		4EF0ABAA26FB9458008EF8AE /* ObjectColorStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectColorStruct.swift; sourceTree = "<group>"; };
+		4EF0ABAA26FB9458008EF8AE /* GridObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridObject.swift; sourceTree = "<group>"; };
+		4EF65CA42724B17A00708A61 /* groupCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = groupCreateView.swift; sourceTree = "<group>"; };
+		4EF65CA82724B1BE00708A61 /* groupCreateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = groupCreateModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				4E5984E7272152AF006F6A7B /* C1 */,
+				4EF65CA72724B19000708A61 /* groupCreate */,
 				4E7588A2270513E9004B38C1 /* GroupDetailView.swift */,
 				4EAE6FD7270E14140018072C /* NoteListDebug.swift */,
 				4E6F7744270A326700613FCE /* NoteView.swift */,
@@ -174,10 +179,19 @@
 			isa = PBXGroup;
 			children = (
 				4E143214270F0BBD0041A989 /* ListForGroupDetail.swift */,
-				4EF0ABAA26FB9458008EF8AE /* ObjectColorStruct.swift */,
+				4EF0ABAA26FB9458008EF8AE /* GridObject.swift */,
 				4E60007C26FD0F7800AFE192 /* BarButton.swift */,
 			);
 			path = Objects;
+			sourceTree = "<group>";
+		};
+		4EF65CA72724B19000708A61 /* groupCreate */ = {
+			isa = PBXGroup;
+			children = (
+				4EF65CA42724B17A00708A61 /* groupCreateView.swift */,
+				4EF65CA82724B1BE00708A61 /* groupCreateModel.swift */,
+			);
+			path = groupCreate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,12 +290,14 @@
 				4E13C4D926E93E840089D365 /* Note+CoreDataClass.swift in Sources */,
 				4EAE6FD8270E14140018072C /* NoteListDebug.swift in Sources */,
 				4E901A3926E6813C00249C15 /* BlockNote.xcdatamodeld in Sources */,
+				4EF65CA92724B1BE00708A61 /* groupCreateModel.swift in Sources */,
 				4E101DF426EF3586009800FB /* C1NavigationView.swift in Sources */,
 				4E60007D26FD0F7800AFE192 /* BarButton.swift in Sources */,
 				4E13C4D826E93E840089D365 /* NoteItem+CoreDataProperties.swift in Sources */,
 				4E6F7745270A326700613FCE /* NoteView.swift in Sources */,
-				4EF0ABAB26FB9458008EF8AE /* ObjectColorStruct.swift in Sources */,
+				4EF0ABAB26FB9458008EF8AE /* GridObject.swift in Sources */,
 				4E13C4DA26E93E840089D365 /* Note+CoreDataProperties.swift in Sources */,
+				4EF65CA52724B17A00708A61 /* groupCreateView.swift in Sources */,
 				4E143215270F0BBD0041A989 /* ListForGroupDetail.swift in Sources */,
 				4E2D626B26F9234500C079D7 /* GroupType+CoreDataClass.swift in Sources */,
 			);

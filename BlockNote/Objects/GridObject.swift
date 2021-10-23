@@ -11,7 +11,6 @@ import CoreData
 struct GridObject: View {
     let groupType: GroupType
     
-    //  MARK: - Body of Type
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
