@@ -29,7 +29,6 @@
 		4EAE6FD8270E14140018072C /* NoteListDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAE6FD7270E14140018072C /* NoteListDebug.swift */; };
 		4EF0ABAB26FB9458008EF8AE /* GridObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0ABAA26FB9458008EF8AE /* GridObject.swift */; };
 		4EF65CA52724B17A00708A61 /* groupCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF65CA42724B17A00708A61 /* groupCreateView.swift */; };
-		4EF65CA92724B1BE00708A61 /* groupCreateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF65CA82724B1BE00708A61 /* groupCreateModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,7 +67,6 @@
 		4EAE6FD7270E14140018072C /* NoteListDebug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListDebug.swift; sourceTree = "<group>"; };
 		4EF0ABAA26FB9458008EF8AE /* GridObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridObject.swift; sourceTree = "<group>"; };
 		4EF65CA42724B17A00708A61 /* groupCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = groupCreateView.swift; sourceTree = "<group>"; };
-		4EF65CA82724B1BE00708A61 /* groupCreateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = groupCreateModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,7 +187,6 @@
 			isa = PBXGroup;
 			children = (
 				4EF65CA42724B17A00708A61 /* groupCreateView.swift */,
-				4EF65CA82724B1BE00708A61 /* groupCreateModel.swift */,
 			);
 			path = groupCreate;
 			sourceTree = "<group>";
@@ -290,7 +287,6 @@
 				4E13C4D926E93E840089D365 /* Note+CoreDataClass.swift in Sources */,
 				4EAE6FD8270E14140018072C /* NoteListDebug.swift in Sources */,
 				4E901A3926E6813C00249C15 /* BlockNote.xcdatamodeld in Sources */,
-				4EF65CA92724B1BE00708A61 /* groupCreateModel.swift in Sources */,
 				4E101DF426EF3586009800FB /* C1NavigationView.swift in Sources */,
 				4E60007D26FD0F7800AFE192 /* BarButton.swift in Sources */,
 				4E13C4D826E93E840089D365 /* NoteItem+CoreDataProperties.swift in Sources */,

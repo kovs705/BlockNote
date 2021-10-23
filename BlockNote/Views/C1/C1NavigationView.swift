@@ -40,6 +40,11 @@ struct C1NavigationView: View {
     
     @StateObject private var C1ViewModel = C1NavViewModel() // MVVM
     
+    @State private var showAddGroupSheet: Bool = false
+    @State private var color = ""
+    @State private var nameOfGroup = ""
+    @State private var numberOfGroup = 0
+    
     // MARK: - Body
     var body: some View {
         NavigationView {
@@ -95,7 +100,8 @@ struct C1NavigationView: View {
                             .frame(width: UIScreen.main.bounds.width - 85, height: 200)
                             .shadow(color: Color.black.opacity(0.3), radius: 10, x: 0, y: 5)
                         Button(action: {
-                            self.addItem()
+                            showAddGroupSheet.toggle()
+                            // self.addItem()
                         }) {
                             Text("Add group")
                         }
@@ -182,6 +188,9 @@ struct C1NavigationView: View {
             }
             .navigationBarHidden(true)
             .ignoresSafeArea(.all)
+        }
+        .sheet(isPresented: $showAddGroupSheet) {
+            groupCreateView(color: $color, nameOfGroup: $nameOfGroup, numberOfGroup: $numberOfGroup)
         }
         .navigationTitle("")
     }
