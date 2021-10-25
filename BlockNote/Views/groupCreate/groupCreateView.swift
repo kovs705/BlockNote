@@ -27,7 +27,7 @@ struct groupCreateView: View {
             VStack {
                 ZStack {
                     RoundedRectangle(cornerRadius: 20)
-                        .fill(returnColorFromString(nameOfColor: color ?? "YellowLemon"))
+                        .fill(returnColorFromStringForPreview(nameOfColor: color))
                         .frame(width: 175, height: 175)
                     VStack {
                         Spacer()
@@ -76,7 +76,14 @@ struct groupCreateView: View {
     }
     // body
 }
-
+func returnColorFromStringForPreview(nameOfColor: String) -> Color {
+    if nameOfColor == "" {
+        let nameOfColor = "GreenAvocado"
+        return Color.init(nameOfColor)
+    } else {
+        return Color.init(nameOfColor)
+    }
+}
 
 
 /*
