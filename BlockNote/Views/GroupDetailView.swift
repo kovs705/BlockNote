@@ -167,16 +167,18 @@ struct GroupDetailView: View {
         withAnimation {
             let newNote = Note(context: self.viewContext)
             newNote.typeOfNote = GroupType(context: self.viewContext)
-            // newNote.typeOfNote?.name = self.groupType.wrappedName // name of the group will be the same as on the page, which is opened by user
-            guard let groupNameForNote = newNote.typeOfNote?.groupName else { return }
-            newNote.noteType = groupNameForNote
+            
+            if self.groupType.wrappedGroupName == "" {
+                newNote.noteType = "Yo, the type of note is UNKNOWN"
+            } else {
+                newNote.noteType = self.groupType.wrappedGroupName // name of the group will be the same as on the page, which is opened by user
+            }
             
             // MARK: - Check IF this group exists or not:
             // check for existing name of the group, if not - create a new one
-            // also create the name of the group as the name on DetailView of the exact group
             
-            newNote.noteName = "" // note name
-            newNote.noteLevel = "" // note lvl or whatever it can be for user
+            newNote.noteName = "CREATED NOTE TEST" // note name
+            newNote.noteLevel = "TEST LEVEL" // note lvl or whatever it can be for user
             newNote.noteID = (notes.last?.noteID ?? 0) + 1 // note id, which will place notes in the right order
             newNote.noteIsMarked = false // note isn't marked yet, so user can do it later
             
