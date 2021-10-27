@@ -10,6 +10,12 @@ import SwiftUI
 import Combine
 
 // MARK: - Combine extenstions
+extension Notification {
+    var keyboardHeight: CGFloat {
+        return (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect)?.height ?? 0
+    }
+}
+
 extension Publishers {
     static var keyboardHeight: AnyPublisher<CGFloat, Never> {
         

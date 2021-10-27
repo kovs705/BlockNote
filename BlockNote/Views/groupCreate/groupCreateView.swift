@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 // MARK: - instructions
     /// create a colorPicker for GridObject
     /// create a preview of GridObject with the name, color, number of notes and other things (like type, or lvl)
@@ -21,6 +22,7 @@ struct groupCreateView: View {
     @Binding var numberOfGroup: Int
     
     @State private var isEditing = false
+    @State private var keyboardHeight: CGFloat = 0
     
     var body: some View {
         ZStack {
@@ -74,15 +76,19 @@ struct groupCreateView: View {
                 } onCommit: {
                     // do something.
                 }
-                .border(isEditing ? Color.textForeground : returnColorFromString(nameOfColor: color))
+                .border(isEditing ? Color.textForeground : Color.clear)
                 .cornerRadius(10)
-                // .background(Color.purple)
                 .foregroundColor(Color.textForeground)
                 .lineLimit(1)
                 .font(.system(size: 18))
                 .textFieldStyle(PlainTextFieldStyle())
-                .padding()
+                .padding(.bottom, keyboardHeight)
+                .onReceive(Publishers.keyboardHeight) {
+                    self.keyboardHeight = $0
+                }
+                .frame(width: UIScreen.main.bounds.width - 70, height: 60)
                 
+                Spacer()
                 Spacer()
             }
             // main VStack
