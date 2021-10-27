@@ -20,11 +20,18 @@ struct groupCreateView: View {
     @Binding var nameOfGroup: String
     @Binding var numberOfGroup: Int
     
+    @State private var isEditing = false
+    
     var body: some View {
         ZStack {
             Color.darkBack // background
             
-            VStack {
+            VStack(alignment: .center) {
+                Text("Create a group..")
+                    .padding()
+                    .font(.footnote)
+                Spacer()
+                
                 ZStack {
                     RoundedRectangle(cornerRadius: 20)
                         .fill(returnColorFromStringForPreview(nameOfColor: color))
@@ -50,8 +57,10 @@ struct groupCreateView: View {
                         }
                         
                         // number of notes inside:
-                        Text("15 notes")
-                        Spacer()
+                        HStack {
+                            Text("15 notes")
+                            Spacer()
+                        }
                     }
                     .padding()
                     // end of VStack
@@ -60,19 +69,26 @@ struct groupCreateView: View {
                 .frame(width: 170, height: 170)
                 .padding(.horizontal)
                 
-                VStack(alignment: .center) {
-                    TextField("Name of a group..", text: $nameOfGroup)
-                        .foregroundColor(Color.textForeground)
-                        .lineLimit(1)
-                        .font(.system(size: 18))
-                        .textFieldStyle(PlainTextFieldStyle())
+                TextField("Name of a group..", text: $nameOfGroup) { isEditing in
+                    self.isEditing = isEditing
+                } onCommit: {
+                    // do something.
                 }
+                .border(isEditing ? Color.textForeground : returnColorFromString(nameOfColor: color))
+                .cornerRadius(10)
+                // .background(Color.purple)
+                .foregroundColor(Color.textForeground)
+                .lineLimit(1)
+                .font(.system(size: 18))
+                .textFieldStyle(PlainTextFieldStyle())
                 .padding()
                 
+                Spacer()
             }
             // main VStack
         }
         // ZStack
+        .ignoresSafeArea(.all)
     }
     // body
 }

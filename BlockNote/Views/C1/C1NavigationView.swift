@@ -232,7 +232,8 @@ struct C1NavigationView: View {
 
 struct C1NavigationView_Previews: PreviewProvider {
     static var previews: some View {
-        C1NavigationView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        C1NavigationView()
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
 
