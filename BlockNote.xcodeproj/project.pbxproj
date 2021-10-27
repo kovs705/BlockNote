@@ -28,7 +28,7 @@
 		4E901A3926E6813C00249C15 /* BlockNote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E901A3726E6813C00249C15 /* BlockNote.xcdatamodeld */; };
 		4EAE6FD8270E14140018072C /* NoteListDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAE6FD7270E14140018072C /* NoteListDebug.swift */; };
 		4EF0ABAB26FB9458008EF8AE /* GridObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0ABAA26FB9458008EF8AE /* GridObject.swift */; };
-		4EF65CA52724B17A00708A61 /* groupCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF65CA42724B17A00708A61 /* groupCreateView.swift */; };
+		4EF65CA52724B17A00708A61 /* GroupCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF65CA42724B17A00708A61 /* GroupCreateView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,7 +66,7 @@
 		4E901A3A26E6813C00249C15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EAE6FD7270E14140018072C /* NoteListDebug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListDebug.swift; sourceTree = "<group>"; };
 		4EF0ABAA26FB9458008EF8AE /* GridObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridObject.swift; sourceTree = "<group>"; };
-		4EF65CA42724B17A00708A61 /* groupCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = groupCreateView.swift; sourceTree = "<group>"; };
+		4EF65CA42724B17A00708A61 /* GroupCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,7 +186,7 @@
 		4EF65CA72724B19000708A61 /* groupCreate */ = {
 			isa = PBXGroup;
 			children = (
-				4EF65CA42724B17A00708A61 /* groupCreateView.swift */,
+				4EF65CA42724B17A00708A61 /* GroupCreateView.swift */,
 			);
 			path = groupCreate;
 			sourceTree = "<group>";
@@ -293,7 +293,7 @@
 				4E6F7745270A326700613FCE /* NoteView.swift in Sources */,
 				4EF0ABAB26FB9458008EF8AE /* GridObject.swift in Sources */,
 				4E13C4DA26E93E840089D365 /* Note+CoreDataProperties.swift in Sources */,
-				4EF65CA52724B17A00708A61 /* groupCreateView.swift in Sources */,
+				4EF65CA52724B17A00708A61 /* GroupCreateView.swift in Sources */,
 				4E143215270F0BBD0041A989 /* ListForGroupDetail.swift in Sources */,
 				4E2D626B26F9234500C079D7 /* GroupType+CoreDataClass.swift in Sources */,
 			);

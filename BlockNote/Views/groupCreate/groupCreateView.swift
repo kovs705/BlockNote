@@ -15,14 +15,13 @@ import Combine
     ///
 //
 
-struct groupCreateView: View {
+struct GroupCreateView: View {
     
     @Binding var color: String
     @Binding var nameOfGroup: String
     @Binding var numberOfGroup: Int
     
     @State private var isEditing = false
-    @State private var keyboardHeight: CGFloat = 0
     
     var body: some View {
         ZStack {
@@ -74,19 +73,18 @@ struct groupCreateView: View {
                 TextField("Name of a group..", text: $nameOfGroup) { isEditing in
                     self.isEditing = isEditing
                 } onCommit: {
-                    // do something.
+                    
                 }
-                .border(isEditing ? Color.textForeground : Color.clear)
-                .cornerRadius(10)
+                .frame(height: 55)
+                .textFieldStyle(PlainTextFieldStyle())
+                .padding([.horizontal], 4)
+                .cornerRadius(16)
+                .overlay(RoundedRectangle(cornerRadius: 16).stroke(isEditing ? Color.textForeground : Color.gray))
+                .padding([.horizontal], 24)
+                .padding() // 18 - limit of characters
                 .foregroundColor(Color.textForeground)
                 .lineLimit(1)
                 .font(.system(size: 18))
-                .textFieldStyle(PlainTextFieldStyle())
-                .padding(.bottom, keyboardHeight)
-                .onReceive(Publishers.keyboardHeight) {
-                    self.keyboardHeight = $0
-                }
-                .frame(width: UIScreen.main.bounds.width - 70, height: 60)
                 
                 Spacer()
                 Spacer()
@@ -98,6 +96,8 @@ struct groupCreateView: View {
     }
     // body
 }
+
+
 func returnColorFromStringForPreview(nameOfColor: String) -> Color {
     if nameOfColor == "" {
         let nameOfColor = "GreenAvocado"
