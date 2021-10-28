@@ -190,7 +190,7 @@ struct C1NavigationView: View {
             .ignoresSafeArea(.all)
         }
         .sheet(isPresented: $showAddGroupSheet) {
-            groupCreateView(color: $color, nameOfGroup: $nameOfGroup, numberOfGroup: $numberOfGroup)
+            groupCreateView(color: $color, nameOfGroup: $nameOfGroup)
         }
         .navigationTitle("")
     }

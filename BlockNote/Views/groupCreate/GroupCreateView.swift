@@ -7,6 +7,8 @@
 
 import SwiftUI
 import Combine
+import CoreData
+
 // MARK: - instructions
     /// create a colorPicker for GridObject
     /// create a preview of GridObject with the name, color, number of notes and other things (like type, or lvl)
@@ -19,8 +21,9 @@ struct groupCreateView: View {
     
     @Binding var color: String
     @Binding var nameOfGroup: String
-    @Binding var numberOfGroup: Int
     
+    @FetchRequest(entity: GroupType.entity(), sortDescriptors: [NSSortDescriptor(key: "groupName", ascending: true)]) var types: FetchedResults<GroupType>
+    @Environment(\.managedObjectContext) private var viewContext
     @State private var isEditing = false
     
     var body: some View {
@@ -33,6 +36,7 @@ struct groupCreateView: View {
                     .font(.footnote)
                 Spacer()
                 
+                // MARK: - Preview
                 ZStack {
                     RoundedRectangle(cornerRadius: 20)
                         .fill(returnColorFromStringForPreview(nameOfColor: color))
@@ -70,10 +74,13 @@ struct groupCreateView: View {
                 .frame(width: 170, height: 170)
                 .padding(.horizontal)
                 
+                // MARK: - TextField
                 TextField("Name of a group..", text: $nameOfGroup) { isEditing in
                     self.isEditing = isEditing
                 } onCommit: {
                     UIApplication.shared.endEditing()
+                    // create group:
+                    addNewGroup(nameOfGroup: nameOfGroup)
                 }
                 .frame(height: 55)
                 .textFieldStyle(PlainTextFieldStyle())
@@ -86,6 +93,9 @@ struct groupCreateView: View {
                 .lineLimit(1)
                 .font(.system(size: 18))
                 
+                // MARK: - Create group button
+                
+                
                 Spacer()
                 Spacer()
             }
@@ -95,7 +105,47 @@ struct groupCreateView: View {
         .ignoresSafeArea(.all)
     }
     // body
+    
+    // MARK: - Add new group func
+    func addNewGroup(nameOfGroup: String) {
+        
+        withAnimation {
+            let newGroup = GroupType(context: viewContext)
+            
+            for type in types { // for each group in CoreData:
+                if nameOfGroup == type.groupName { // if the name is equal as an existing name
+                    newGroup.groupName = "THE SAME GROUP"
+                } else if nameOfGroup == "" { // or this name is empty
+                    newGroup.groupName = "Unknown group"
+                } else {
+                    newGroup.groupName = nameOfGroup
+                }
+            }
+            
+            if nameOfGroup == "" {
+                newGroup.groupName = "Unknown group"
+            } else {
+                newGroup.groupName = nameOfGroup
+            }
+            
+            newGroup.number = (types.last?.number ?? 0) + 1
+            newGroup.noteTypes = [] // for future notes?
+            
+            // MARK: - function for colorPicker
+            newGroup.groupColor = "RedStrawBerry"
+            
+            do {
+                try self.viewContext.save()
+                print("Group is added!")
+            } catch {
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
+        }
+    }
 }
+
+// MARK: - Color picker
 
 
 func returnColorFromStringForPreview(nameOfColor: String) -> Color {
