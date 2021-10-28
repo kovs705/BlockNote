@@ -80,7 +80,7 @@ struct groupCreateView: View {
                 } onCommit: {
                     UIApplication.shared.endEditing()
                     // create group:
-                    addNewGroup(nameOfGroup: nameOfGroup)
+                    // addNewGroup(nameOfGroup: nameOfGroup)
                 }
                 .frame(height: 55)
                 .textFieldStyle(PlainTextFieldStyle())
@@ -94,7 +94,12 @@ struct groupCreateView: View {
                 .font(.system(size: 18))
                 
                 // MARK: - Create group button
-                
+                Button(action: {
+                    addNewGroup(nameOfGroup: nameOfGroup)
+                }, label: {
+                    Text("Add group!")
+                })
+                // end of the button
                 
                 Spacer()
                 Spacer()
@@ -108,8 +113,6 @@ struct groupCreateView: View {
     
     // MARK: - Add new group func
     func addNewGroup(nameOfGroup: String) {
-        
-        withAnimation {
             let newGroup = GroupType(context: viewContext)
             
             for type in types { // for each group in CoreData:
@@ -141,7 +144,6 @@ struct groupCreateView: View {
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
-        }
     }
 }
 
