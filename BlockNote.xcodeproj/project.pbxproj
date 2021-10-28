@@ -27,6 +27,7 @@
 		4E901A3626E6813C00249C15 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E901A3526E6813C00249C15 /* Persistence.swift */; };
 		4E901A3926E6813C00249C15 /* BlockNote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E901A3726E6813C00249C15 /* BlockNote.xcdatamodeld */; };
 		4EAE6FD8270E14140018072C /* NoteListDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAE6FD7270E14140018072C /* NoteListDebug.swift */; };
+		4ECB305E272AD5AE003B3483 /* GroupCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECB305D272AD5AE003B3483 /* GroupCreateView.swift */; };
 		4EF0ABAB26FB9458008EF8AE /* GridObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0ABAA26FB9458008EF8AE /* GridObject.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		4E901A3826E6813C00249C15 /* BlockNote.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BlockNote.xcdatamodel; sourceTree = "<group>"; };
 		4E901A3A26E6813C00249C15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EAE6FD7270E14140018072C /* NoteListDebug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListDebug.swift; sourceTree = "<group>"; };
+		4ECB305D272AD5AE003B3483 /* GroupCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateView.swift; sourceTree = "<group>"; };
 		4EF0ABAA26FB9458008EF8AE /* GridObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -184,6 +186,7 @@
 		4EF65CA72724B19000708A61 /* groupCreate */ = {
 			isa = PBXGroup;
 			children = (
+				4ECB305D272AD5AE003B3483 /* GroupCreateView.swift */,
 			);
 			path = groupCreate;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				4E901A2D26E6813900249C15 /* BlockNoteApp.swift in Sources */,
 				4E5984E9272152CB006F6A7B /* C1NavViewModel.swift in Sources */,
 				4E5984EB272158AF006F6A7B /* Extensions.swift in Sources */,
+				4ECB305E272AD5AE003B3483 /* GroupCreateView.swift in Sources */,
 				4E13C4D926E93E840089D365 /* Note+CoreDataClass.swift in Sources */,
 				4EAE6FD8270E14140018072C /* NoteListDebug.swift in Sources */,
 				4E901A3926E6813C00249C15 /* BlockNote.xcdatamodeld in Sources */,
