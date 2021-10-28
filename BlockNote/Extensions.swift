@@ -16,6 +16,12 @@ extension Notification {
     }
 }
 
+extension UIApplication {
+    func endEditing() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+
 extension Publishers {
     static var keyboardHeight: AnyPublisher<CGFloat, Never> {
         

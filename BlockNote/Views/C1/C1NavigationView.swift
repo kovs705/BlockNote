@@ -93,7 +93,7 @@ struct C1NavigationView: View {
                     .frame(height: 40)
                     
                     
-                    // MARK: - Block for statistics
+                    // MARK: - Statistics and Sheet
                     ZStack {
                         RoundedRectangle(cornerRadius: 20)
                             .fill(Color.lightPart)
@@ -190,7 +190,7 @@ struct C1NavigationView: View {
             .ignoresSafeArea(.all)
         }
         .sheet(isPresented: $showAddGroupSheet) {
-            GroupCreateView(color: $color, nameOfGroup: $nameOfGroup, numberOfGroup: $numberOfGroup)
+            groupCreateView(color: $color, nameOfGroup: $nameOfGroup, numberOfGroup: $numberOfGroup)
         }
         .navigationTitle("")
     }
