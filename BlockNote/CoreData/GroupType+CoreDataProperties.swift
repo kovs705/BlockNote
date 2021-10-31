@@ -36,6 +36,18 @@ extension GroupType {
     }
 }
 
+// adding and deleting
+extension NSManagedObject {
+    func addObject(value: NSManagedObject, forKey key: String) {
+        let notes = self.mutableSetValue(forKey: key)
+        notes.add(value)
+    }
+    func removeObject(value: NSManagedObject, forKey key: String) {
+        let notes = self.mutableSetValue(forKey: key)
+        notes.remove(value)
+    }
+}
+
 // MARK: Generated accessors for Note
 extension Note {
 

@@ -137,24 +137,24 @@ struct GroupDetailView: View {
         
         if groupType.wrappedGroupName == groupName {
             
-            let note = Note(context: viewContext)
+            // let note = Note(context: viewContext)
             
             if !self.groupType.typesOfNoteArray.isEmpty {
                 for noteObject in self.groupType.typesOfNoteArray {
-                    self.viewContext.delete(noteObject)
+                    self.viewContext.delete(noteObject) // if array is not empty - delete every note it has
                 }
             } else {
-                print("something wrong!!")
+                print("No notes in array")
             }
             
-            if self.groupType.typesOfNoteArray.contains(note) {
-                for noteObject in self.groupType.typesOfNoteArray {
-                    self.viewContext.delete(noteObject)
-                }
-            } else {
-                print("Something wrong on deleting notes!!!")
-            }
-            
+//            if self.groupType.typesOfNoteArray.contains(note) {
+//                for noteObject in self.groupType.typesOfNoteArray {
+//                    self.viewContext.delete(noteObject)
+//                }
+//            } else {
+//                print("Something wrong on deleting notes!!!")
+//            }
+//
             self.viewContext.delete(self.groupType)
             
             do {
@@ -184,6 +184,9 @@ struct GroupDetailView: View {
             
             newNote.noteName = "CREATED NOTE TEST \(newNote.noteID)" // note name
             newNote.noteIsMarked = false // note isn't marked yet, so user can do it later
+            
+            // TODO: - Append the note to the group:
+            self.groupType.addObject(value: newNote, forKey: "noteTypes")
             
             do {
                 try self.viewContext.save()
