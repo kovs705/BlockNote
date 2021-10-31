@@ -14,14 +14,29 @@ struct NoteView: View {
     
     var body: some View {
         VStack(alignment: .center) {
-            Text(note.wrappedNoteName)
-            Text("\(note.noteID)")
-            Text(note.noteLevel ?? "Nothing on level")
-            Text(note.wrappedNoteType)
-            VStack {
-                Text(note.typeOfNote?.groupName ?? "Unknown name of the group")
+            HStack {
+                Text("Note name: ")
+                    .bold()
+                Text(note.wrappedNoteName)
             }
-            .padding(.vertical)
+            
+            HStack {
+                Text("Note ID: ")
+                    .bold()
+                Text("\(note.noteID)")
+            }
+            
+            HStack {
+                Text("Note level: ")
+                    .bold()
+                Text(note.noteLevel ?? "Nothing on level")
+            }
+            
+            HStack {
+                Text("Note type: ")
+                    .bold()
+                Text(note.wrappedNoteType)
+            }
         }
     }
 }

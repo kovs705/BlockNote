@@ -166,7 +166,7 @@ struct GroupDetailView: View {
     func createNote() {
         withAnimation {
             let newNote = Note(context: self.viewContext)
-            newNote.typeOfNote = GroupType(context: self.viewContext)
+            // newNote.typeOfNote = GroupType(context: self.viewContext)
             
             if self.groupType.wrappedGroupName == "" {
                 newNote.noteType = "Yo, the type of note is UNKNOWN"

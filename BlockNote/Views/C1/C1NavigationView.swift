@@ -30,7 +30,7 @@ struct C1NavigationView: View {
     
     @FetchRequest(entity: Note.entity(), sortDescriptors: [NSSortDescriptor(key: "noteID", ascending: true)], predicate: nil) var notes: FetchedResults<Note>
     
-    @FetchRequest(entity: GroupType.entity(), sortDescriptors: [NSSortDescriptor(key: "groupName", ascending: true)]) var types: FetchedResults<GroupType>
+    @FetchRequest(entity: GroupType.entity(), sortDescriptors: [NSSortDescriptor(key: "number", ascending: true)]) var types: FetchedResults<GroupType>
     
     @Environment(\.managedObjectContext) private var viewContext
     
@@ -145,7 +145,6 @@ struct C1NavigationView: View {
                         .frame(width: UIScreen.main.bounds.width - 50)
                         
                         // MARK: - Groups
-                        
                         LazyVGrid(columns: columns, spacing: 10) {
                             ForEach(types, id: \.self) { type in
                                 // transition to the DetailView:
@@ -166,9 +165,8 @@ struct C1NavigationView: View {
                             .onDelete(perform: deleteGroup) // edit to make it onTap
                         }
                         .padding()
+                        // LazyVGrid
                         
-                        
-                        // end of HStack
                     }
                     // end of VStack
                     
@@ -186,9 +184,12 @@ struct C1NavigationView: View {
                         .animation(.spring())
                         .padding(.vertical)
             }
+            // ZStack
+            
             .navigationBarHidden(true)
             .ignoresSafeArea(.all)
         }
+        // NavView
         .sheet(isPresented: $showAddGroupSheet) {
             groupCreateView(color: $color, nameOfGroup: $nameOfGroup)
         }

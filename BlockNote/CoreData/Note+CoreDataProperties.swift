@@ -25,11 +25,11 @@ extension Note {
     @NSManaged public var typeOfNote: GroupType?
 
     public var wrappedNoteType: String {
-        noteType ?? "Unknown type"
+        noteType ?? "Unknown wrapped group"
     }
     
     public var wrappedNoteName: String {
-        noteName ?? "Unknown NOTE name"
+        noteName ?? "Unknown wrapped NOTE name"
     }
     
     public var NoteItemArray: [NoteItem] {
