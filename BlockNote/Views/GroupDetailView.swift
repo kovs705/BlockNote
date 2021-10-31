@@ -139,23 +139,28 @@ struct GroupDetailView: View {
             
             let note = Note(context: viewContext)
             
-            // if note.noteType == groupName {
-                // self.viewContext.delete(note)
-                // self.groupType.typesOfNoteArray.contains(note)
+            if !self.groupType.typesOfNoteArray.isEmpty {
+                for noteObject in self.groupType.typesOfNoteArray {
+                    self.viewContext.delete(noteObject)
+                }
+            } else {
+                print("something wrong!!")
+            }
+            
             if self.groupType.typesOfNoteArray.contains(note) {
-                self.viewContext.delete(note)
+                for noteObject in self.groupType.typesOfNoteArray {
+                    self.viewContext.delete(noteObject)
+                }
             } else {
                 print("Something wrong on deleting notes!!!")
             }
             
             self.viewContext.delete(self.groupType)
             
-            
-            
             do {
                 try self.viewContext.save()
             } catch {
-                print("Something gone wrong while deleting the group adn note!!")
+                print("Something went wrong while deleting the group and note!!")
             }
         } else {
             print("Something wrong on checking the name of the group!")
@@ -174,12 +179,10 @@ struct GroupDetailView: View {
                 newNote.noteType = self.groupType.wrappedGroupName // name of the group will be the same as on the page, which is opened by user
             }
             
-            // MARK: - Check IF this group exists or not:
-            // check for existing name of the group, if not - create a new one
-            
-            newNote.noteName = "CREATED NOTE TEST" // note name
             newNote.noteLevel = "TEST LEVEL" // note lvl or whatever it can be for user
             newNote.noteID = (notes.last?.noteID ?? 0) + 1 // note id, which will place notes in the right order
+            
+            newNote.noteName = "CREATED NOTE TEST \(newNote.noteID)" // note name
             newNote.noteIsMarked = false // note isn't marked yet, so user can do it later
             
             do {

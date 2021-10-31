@@ -71,7 +71,7 @@ struct C1NavigationView: View {
                                         C1ViewModel.showGreeting()
                                         
                                     })
-                                    .animation(.easeInOut)
+                                    // .animation(.easeInOut)
                             }
                             .onReceive(self.time) { (_) in
                                 // to see if user scrolled downwards and doesn't see the greeting:
@@ -183,6 +183,7 @@ struct C1NavigationView: View {
                         .offset(y: C1ViewModel.showBar ? UIScreen.main.bounds.height : 0)
                         .animation(.spring())
                         .padding(.vertical)
+                // TODO: - fix the animation on launching (init the position on launch?)
             }
             // ZStack
             

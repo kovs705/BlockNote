@@ -19,6 +19,7 @@ struct NoteListDebug: View {
                     
                     Section(header: Text("\(type.wrappedGroupName)")) {
                         
+                        // ForEach(type.typesOfNoteArray, id: \.self) { note in
                         ForEach(notes, id: \.self) { note in
                             
                             NavigationLink(destination: NoteView(note: note)) {
@@ -41,7 +42,7 @@ struct NoteListDebug: View {
     }
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            offsets.map { types[$0] }.forEach(viewContext.delete) // cascade deleting?
+            offsets.map { notes[$0] }.forEach(viewContext.delete)
 
             do {
                 try self.viewContext.save()
