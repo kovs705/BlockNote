@@ -118,13 +118,15 @@ struct GroupDetailView: View {
                     .frame(width: UIScreen.main.bounds.width - 30)
                 
             }
+            // VStack
         }
+        // ScrollView
         .navigationBarItems(trailing: Button(action: {
             // to add a new Note // delete note for now
             deleteGroup(groupName: groupType.wrappedGroupName)
         }) {
             Image(systemName: "trash")
-                .font(.system(size: 20))
+                .font(.system(size: 17))
         })
         .navigationTitle(groupType.wrappedGroupName)
         

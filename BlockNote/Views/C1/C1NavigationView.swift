@@ -167,6 +167,11 @@ struct C1NavigationView: View {
                         .padding()
                         // LazyVGrid
                         
+                        // MARK: - Empty space
+                        VStack {
+                            // nothing
+                        }
+                        .frame(height: 120)
                     }
                     // end of VStack
                     
@@ -178,11 +183,12 @@ struct C1NavigationView: View {
                         VStack {
                             Spacer()
                             BarButton()
+                                .offset(y: C1ViewModel.showBar ? 0 : UIScreen.main.bounds.height)
+                                .animation(.spring())
+                                .padding(.vertical)
                         }
                         // .transition(.move(edge: .bottom))
-                        .offset(y: C1ViewModel.showBar ? UIScreen.main.bounds.height : 0)
-                        .animation(.spring())
-                        .padding(.vertical)
+                        
                 // TODO: - fix the animation on launching (init the position on launch?)
             }
             // ZStack

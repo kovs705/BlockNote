@@ -19,8 +19,7 @@ struct NoteListDebug: View {
                     
                     Section(header: Text("\(type.wrappedGroupName)")) {
                         
-                        // ForEach(type.typesOfNoteArray, id: \.self) { note in
-                        ForEach(notes, id: \.self) { note in
+                        ForEach(type.typesOfNoteArray, id: \.self) { note in
                             
                             NavigationLink(destination: NoteView(note: note)) {
                                 HStack {
@@ -30,19 +29,27 @@ struct NoteListDebug: View {
                             }
                             // NavigationLink
                         }
+                        .onDelete(perform: { offsets in
+                            self.deleteNotes(at: offsets, from: type)
+                        })
                         // note ForEach
                     }
                     // section ForEach
                     
                 }
-                .onDelete(perform: deleteItems)
+                // .onDelete(perform: deleteItems)
                 // type ForEach
             }
         }
     }
-    private func deleteItems(offsets: IndexSet) {
+    private func deleteNotes(at offsets: IndexSet, from group: GroupType) {
         withAnimation {
-            offsets.map { notes[$0] }.forEach(viewContext.delete)
+            for offset in offsets {
+                let note = group.typesOfNoteArray[offset]
+                // group.removeFromNote(note)
+                viewContext.delete(note)
+            }
+            // offsets.map { notes[$0] }.forEach(viewContext.delete)
 
             do {
                 try self.viewContext.save()
@@ -52,4 +59,5 @@ struct NoteListDebug: View {
             }
         }
     }
+    
 }

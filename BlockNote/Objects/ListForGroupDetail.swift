@@ -14,6 +14,7 @@ struct ListForGroupDetail: View {
     @FetchRequest(entity: Note.entity(), sortDescriptors: [NSSortDescriptor(key: "noteID", ascending: true)]) var notes: FetchedResults<Note>
     @FetchRequest(entity: GroupType.entity(), sortDescriptors: [NSSortDescriptor(key: "number", ascending: true)]) var types: FetchedResults<GroupType>
     @Environment(\.managedObjectContext) var viewContext
+    
     // @ObservedObject var noteList: Note
     
     var body: some View {
