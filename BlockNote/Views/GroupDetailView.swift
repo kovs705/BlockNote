@@ -21,6 +21,7 @@ struct GroupDetailView: View {
     
     @Environment(\.managedObjectContext) var viewContext
     @Environment(\.colorScheme) public var detectTheme
+    @Environment(\.defaultMinListRowHeight) var minRowHeight // for the list
     
     @State var funcWithNavLink: Bool = false
     
@@ -147,16 +148,13 @@ struct GroupDetailView: View {
                 VStack {
                     Text("HELLO")
                         .padding()
-                    List {
-                        ForEach(groupType.typesOfNoteArray, id: \.self) { note in
-                            HStack {
-                                Text(note.wrappedNoteName)
-                                    .foregroundColor(Color.textForeground)
-                            }
+                    ForEach(self.groupType.typesOfNoteArray, id: \.self) { note in
+                        HStack {
+                            Text(note.wrappedNoteName)
+                                .foregroundColor(Color.textForeground)
                         }
-                        // ForEach
                     }
-                    // List
+                    // ForEach
                 }
                 // inner VStack
             }
