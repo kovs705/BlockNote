@@ -16,6 +16,7 @@ import CoreData
 
 struct GroupDetailView: View {
     @FetchRequest(entity: Note.entity(), sortDescriptors: [NSSortDescriptor(key: "noteID", ascending: true)]) var notes: FetchedResults<Note>
+    @FetchRequest(entity: GroupType.entity(), sortDescriptors: [NSSortDescriptor(key: "number", ascending: true)]) var types: FetchedResults<GroupType>
     @ObservedObject var groupType: GroupType
     
     @Environment(\.managedObjectContext) var viewContext
@@ -109,14 +110,55 @@ struct GroupDetailView: View {
                     .frame(width: UIScreen.main.bounds.width - 30, height: 150, alignment: .center)
                     // end of ZStack
                 }
-                .padding()
+                // .padding()
+                .frame(width: UIScreen.main.bounds.width - 30, height: 150)
                 // end of the TopBar Statistics
                 
                 
                 // MARK: - List of notes
-                ListForGroupDetail()
-                    .frame(width: UIScreen.main.bounds.width - 30)
-                
+                // ListForGroupDetail()
+                    // .frame(width: UIScreen.main.bounds.width - 30)
+//                VStack {
+//                    Text("LIST")
+//                    List {
+//                        ForEach(types, id: \.self) { type in
+//
+//                            Section(header: Text("\(type.wrappedGroupName)")) {
+//
+//                                if type.wrappedGroupName == groupType.wrappedGroupName {
+//                                    ForEach(type.typesOfNoteArray, id: \.self) { note in
+//
+//                                        HStack {
+//                                            Text(note.wrappedNoteName)
+//                                                .foregroundColor(Color.textForeground)
+//                                        }
+//                                    }
+//                                } else {
+//                                    HStack {
+//                                        Text("lol, doesn't work")
+//                                            .foregroundColor(Color.textForeground)
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//                .padding(.vertical)
+                VStack {
+                    Text("HELLO")
+                        .padding()
+                    List {
+                        ForEach(groupType.typesOfNoteArray, id: \.self) { note in
+                            HStack {
+                                Text(note.wrappedNoteName)
+                                    .foregroundColor(Color.textForeground)
+                            }
+                        }
+                        // ForEach
+                    }
+                    // List
+                }
+                // inner VStack
             }
             // VStack
         }
@@ -149,14 +191,6 @@ struct GroupDetailView: View {
                 print("No notes in array")
             }
             
-//            if self.groupType.typesOfNoteArray.contains(note) {
-//                for noteObject in self.groupType.typesOfNoteArray {
-//                    self.viewContext.delete(noteObject)
-//                }
-//            } else {
-//                print("Something wrong on deleting notes!!!")
-//            }
-//
             self.viewContext.delete(self.groupType)
             
             do {

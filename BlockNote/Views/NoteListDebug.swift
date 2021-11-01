@@ -37,7 +37,6 @@ struct NoteListDebug: View {
                     // section ForEach
                     
                 }
-                // .onDelete(perform: deleteItems)
                 // type ForEach
             }
         }

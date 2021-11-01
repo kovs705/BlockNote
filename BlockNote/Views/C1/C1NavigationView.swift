@@ -34,7 +34,6 @@ struct C1NavigationView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     
-    let dateFormatter = DateFormatter()
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     @State var time = Timer.publish(every: 0, on: .main, in: .tracking).autoconnect()
     
