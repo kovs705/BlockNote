@@ -12,7 +12,7 @@ import CoreData
 // MARK: - instructions
     /// create a colorPicker for GridObject
     /// create a preview of GridObject with the name, color, number of notes and other things (like type, or lvl)
-    ///
+    /// put picker buttons in view
     ///
     ///
 //
@@ -24,7 +24,13 @@ struct groupCreateView: View {
     
     @FetchRequest(entity: GroupType.entity(), sortDescriptors: [NSSortDescriptor(key: "groupName", ascending: true)]) var types: FetchedResults<GroupType>
     @Environment(\.managedObjectContext) private var viewContext
-    @State private var isEditing = false
+    @State private var isEditing = false // textFields checker
+    
+    @State private var groupColor: Color = .greenAvocado // colorPicker base color
+    @State private var isDragging: Bool = false // colorPicker gesture
+    @State private var isSelected: Bool = false
+    
+    let colorToPick: [Color] = [.blueBerry, .brownSugar, .greenAvocado, .greyCloud, .purpleBlackBerry, .redStrawBerry, .rosePink, .yellowLemon]
     
     var body: some View {
         ZStack {
@@ -34,12 +40,16 @@ struct groupCreateView: View {
                 Text("Create a group..")
                     .padding()
                     .font(.footnote)
-                Spacer()
+                
+                VStack {
+                    // empty space
+                }
+                .frame(height: 40)
                 
                 // MARK: - Preview
                 ZStack {
                     RoundedRectangle(cornerRadius: 20)
-                        .fill(returnColorFromStringForPreview(nameOfColor: color))
+                        .fill(groupColor)
                         .frame(width: 175, height: 175)
                     VStack {
                         Spacer()
@@ -74,6 +84,21 @@ struct groupCreateView: View {
                 .frame(width: 170, height: 170)
                 .padding(.horizontal)
                 
+                HStack(alignment: .center, spacing: 5) {
+                    ForEach(colorToPick, id: \.self) { color in
+                        ZStack {
+                            color
+                                .frame(width: 10, height: 10)
+                                .cornerRadius(5)
+                                .shadow(radius: 8)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 5).stroke(Color.white, lineWidth: 2.0)
+                                )
+                        }
+                    }
+                }
+                .frame(height: 40)
+                
                 // MARK: - TextField
                 TextField("Name of a group..", text: $nameOfGroup) { isEditing in
                     self.isEditing = isEditing
@@ -103,6 +128,7 @@ struct groupCreateView: View {
                 
                 Spacer()
                 Spacer()
+                Spacer()
             }
             // main VStack
         }
@@ -124,12 +150,12 @@ struct groupCreateView: View {
                     newGroup.groupName = nameOfGroup
                 }
             }
-            
-            if nameOfGroup == "" {
-                newGroup.groupName = "Unknown group"
-            } else {
-                newGroup.groupName = nameOfGroup
-            }
+//
+//            if nameOfGroup == "" {
+//                newGroup.groupName = "Unknown group"
+//            } else {
+//                newGroup.groupName = nameOfGroup
+//            }
             
             newGroup.number = (types.last?.number ?? 0) + 1
             newGroup.noteTypes = [] // for future notes?

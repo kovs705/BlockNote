@@ -117,34 +117,6 @@ struct GroupDetailView: View {
                 
                 
                 // MARK: - List of notes
-                // ListForGroupDetail()
-                    // .frame(width: UIScreen.main.bounds.width - 30)
-//                VStack {
-//                    Text("LIST")
-//                    List {
-//                        ForEach(types, id: \.self) { type in
-//
-//                            Section(header: Text("\(type.wrappedGroupName)")) {
-//
-//                                if type.wrappedGroupName == groupType.wrappedGroupName {
-//                                    ForEach(type.typesOfNoteArray, id: \.self) { note in
-//
-//                                        HStack {
-//                                            Text(note.wrappedNoteName)
-//                                                .foregroundColor(Color.textForeground)
-//                                        }
-//                                    }
-//                                } else {
-//                                    HStack {
-//                                        Text("lol, doesn't work")
-//                                            .foregroundColor(Color.textForeground)
-//                                    }
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//                .padding(.vertical)
                 VStack {
                     Text("HELLO")
                         .padding()

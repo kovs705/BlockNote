@@ -116,10 +116,11 @@ struct C1NavigationView: View {
                                 .bold()
                             Spacer()
                             // MARK: - Edit button
-                            Button(action: {
+                            // Button(action: {
                                 // put the action here:
-                                C1ViewModel.onDeleting.toggle()
-                            }) {
+                                // C1ViewModel.onDeleting.toggle()
+                            NavigationLink(destination: buttonTest()) {
+                            //}) {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 10)
                                         .fill(Color.lightPart)
