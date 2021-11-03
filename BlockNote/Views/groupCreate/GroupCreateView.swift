@@ -82,21 +82,23 @@ struct groupCreateView: View {
                 }
                 // end of ZStack
                 .frame(width: 170, height: 170)
-                .padding(.horizontal)
+                .padding()
+                
                 
                 HStack(alignment: .center, spacing: 5) {
                     ForEach(colorToPick, id: \.self) { color in
                         ZStack {
                             color
-                                .frame(width: 10, height: 10)
-                                .cornerRadius(5)
+                                .frame(width: 25, height: 25)
+                                .cornerRadius(12.5)
                                 .shadow(radius: 8)
                                 .overlay(
-                                    RoundedRectangle(cornerRadius: 5).stroke(Color.white, lineWidth: 2.0)
+                                    RoundedRectangle(cornerRadius: 12.5).stroke(isSelected ? Color.white : Color.clear, lineWidth: 2.0)
                                 )
                         }
                     }
                 }
+                // make them scalable on tap
                 .frame(height: 40)
                 
                 // MARK: - TextField
