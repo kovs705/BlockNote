@@ -85,20 +85,36 @@ struct groupCreateView: View {
                 .padding()
                 
                 
+                // MARK: - ColorPicker
+                
                 HStack(alignment: .center, spacing: 5) {
                     ForEach(colorToPick, id: \.self) { color in
-                        ZStack {
-                            color
-                                .frame(width: 25, height: 25)
-                                .cornerRadius(12.5)
-                                .shadow(radius: 8)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 12.5).stroke(isSelected ? Color.white : Color.clear, lineWidth: 2.0)
-                                )
+                        
+                        Button(action: {
+                            
+                        }) {
+                            ZStack {
+                                color
+                                    .animation(.spring())
+                                    .frame(width: isSelected ? 25 : 40, height: isSelected ? 25 : 40)
+                                    .cornerRadius(isSelected ? 12.5 : 20)
+                                    .shadow(radius: 8)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 12.5).stroke(isSelected ? Color.white : Color.clear, lineWidth: 2.0)
+                                    )
+                            }
                         }
+                        .gesture(
+                            DragGesture().onChanged({ (value) in
+                                // make a button bigger
+                                // move others?
+                            })
+                        )
+                        
                     }
                 }
                 // make them scalable on tap
+                // vertical picker?
                 .frame(height: 40)
                 
                 // MARK: - TextField
