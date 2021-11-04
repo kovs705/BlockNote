@@ -40,7 +40,7 @@ struct C1NavigationView: View {
     @StateObject private var C1ViewModel = C1NavViewModel() // MVVM
     
     @State private var showAddGroupSheet: Bool = false
-    @State private var color = ""
+    @State private var color: Color = .greenAvocado
     @State private var nameOfGroup = ""
     @State private var numberOfGroup = 0
     
@@ -198,7 +198,7 @@ struct C1NavigationView: View {
         }
         // NavView
         .sheet(isPresented: $showAddGroupSheet) {
-            groupCreateView(color: $color, nameOfGroup: $nameOfGroup)
+            groupCreateView(chosenColor: $color, nameOfGroup: $nameOfGroup)
         }
         .navigationTitle("")
     }

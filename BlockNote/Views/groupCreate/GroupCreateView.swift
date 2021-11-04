@@ -19,7 +19,7 @@ import CoreData
 
 struct groupCreateView: View {
     
-    @Binding var color: String
+    @Binding var chosenColor: Color
     @Binding var nameOfGroup: String
     
     @FetchRequest(entity: GroupType.entity(), sortDescriptors: [NSSortDescriptor(key: "groupName", ascending: true)]) var types: FetchedResults<GroupType>
@@ -29,6 +29,10 @@ struct groupCreateView: View {
     @State private var groupColor: Color = .greenAvocado // colorPicker base color
     @State private var isDragging: Bool = false // colorPicker gesture
     @State private var isSelected: Bool = false
+    
+//    init(chosenColor: Binding<Color>) {
+//        self._chosenColor = chosenColor
+//    }
     
     let colorToPick: [Color] = [.blueBerry, .brownSugar, .greenAvocado, .greyCloud, .purpleBlackBerry, .redStrawBerry, .rosePink, .yellowLemon]
     
@@ -96,7 +100,7 @@ struct groupCreateView: View {
                             ZStack {
                                 color
                                     .animation(.spring())
-                                    .frame(width: isSelected ? 25 : 40, height: isSelected ? 25 : 40)
+                                    .frame(width: isSelected ? 40 : 25, height: isSelected ? 40 : 25)
                                     .cornerRadius(isSelected ? 12.5 : 20)
                                     .shadow(radius: 8)
                                     .overlay(
@@ -106,9 +110,14 @@ struct groupCreateView: View {
                         }
                         .gesture(
                             DragGesture().onChanged({ (value) in
-                                // make a button bigger
+                                self.isSelected = true
+                                
                                 // move others?
                             })
+                                .onEnded({ (_) in
+                                    self.isSelected = false
+                                    
+                                })
                         )
                         
                     }
@@ -204,16 +213,14 @@ func returnColorFromStringForPreview(nameOfColor: String) -> Color {
 }
 
 
-/*
-struct groupCreate_Previews: PreviewProvider {
-    
-    let color = "GreenAvocado"
-    let nameOfGroup = "Test NAme"
-    let numberOfGroup = 123
-    
-    static var previews: some View {
-        groupCreateView(color: color, nameOfGroup: nameOfGroup, numberOfGroup: numberOfGroup)
-    }
-}
- */
-
+//
+//struct groupCreate_Previews: PreviewProvider {
+//
+//    var nameOfGroup: String = "Test Name"
+//    let chosenColor: Color = .greenAvocado
+//
+//    static var previews: some View {
+//        groupCreateView(chosenColor: chosenColor, nameOfGroup: nameOfGroup)
+//    }
+//}
+//
