@@ -95,7 +95,7 @@ struct groupCreateView: View {
                     ForEach(colorToPick, id: \.self) { color in
                         
                         Button(action: {
-                            
+                            // give the color to the binding
                         }) {
                             ZStack {
                                 color

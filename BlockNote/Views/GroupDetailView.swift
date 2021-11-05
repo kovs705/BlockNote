@@ -30,7 +30,7 @@ struct GroupDetailView: View {
             VStack {
                 // MARK: - TopBar Statistics
                 GeometryReader { geometry in
-                    ZStack {
+                    ZStack(alignment: .center) {
                         RoundedRectangle(cornerRadius: 20)
                             .fill(returnColorFromString(nameOfColor: groupType.groupColor ?? "GreenAvocado"))
                             .cornerRadius(20)
@@ -48,13 +48,15 @@ struct GroupDetailView: View {
                                 
                                 Spacer()
                                 
-                                Text("You've completed: ")
+                                Text("Completed: ")
                                     .foregroundColor(Color.textForeground)
                                     
                                     .bold()
                                     .font(.system(size: 16))
                                 Spacer()
-                            }
+                            } // first column
+                            .padding()
+                            
                             VStack {
                                 Spacer()
                                 Text("\(groupType.typesOfNoteArray.count)") // that should work, I guess..
@@ -108,11 +110,13 @@ struct GroupDetailView: View {
                         .padding()
                         
                     }
-                    .frame(width: UIScreen.main.bounds.width - 30, height: 150, alignment: .center)
+                    // .frame(width: UIScreen.main.bounds.width - 30, height: 150, alignment: .center)
+                    .frame(height: 150, alignment: .center)
+                    .ignoresSafeArea(.all)
                     // end of ZStack
                 }
-                // .padding()
-                .frame(width: UIScreen.main.bounds.width - 30, height: 150)
+                .frame(height: 150)
+                .ignoresSafeArea(.all)
                 // end of the TopBar Statistics
                 
                 
@@ -121,15 +125,19 @@ struct GroupDetailView: View {
                     Text("HELLO")
                         .padding()
                     ForEach(self.groupType.typesOfNoteArray, id: \.self) { note in
-                        HStack {
-                            Text(note.wrappedNoteName)
-                                .foregroundColor(Color.textForeground)
+                        NavigationLink(destination: NoteView(note: note)) {
+                            HStack {
+                                Text(note.wrappedNoteName)
+                                    .foregroundColor(Color.textForeground)
+                            }
                         }
                     }
+                    .padding()
                     // ForEach
                 }
                 // inner VStack
             }
+            .ignoresSafeArea(.all)
             // VStack
         }
         // ScrollView
