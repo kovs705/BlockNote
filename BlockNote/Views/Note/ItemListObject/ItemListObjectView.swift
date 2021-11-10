@@ -15,7 +15,7 @@ import CoreData
 ///
 /// --------------------------------
 
-struct ItemListObject: View {
+struct ItemListObjectView: View {
     var body: some View {
         Text("Hello, World!")
     }
@@ -23,6 +23,25 @@ struct ItemListObject: View {
 
 struct ItemListObject_Previews: PreviewProvider {
     static var previews: some View {
-        ItemListObject()
+        ItemListObjectView()
     }
 }
+
+// MARK: -
+struct ItemListObjectText: View {
+    @ObservedObject var note: Note
+    @Binding var itemText: String
+    
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color.itemListBackground)
+            TextEditor(text: $itemText)
+            
+            
+        }
+        
+    }
+    
+}
+

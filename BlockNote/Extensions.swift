@@ -123,7 +123,9 @@ extension Color {
     static let purpleBlackBerry = Color("PurpleBlackBerry") // purple
     static let greyCloud = Color("GreyCloud") // grey
     static let brownSugar = Color("BrownSugar") // brown
+    
     static let textForeground = Color("TextForeground") // text based on theme (dark and light)
+    static let itemListBackground = Color("ItemListBackground")
     
     public static var darkBlue: Color {
         return Color(red: 28 / 255, green: 46 / 255, blue: 74 / 255)

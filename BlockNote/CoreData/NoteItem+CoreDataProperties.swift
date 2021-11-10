@@ -17,7 +17,7 @@ extension NoteItem {
     }
 
     @NSManaged public var noteItemName: String?
-    @NSManaged public var NoteItemText: String?
+    @NSManaged public var noteItemText: String?
     @NSManaged public var noteItemOrder: Int
     
     @NSManaged public var note: Note?
@@ -26,7 +26,7 @@ extension NoteItem {
         noteItemName ?? "Unknown NoteItem name"
     }
     public var wrappedNoteItemText: String {
-        NoteItemText ?? "Unknown text"
+        noteItemText ?? "Unknown text"
     }
     public var wrappedNoteItemOrder: Int {
         noteItemOrder

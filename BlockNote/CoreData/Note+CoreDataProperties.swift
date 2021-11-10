@@ -32,7 +32,7 @@ extension Note {
         noteName ?? "Unknown wrapped NOTE name"
     }
     
-    public var NoteItemArray: [NoteItem] {
+    public var noteItemArray: [NoteItem] {
         let set = noteItems as? Set<NoteItem> ?? []
         return set.sorted {
             $0.wrappedNoteItemName < $1.wrappedNoteItemName
