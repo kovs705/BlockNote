@@ -31,6 +31,7 @@ struct C1NavigationView: View {
     @FetchRequest(entity: Note.entity(), sortDescriptors: [NSSortDescriptor(key: "noteID", ascending: true)], predicate: nil) var notes: FetchedResults<Note>
     
     @FetchRequest(entity: GroupType.entity(), sortDescriptors: [NSSortDescriptor(key: "number", ascending: true)]) var types: FetchedResults<GroupType>
+    // MARK: - Сделать сортировку в обратном порядке
     
     @Environment(\.managedObjectContext) private var viewContext
     

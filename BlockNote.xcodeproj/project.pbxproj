@@ -28,6 +28,7 @@
 		4E901A3926E6813C00249C15 /* BlockNote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E901A3726E6813C00249C15 /* BlockNote.xcdatamodeld */; };
 		4EAE6FD8270E14140018072C /* NoteListDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAE6FD7270E14140018072C /* NoteListDebug.swift */; };
 		4EB197A3273346D7003BDA61 /* buttonTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB197A2273346D7003BDA61 /* buttonTest.swift */; };
+		4EC91E2C273A95C100174E4C /* ItemListObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC91E2B273A95C100174E4C /* ItemListObject.swift */; };
 		4ECB305E272AD5AE003B3483 /* GroupCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECB305D272AD5AE003B3483 /* GroupCreateView.swift */; };
 		4EF0ABAB26FB9458008EF8AE /* GridObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0ABAA26FB9458008EF8AE /* GridObject.swift */; };
 /* End PBXBuildFile section */
@@ -67,6 +68,7 @@
 		4E901A3A26E6813C00249C15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EAE6FD7270E14140018072C /* NoteListDebug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListDebug.swift; sourceTree = "<group>"; };
 		4EB197A2273346D7003BDA61 /* buttonTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = buttonTest.swift; sourceTree = "<group>"; };
+		4EC91E2B273A95C100174E4C /* ItemListObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListObject.swift; sourceTree = "<group>"; };
 		4ECB305D272AD5AE003B3483 /* GroupCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateView.swift; sourceTree = "<group>"; };
 		4EF0ABAA26FB9458008EF8AE /* GridObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,7 +91,7 @@
 				4EF65CA72724B19000708A61 /* groupCreate */,
 				4E7588A2270513E9004B38C1 /* GroupDetailView.swift */,
 				4EAE6FD7270E14140018072C /* NoteListDebug.swift */,
-				4E6F7744270A326700613FCE /* NoteView.swift */,
+				4EF893822739BC3A002C2483 /* Note */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -194,6 +196,15 @@
 			path = groupCreate;
 			sourceTree = "<group>";
 		};
+		4EF893822739BC3A002C2483 /* Note */ = {
+			isa = PBXGroup;
+			children = (
+				4E6F7744270A326700613FCE /* NoteView.swift */,
+				4EC91E2B273A95C100174E4C /* ItemListObject.swift */,
+			);
+			path = Note;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -288,6 +299,7 @@
 				4E5984E9272152CB006F6A7B /* C1NavViewModel.swift in Sources */,
 				4E5984EB272158AF006F6A7B /* Extensions.swift in Sources */,
 				4ECB305E272AD5AE003B3483 /* GroupCreateView.swift in Sources */,
+				4EC91E2C273A95C100174E4C /* ItemListObject.swift in Sources */,
 				4E13C4D926E93E840089D365 /* Note+CoreDataClass.swift in Sources */,
 				4EB197A3273346D7003BDA61 /* buttonTest.swift in Sources */,
 				4EAE6FD8270E14140018072C /* NoteListDebug.swift in Sources */,

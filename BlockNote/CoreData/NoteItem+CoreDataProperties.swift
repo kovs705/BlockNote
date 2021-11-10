@@ -19,6 +19,7 @@ extension NoteItem {
     @NSManaged public var noteItemName: String?
     @NSManaged public var NoteItemText: String?
     @NSManaged public var noteItemOrder: Int
+    
     @NSManaged public var note: Note?
     
     public var wrappedNoteItemName: String {
