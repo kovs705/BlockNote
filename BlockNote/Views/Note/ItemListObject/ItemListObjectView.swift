@@ -27,12 +27,13 @@ struct ItemListObject_Previews: PreviewProvider {
     }
 }
 
-// MARK: -
+// MARK: - item with text
 struct ItemListObjectText: View {
     @ObservedObject var note: Note
     @Binding var itemText: String
     
     var body: some View {
+        
         ZStack {
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color.itemListBackground)
@@ -40,6 +41,7 @@ struct ItemListObjectText: View {
             
             
         }
+        // ZStack
         
     }
     

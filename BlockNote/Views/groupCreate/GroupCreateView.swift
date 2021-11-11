@@ -104,7 +104,7 @@ struct groupCreateView: View {
                                     .cornerRadius(isSelected ? 12.5 : 20)
                                     .shadow(radius: 8)
                                     .overlay(
-                                        RoundedRectangle(cornerRadius: 12.5).stroke(isSelected ? Color.white : Color.clear, lineWidth: 2.0)
+                                        RoundedRectangle(cornerRadius: 12.5).stroke(isSelected ? Color.clear : Color.white, lineWidth: 2.0)
                                     )
                             }
                         }

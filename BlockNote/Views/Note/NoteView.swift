@@ -11,33 +11,52 @@ import CoreData
 struct NoteView: View {
     
     @ObservedObject var note: Note
+    @State private var text = ""
     
     var body: some View {
+        
+        ScrollView(.vertical) {
+            // MARK: - Title and Divider
+            VStack(alignment: .leading) {
+                Text(note.wrappedNoteName)
+                    .font(.title)
+                    .bold()
+                    .padding(.horizontal)
+                Divider()
+                    .padding(10)
+                
+            }
+            
+            ItemListObjectText(note: note, itemText: $text)
+            
+        }
+        
         VStack(alignment: .center) {
             HStack {
                 Text("Note name: ")
                     .bold()
                 Text(note.wrappedNoteName)
             }
-            
+
             HStack {
                 Text("Note ID: ")
                     .bold()
                 Text("\(note.noteID)")
             }
-            
+
             HStack {
                 Text("Note level: ")
                     .bold()
                 Text(note.noteLevel ?? "Nothing on level")
             }
-            
+
             HStack {
                 Text("Note type: ")
                     .bold()
                 Text(note.wrappedNoteType)
             }
         }
+        
     }
 }
 
