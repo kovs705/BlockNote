@@ -32,8 +32,8 @@ extension Note {
         noteName ?? "Unknown wrapped NOTE name"
     }
     
-    public var noteItemArray: [NoteItem] {
-        let set = noteItems as? Set<NoteItem> ?? []
+    public var noteItemArray: [Noteitem] {
+        let set = noteItems as? Set<Noteitem> ?? []
         return set.sorted {
             $0.wrappedNoteItemName < $1.wrappedNoteItemName
         }
