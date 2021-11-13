@@ -21,7 +21,8 @@ struct NoteListDebug: View {
                         
                         ForEach(type.typesOfNoteArray, id: \.self) { note in
                             
-                            NavigationLink(destination: NoteView(note: note)) {
+                            // NavigationLink(destination: NoteView(note: note)) {
+                            NavigationLink(destination: NoteView()) {
                                 HStack {
                                     Text("\(note.wrappedNoteName)")
                                 }

@@ -7,14 +7,25 @@
 
 import SwiftUI
 import CoreData
+import SwiftUIX
+
 
 struct NoteView: View {
     
-    @ObservedObject var note: Note
-    @State private var text = ""
+    // @ObservedObject var note: Note
+    // @State private var text = ""
     
     var body: some View {
-        
+        NavigationView {
+            CocoaScrollView(.vertical) {
+                Text("Hello")
+            }
+            .frame(height: 300)
+            
+        }
+    }
+}
+
 //        ScrollView(.vertical) {
 //            // MARK: - Title and Divider
 //            VStack(alignment: .leading) {
@@ -29,15 +40,15 @@ struct NoteView: View {
 //
 //        }
         
-        ZStack {
-            Text("ae")
-        }
-        .background(Color.greenAvocado)
-            .frame(height: 50)
-        ScrollView {
-            Text("HEllo")
-        }
-        .frame(height: 400)
+//        ZStack {
+//            Text("ae")
+//        }
+//        .background(Color.greenAvocado)
+//            .frame(height: 50)
+//        ScrollView {
+//            Text("HEllo")
+//        }
+//        .frame(height: 400)
 //
 //        ScrollView {
 //            VStack(alignment: .center) {
@@ -69,8 +80,8 @@ struct NoteView: View {
 //        .background(Color.rosePink)
 //        .frame(height: 300)
         
-    }
-}
+    // }
+// }
 
 //struct NoteView_Previews: PreviewProvider {
 //
