@@ -45,10 +45,10 @@ extension Note {
 extension Note {
 
     @objc(addNoteItemsObject:)
-    @NSManaged public func addToNoteItems(_ value: NoteItem)
+    @NSManaged public func addToNoteItems(_ value: Noteitem)
 
     @objc(removeNoteItemsObject:)
-    @NSManaged public func removeFromNoteItems(_ value: NoteItem)
+    @NSManaged public func removeFromNoteItems(_ value: Noteitem)
 
     @objc(addNoteItems:)
     @NSManaged public func addToNoteItems(_ values: NSSet)

@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-
+@objc(GroupType)
 public class GroupType: NSManagedObject {
     @NSManaged var number: Int
 }

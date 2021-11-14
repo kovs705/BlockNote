@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-
+@objc(Note)
 public class Note: NSManagedObject {
     @NSManaged var noteID: Int
 }
