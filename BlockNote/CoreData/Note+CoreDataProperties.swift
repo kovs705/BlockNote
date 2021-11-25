@@ -32,8 +32,8 @@ extension Note {
         noteName ?? "Unknown wrapped NOTE name"
     }
     
-    public var noteItemArray: [Noteitem] {
-        let set = noteItems as? Set<Noteitem> ?? []
+    public var noteItemArray: [NoteItem] {
+        let set = noteItems as? Set<NoteItem> ?? []
         return set.sorted {
             $0.wrappedNoteItemName < $1.wrappedNoteItemName
         }
@@ -45,10 +45,10 @@ extension Note {
 extension Note {
 
     @objc(addNoteItemsObject:)
-    @NSManaged public func addToNoteItems(_ value: Noteitem)
+    @NSManaged public func addToNoteItems(_ value: NoteItem)
 
     @objc(removeNoteItemsObject:)
-    @NSManaged public func removeFromNoteItems(_ value: Noteitem)
+    @NSManaged public func removeFromNoteItems(_ value: NoteItem)
 
     @objc(addNoteItems:)
     @NSManaged public func addToNoteItems(_ values: NSSet)

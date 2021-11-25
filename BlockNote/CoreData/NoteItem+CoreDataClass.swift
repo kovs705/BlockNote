@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-@objc(NoteItem
+// @objc(NoteItem
 public class NoteItem: NSManagedObject {
 
 }
