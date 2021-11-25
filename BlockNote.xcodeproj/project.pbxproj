@@ -22,6 +22,7 @@
 		4E6F7745270A326700613FCE /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6F7744270A326700613FCE /* NoteView.swift */; };
 		4E7588A3270513E9004B38C1 /* GroupDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7588A2270513E9004B38C1 /* GroupDetailView.swift */; };
 		4E75D529273C3C1B00B7806D /* ItemListObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E75D528273C3C1B00B7806D /* ItemListObjectModel.swift */; };
+		4E8FA5432750041700C6F66E /* UINoteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8FA5422750041700C6F66E /* UINoteTableViewController.swift */; };
 		4E901A2D26E6813900249C15 /* BlockNoteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E901A2C26E6813900249C15 /* BlockNoteApp.swift */; };
 		4E901A2F26E6813900249C15 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E901A2E26E6813900249C15 /* ContentView.swift */; };
 		4E901A3126E6813C00249C15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E901A3026E6813C00249C15 /* Assets.xcassets */; };
@@ -30,9 +31,7 @@
 		4E901A3926E6813C00249C15 /* BlockNote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E901A3726E6813C00249C15 /* BlockNote.xcdatamodeld */; };
 		4EAE6FD8270E14140018072C /* NoteListDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAE6FD7270E14140018072C /* NoteListDebug.swift */; };
 		4EB0E6BB274F7716001839F2 /* UINoteView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EB0E6BA274F7716001839F2 /* UINoteView.storyboard */; };
-		4EB0E6BD274F7A2E001839F2 /* UINoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB0E6BC274F7A2E001839F2 /* UINoteViewController.swift */; };
 		4EB197A3273346D7003BDA61 /* buttonTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB197A2273346D7003BDA61 /* buttonTest.swift */; };
-		4EBFAAFA27402395006C0753 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 4EBFAAF927402395006C0753 /* SwiftUIX */; };
 		4EC91E2C273A95C100174E4C /* ItemListObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC91E2B273A95C100174E4C /* ItemListObjectView.swift */; };
 		4ECB305E272AD5AE003B3483 /* GroupCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECB305D272AD5AE003B3483 /* GroupCreateView.swift */; };
 		4EF0ABAB26FB9458008EF8AE /* GridObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0ABAA26FB9458008EF8AE /* GridObject.swift */; };
@@ -65,6 +64,7 @@
 		4E6F7744270A326700613FCE /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		4E7588A2270513E9004B38C1 /* GroupDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailView.swift; sourceTree = "<group>"; };
 		4E75D528273C3C1B00B7806D /* ItemListObjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListObjectModel.swift; sourceTree = "<group>"; };
+		4E8FA5422750041700C6F66E /* UINoteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINoteTableViewController.swift; sourceTree = "<group>"; };
 		4E901A2926E6813900249C15 /* BlockNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlockNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E901A2C26E6813900249C15 /* BlockNoteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockNoteApp.swift; sourceTree = "<group>"; };
 		4E901A2E26E6813900249C15 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -75,7 +75,6 @@
 		4E901A3A26E6813C00249C15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EAE6FD7270E14140018072C /* NoteListDebug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListDebug.swift; sourceTree = "<group>"; };
 		4EB0E6BA274F7716001839F2 /* UINoteView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UINoteView.storyboard; sourceTree = "<group>"; };
-		4EB0E6BC274F7A2E001839F2 /* UINoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINoteViewController.swift; sourceTree = "<group>"; };
 		4EB197A2273346D7003BDA61 /* buttonTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = buttonTest.swift; sourceTree = "<group>"; };
 		4EC91E2B273A95C100174E4C /* ItemListObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListObjectView.swift; sourceTree = "<group>"; };
 		4ECB305D272AD5AE003B3483 /* GroupCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateView.swift; sourceTree = "<group>"; };
@@ -87,7 +86,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EBFAAFA27402395006C0753 /* SwiftUIX in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,7 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				4EB0E6BA274F7716001839F2 /* UINoteView.storyboard */,
-				4EB0E6BC274F7A2E001839F2 /* UINoteViewController.swift */,
+				4E8FA5422750041700C6F66E /* UINoteTableViewController.swift */,
 			);
 			path = "UIKit Views";
 			sourceTree = "<group>";
@@ -252,7 +250,6 @@
 			);
 			name = BlockNote;
 			packageProductDependencies = (
-				4EBFAAF927402395006C0753 /* SwiftUIX */,
 			);
 			productName = BlockNote;
 			productReference = 4E901A2926E6813900249C15 /* BlockNote.app */;
@@ -349,7 +346,7 @@
 				4E6F7745270A326700613FCE /* NoteView.swift in Sources */,
 				4EF0ABAB26FB9458008EF8AE /* GridObject.swift in Sources */,
 				4E13C4DA26E93E840089D365 /* Note+CoreDataProperties.swift in Sources */,
-				4EB0E6BD274F7A2E001839F2 /* UINoteViewController.swift in Sources */,
+				4E8FA5432750041700C6F66E /* UINoteTableViewController.swift in Sources */,
 				4E143215270F0BBD0041A989 /* ListForGroupDetail.swift in Sources */,
 				4E2D626B26F9234500C079D7 /* GroupType+CoreDataClass.swift in Sources */,
 			);
@@ -553,14 +550,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		4EBFAAF927402395006C0753 /* SwiftUIX */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4EBFAAF827402395006C0753 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
-			productName = SwiftUIX;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		4E901A3726E6813C00249C15 /* BlockNote.xcdatamodeld */ = {

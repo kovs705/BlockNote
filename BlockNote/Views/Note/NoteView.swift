@@ -7,7 +7,6 @@
 
 import SwiftUI
 import CoreData
-import SwiftUIX
 
 
 struct NoteView: View {
@@ -16,7 +15,7 @@ struct NoteView: View {
     @State private var text = ""
     
     var body: some View {
-        CocoaScrollView(.vertical, showsIndicators: false) {
+        ScrollView(.vertical, showsIndicators: false) {
             // MARK: - Title and Divider
             VStack(alignment: .leading) {
                 Text(note.wrappedNoteName)
