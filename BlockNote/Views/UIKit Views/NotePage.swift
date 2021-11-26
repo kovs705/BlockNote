@@ -16,7 +16,7 @@ struct NotePage: View {
     @ObservedObject var notes: Note
     
     var body: some View {
-        NotePageViewController()
+        NotePageViewController(notes: [notes])
             
     }
 }

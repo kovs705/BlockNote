@@ -7,15 +7,20 @@
 
 import SwiftUI
 import UIKit
+import CoreData
 
-struct NotePageViewController<NotePages: View>: UIViewControllerRepresentable {
+struct NotePageViewController<NotePages: Note>: UIViewControllerRepresentable {
     
+    var notes: [NotePages]
+    typealias UIViewControllerType = UITableViewController
+    
+    // MARK: - Make
     func makeUIViewController(context: Context) -> UITableViewController {
         let table = UITableViewController()
         return table
     }
     
-    // MARK: -
+    // MARK: - Update
     func updateUIViewController(_ uiViewController: UITableViewController, context: Context) {
         // some code
     }
@@ -25,9 +30,7 @@ struct NotePageViewController<NotePages: View>: UIViewControllerRepresentable {
 //        Coordinator(self)
 //    }
     
-    var notes: [NotePages]
     
-    typealias UIViewControllerType = UITableViewController
     
     
     

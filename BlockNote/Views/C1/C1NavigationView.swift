@@ -122,7 +122,8 @@ struct C1NavigationView: View {
                                 // put the action here:
                                 // C1ViewModel.onDeleting.toggle()
                             // NavigationLink(destination: buttonTest()) {
-                            NavigationLink(destination: NotePage(notes: notes)) {
+                            
+//                            NavigationLink(destination: NotePage(notes: $0)) {
                             //}) {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 10)
@@ -131,7 +132,7 @@ struct C1NavigationView: View {
                                     Image(systemName: "pencil")
                                         .foregroundColor(Color.textForeground)
                                 }
-                            }
+//                            }
                             
                             // MARK: - Changing view button
                             NavigationLink(destination: NoteListDebug()) {
