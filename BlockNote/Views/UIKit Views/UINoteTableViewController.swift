@@ -11,8 +11,8 @@ import CoreData
 class UINoteTableViewController: UITableViewController {
 
     lazy var managedObjectModel: NSManagedObjectModel = {
-            let modelURL = NSBundle.mainBundle().URLForResource("BlockNote", withExtension: "momd")!
-            return NSManagedObjectModel(contentsOfURL: modelURL)!
+        let modelURL = Bundle.main.url(forResource: "BlockNote", withExtension: "xcdatamodeld")!
+        return NSManagedObjectModel(contentsOf: modelURL)!
         }()
 
     override func viewDidLoad() {

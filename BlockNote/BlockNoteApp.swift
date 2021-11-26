@@ -40,7 +40,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             print("Loh")
         }
         return coordinator
-        }()
+    }()
     
     lazy var managedObjectContext: NSManagedObjectContext = {
         let coordinator = self.persistentStoreCoordinator
@@ -52,7 +52,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     lazy var managedObjectModel: NSManagedObjectModel = {
         let modelURL = Bundle.main.url(forResource: "BlockNote", withExtension: "xcdatamodeld")!
         return NSManagedObjectModel(contentsOf: modelURL)!
-        }()
+    }()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
@@ -62,6 +62,18 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         
         return true
     }
+    
+    func saveContext () {
+            if managedObjectContext.hasChanges {
+                do {
+                    try managedObjectContext.save()
+                } catch {
+                    let nserror = error as NSError
+                    NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+                    abort()
+                }
+            }
+        }
     
     
     
