@@ -9,6 +9,7 @@ import SwiftUI
 import UIKit
 import Combine
 import CoreData
+// import SwiftUIKitView
 
 // MARK: - Instructions
     ///
@@ -120,7 +121,8 @@ struct C1NavigationView: View {
                             // Button(action: {
                                 // put the action here:
                                 // C1ViewModel.onDeleting.toggle()
-                            NavigationLink(destination: buttonTest()) {
+                            // NavigationLink(destination: buttonTest()) {
+                            NavigationLink(destination: NotePage(notes: notes)) {
                             //}) {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 10)

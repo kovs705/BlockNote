@@ -34,7 +34,10 @@
 		4EB197A3273346D7003BDA61 /* buttonTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB197A2273346D7003BDA61 /* buttonTest.swift */; };
 		4EC91E2C273A95C100174E4C /* ItemListObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC91E2B273A95C100174E4C /* ItemListObjectView.swift */; };
 		4ECB305E272AD5AE003B3483 /* GroupCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECB305D272AD5AE003B3483 /* GroupCreateView.swift */; };
+		4EDD39F42751590A00AEC8FC /* NotePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDD39F32751590A00AEC8FC /* NotePageViewController.swift */; };
 		4EF0ABAB26FB9458008EF8AE /* GridObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0ABAA26FB9458008EF8AE /* GridObject.swift */; };
+		4EF45C2E275149AF00FBBAFC /* SwiftUIKitView in Frameworks */ = {isa = PBXBuildFile; productRef = 4EF45C2D275149AF00FBBAFC /* SwiftUIKitView */; };
+		4EF45C3127514C0100FBBAFC /* NotePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF45C3027514C0100FBBAFC /* NotePage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,7 +81,9 @@
 		4EB197A2273346D7003BDA61 /* buttonTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = buttonTest.swift; sourceTree = "<group>"; };
 		4EC91E2B273A95C100174E4C /* ItemListObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListObjectView.swift; sourceTree = "<group>"; };
 		4ECB305D272AD5AE003B3483 /* GroupCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateView.swift; sourceTree = "<group>"; };
+		4EDD39F32751590A00AEC8FC /* NotePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotePageViewController.swift; sourceTree = "<group>"; };
 		4EF0ABAA26FB9458008EF8AE /* GridObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridObject.swift; sourceTree = "<group>"; };
+		4EF45C3027514C0100FBBAFC /* NotePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotePage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EF45C2E275149AF00FBBAFC /* SwiftUIKitView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,6 +207,8 @@
 			children = (
 				4EB0E6BA274F7716001839F2 /* UINoteView.storyboard */,
 				4E8FA5422750041700C6F66E /* UINoteTableViewController.swift */,
+				4EF45C3027514C0100FBBAFC /* NotePage.swift */,
+				4EDD39F32751590A00AEC8FC /* NotePageViewController.swift */,
 			);
 			path = "UIKit Views";
 			sourceTree = "<group>";
@@ -250,6 +258,7 @@
 			);
 			name = BlockNote;
 			packageProductDependencies = (
+				4EF45C2D275149AF00FBBAFC /* SwiftUIKitView */,
 			);
 			productName = BlockNote;
 			productReference = 4E901A2926E6813900249C15 /* BlockNote.app */;
@@ -279,7 +288,7 @@
 			);
 			mainGroup = 4E901A2026E6813900249C15;
 			packageReferences = (
-				4EBFAAF827402395006C0753 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
+				4EF45C2C275149AF00FBBAFC /* XCRemoteSwiftPackageReference "SwiftUIKitView" */,
 			);
 			productRefGroup = 4E901A2A26E6813900249C15 /* Products */;
 			projectDirPath = "";
@@ -338,6 +347,8 @@
 				4EC91E2C273A95C100174E4C /* ItemListObjectView.swift in Sources */,
 				4E13C4D926E93E840089D365 /* Note+CoreDataClass.swift in Sources */,
 				4EB197A3273346D7003BDA61 /* buttonTest.swift in Sources */,
+				4EF45C3127514C0100FBBAFC /* NotePage.swift in Sources */,
+				4EDD39F42751590A00AEC8FC /* NotePageViewController.swift in Sources */,
 				4EAE6FD8270E14140018072C /* NoteListDebug.swift in Sources */,
 				4E901A3926E6813C00249C15 /* BlockNote.xcdatamodeld in Sources */,
 				4E101DF426EF3586009800FB /* C1NavigationView.swift in Sources */,
@@ -541,15 +552,23 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		4EBFAAF827402395006C0753 /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
+		4EF45C2C275149AF00FBBAFC /* XCRemoteSwiftPackageReference "SwiftUIKitView" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
+			repositoryURL = "https://github.com/AvdLee/SwiftUIKitView";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4EF45C2D275149AF00FBBAFC /* SwiftUIKitView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4EF45C2C275149AF00FBBAFC /* XCRemoteSwiftPackageReference "SwiftUIKitView" */;
+			productName = SwiftUIKitView;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		4E901A3726E6813C00249C15 /* BlockNote.xcdatamodeld */ = {
