@@ -22,7 +22,7 @@ struct NoteList: UIViewRepresentable {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.dataSource = context.coordinator
         collectionView.delegate = context.coordinator
-        
+        collectionView.register(HostingCell.self, forCellReuseIdentifier: "Cell")
         return collectionView
     }
     
@@ -48,30 +48,33 @@ struct NoteList: UIViewRepresentable {
         // MARK: - Work on cells and add a SwiftUI view here
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let tableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+            let tableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! HostingCell
             
             //let view = // PLACE a SwiftUI view here!!!
             let view = Text(blocks[indexPath.row]).frame(height: 50)
-            let controller = UIHostingController(rootView: view)
             
             
-            
-            let tableCellViewContent = controller.view!
-            
-            tableCellViewContent.translatesAutoresizingMaskIntoConstraints = false
-            tableViewCell.contentView.addSubview(tableCellViewContent)
-            
-            tableCellViewContent.topAnchor.constraint(equalTo: tableViewCell.contentView.topAnchor).isActive            = true
-            tableCellViewContent.leftAnchor.constraint(equalTo: tableViewCell.contentView.leftAnchor).isActive          = true
-            tableCellViewContent.rightAnchor.constraint(equalTo: tableViewCell.contentView.rightAnchor).isActive        = true
-            tableCellViewContent.bottomAnchor.constraint(equalTo: tableViewCell.contentView.bottomAnchor).isActive      = true
-            
+            if tableViewCell.host == nil {
+                let controller = UIHostingController(rootView: AnyView(view))
+                tableViewCell.host = controller
+                
+                let tableCellViewContent = controller.view!
+                
+                tableCellViewContent.translatesAutoresizingMaskIntoConstraints = false
+                tableViewCell.contentView.addSubview(tableCellViewContent)
+                
+                tableCellViewContent.topAnchor.constraint(equalTo: tableViewCell.contentView.topAnchor).isActive            = true
+                tableCellViewContent.leftAnchor.constraint(equalTo: tableViewCell.contentView.leftAnchor).isActive          = true
+                tableCellViewContent.rightAnchor.constraint(equalTo: tableViewCell.contentView.rightAnchor).isActive        = true
+                tableCellViewContent.bottomAnchor.constraint(equalTo: tableViewCell.contentView.bottomAnchor).isActive      = true
+            } else {
+                // other cell, show anything another but SwiftUI too:
+                tableViewCell.host?.rootView = AnyView(view)
+            }
+            tableViewCell.setNeedsLayout()
             return tableViewCell
         }
+        
     }
-    
-    
-    
-    
-    
+
 }
