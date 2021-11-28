@@ -8,27 +8,45 @@
 import SwiftUI
 import CoreData
 
+//class noteList: ObservableObject {
+//    @Published var data: [Note] = [Note]()
+//}
 
 struct NoteView: View {
     
     @ObservedObject var note: Note
     @State private var text = ""
     
+    
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            // MARK: - Title and Divider
-            VStack(alignment: .leading) {
-                Text(note.wrappedNoteName)
-                    .font(.title)
-                    .bold()
-                    .padding(.horizontal)
-                Divider()
-                    .padding(10)
+        VStack (alignment: .leading){
+            Text(note.wrappedNoteName)
+                .font(.title)
+                .bold()
+                .padding(.horizontal)
+            Divider()
+                .padding(10)
+            List {
                 
-                Text("Lorem ipsum dolor sit amet, vocent adipiscing ad qui. Ei eam munere electram, eum repudiare percipitur delicatissimi in. Impetus malorum laoreet ad vim, an vix semper consulatu necessitatibus. Vix virtute recteque ex, ius cu posse praesent imperdiet. Vide vidisse definitionem per cu, no eam congue veniam tantas. Vix eruditi intellegat eu, mea falli admodum tacimates eu. Pro senserit corrumpit eu. Et gubergren constituto pri, mel veniam labore dictas id. Vim sale incorrupte cu, duo in nominavi epicurei, ei iudico deseruisse mea.")
             }
         }
     }
+    
+//    var body: some View {
+//        ScrollView(.vertical, showsIndicators: false) {
+//            // MARK: - Title and Divider
+//            VStack(alignment: .leading) {
+//                Text(note.wrappedNoteName)
+//                    .font(.title)
+//                    .bold()
+//                    .padding(.horizontal)
+//                Divider()
+//                    .padding(10)
+//
+//                Text("Lorem ipsum dolor sit amet, vocent adipiscing ad qui. Ei eam munere electram, eum repudiare percipitur delicatissimi in. Impetus malorum laoreet ad vim, an vix semper consulatu necessitatibus. Vix virtute recteque ex, ius cu posse praesent imperdiet. Vide vidisse definitionem per cu, no eam congue veniam tantas. Vix eruditi intellegat eu, mea falli admodum tacimates eu. Pro senserit corrumpit eu. Et gubergren constituto pri, mel veniam labore dictas id. Vim sale incorrupte cu, duo in nominavi epicurei, ei iudico deseruisse mea.")
+//            }
+//        }
+//    }
 }
         
 //        ZStack {

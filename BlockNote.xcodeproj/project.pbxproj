@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E09EA2E275424A60033BCAD /* NoteViewUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E09EA2D275424A60033BCAD /* NoteViewUI.swift */; };
 		4E101DF426EF3586009800FB /* C1NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E101DF326EF3586009800FB /* C1NavigationView.swift */; };
 		4E13C4D726E93E840089D365 /* NoteItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E13C4D326E93E840089D365 /* NoteItem+CoreDataClass.swift */; };
 		4E13C4D826E93E840089D365 /* NoteItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E13C4D426E93E840089D365 /* NoteItem+CoreDataProperties.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4E09EA2D275424A60033BCAD /* NoteViewUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewUI.swift; sourceTree = "<group>"; };
 		4E101DF326EF3586009800FB /* C1NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NavigationView.swift; sourceTree = "<group>"; };
 		4E131318270F626D00FF6A8D /* CoreDataTest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CoreDataTest.xcodeproj; path = ../../CoreDataTest/CoreDataTest.xcodeproj; sourceTree = "<group>"; };
 		4E13C4D326E93E840089D365 /* NoteItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteItem+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -98,6 +100,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E09EA30275424AB0033BCAD /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				4E09EA2D275424A60033BCAD /* NoteViewUI.swift */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
 		4E101DF526EF358A009800FB /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +219,7 @@
 				4E8FA5422750041700C6F66E /* UINoteTableViewController.swift */,
 				4EF45C3027514C0100FBBAFC /* NotePage.swift */,
 				4EDD39F32751590A00AEC8FC /* NotePageViewController.swift */,
+				4E09EA30275424AB0033BCAD /* Test */,
 			);
 			path = "UIKit Views";
 			sourceTree = "<group>";
@@ -335,6 +346,7 @@
 			files = (
 				4E901A3626E6813C00249C15 /* Persistence.swift in Sources */,
 				4E13C4D726E93E840089D365 /* NoteItem+CoreDataClass.swift in Sources */,
+				4E09EA2E275424A60033BCAD /* NoteViewUI.swift in Sources */,
 				4E901A2F26E6813900249C15 /* ContentView.swift in Sources */,
 				4E75D529273C3C1B00B7806D /* ItemListObjectModel.swift in Sources */,
 				4E7588A3270513E9004B38C1 /* GroupDetailView.swift in Sources */,
