@@ -16,7 +16,19 @@ import CoreData
 ///
 
 
-
+struct EmptyBlockTest: View {
+    
+    @ObservedObject var notes: Note
+    
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 15)
+                .fill(Color.gray)
+                .frame(width: UIScreen.main.bounds.width - 40, height: 80)
+        }
+        .frame(width: UIScreen.main.bounds.width - 40, height: 80)
+    }
+}
 
 
 struct CellNoteView: View {
