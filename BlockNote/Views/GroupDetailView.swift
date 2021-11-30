@@ -126,7 +126,8 @@ struct GroupDetailView: View {
                         .padding()
                     ForEach(self.groupType.typesOfNoteArray, id: \.self) { note in
                         // NavigationLink(destination: NoteView(note: note)) {
-                        NavigationLink(destination: NotePage(notes: note)) {
+                        // NavigationLink(destination: NotePage(notes: note)) {
+                        NavigationLink(destination: NoteList(notes: note)) {
                             HStack {
                                 Text(note.wrappedNoteName)
                                     .foregroundColor(Color.textForeground)

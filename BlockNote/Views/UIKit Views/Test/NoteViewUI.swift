@@ -15,7 +15,9 @@ class HostingCell: UITableViewCell { // just to hold hosting controller
 
 struct NoteList: UIViewRepresentable {
     
-    var blocks: [String]
+    @ObservedObject var notes: Note
+    
+    // var blocks: [String]
     
     func makeUIView(context: Context) -> UITableView {
         let collectionView = UITableView(frame: .zero, style: .plain)
@@ -31,31 +33,44 @@ struct NoteList: UIViewRepresentable {
     }
     
     func makeCoordinator() -> Coordinator {
-        Coordinator(blocks: blocks)
+        // Coordinator(blocks: blocks, notes: notes)
+        Coordinator(notes: notes)
     }
     
     class Coordinator: NSObject, UITableViewDataSource, UITableViewDelegate {
-        var blocks: [String]
+        // var blocks: [String]
+        var notes: Note
         
-        init(blocks: [String]) {
-            self.blocks = blocks
+//        init(blocks: [String], notes: Note) {
+//            self.blocks = blocks
+//            self.notes = notes
+//        }
+        init(notes: Note) {
+            self.notes = notes
         }
         
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            self.blocks.count
+            // self.blocks.count
+            self.notes.accessibilityElementCount()
         }
         
-        // MARK: - Work on cells and add a SwiftUI view here
+        // MARK: - Work on cells and add a SwiftUI view
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let tableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! HostingCell
             
-            //let view = // PLACE a SwiftUI view here!!!
-            let view = Text(blocks[indexPath.row]).frame(height: 50)
+            // MARK: - here
+            // let view = Text(blocks[indexPath.row]).frame(height: 50)
+            
+            // SwiftUI test view (just the text):
+            // for note in notes {
+            let viewTest = CellNoteView(notes: notes)
+            // }
             
             
             if tableViewCell.host == nil {
-                let controller = UIHostingController(rootView: AnyView(view))
+                // let controller = UIHostingController(rootView: AnyView(view))
+                let controller = UIHostingController(rootView: AnyView(viewTest))
                 tableViewCell.host = controller
                 
                 let tableCellViewContent = controller.view!
@@ -69,12 +84,14 @@ struct NoteList: UIViewRepresentable {
                 tableCellViewContent.bottomAnchor.constraint(equalTo: tableViewCell.contentView.bottomAnchor).isActive      = true
             } else {
                 // other cell, show anything another but SwiftUI too:
-                tableViewCell.host?.rootView = AnyView(view)
+                // tableViewCell.host?.rootView = AnyView(view)
+                tableViewCell.host?.rootView = AnyView(viewTest)
             }
             tableViewCell.setNeedsLayout()
             return tableViewCell
         }
         
     }
+    // end of Coordinator
 
 }

@@ -27,8 +27,15 @@ struct NoteView: View {
             Divider()
                 .padding(10)
             List {
-                
+                ForEach(note.noteItemArray, id: \.self) { noteItem in
+                    if noteItem.type == .emptyBlockTest {
+                        
+                    } else {
+                        Text("Nothing to show or the note doesn't have a type)))")
+                    }
+                }
             }
+            .listSectionSeparatorTint(Color.clear)
         }
     }
     
