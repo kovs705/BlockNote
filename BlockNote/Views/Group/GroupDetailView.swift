@@ -15,15 +15,14 @@ import CoreData
     /// --------------------------------
 
 struct GroupDetailView: View {
-    @FetchRequest(entity: Note.entity(), sortDescriptors: [NSSortDescriptor(key: "noteID", ascending: true)]) var notes: FetchedResults<Note>
-    @FetchRequest(entity: GroupType.entity(), sortDescriptors: [NSSortDescriptor(key: "number", ascending: true)]) var types: FetchedResults<GroupType>
+//    @FetchRequest(entity: Note.entity(), sortDescriptors: [NSSortDescriptor(key: "noteID", ascending: true)]) var notes: FetchedResults<Note>
     @ObservedObject var groupType: GroupType
     
     @Environment(\.managedObjectContext) var viewContext
-    @Environment(\.colorScheme) public var detectTheme
-    @Environment(\.defaultMinListRowHeight) var minRowHeight // for the list
+//    @Environment(\.colorScheme) public var detectTheme
+//    @Environment(\.defaultMinListRowHeight) var minRowHeight // for the list
     
-    @State var funcWithNavLink: Bool = false
+    // @State var funcWithNavLink: Bool = false
     
     var body: some View {
         ScrollView(.vertical) {
@@ -125,9 +124,7 @@ struct GroupDetailView: View {
                     Text("HELLO")
                         .padding()
                     ForEach(self.groupType.typesOfNoteArray, id: \.self) { note in
-                        // NavigationLink(destination: NoteView(note: note)) {
-                        // NavigationLink(destination: NotePage(notes: note)) {
-                        NavigationLink(destination: NoteList(notes: note)) {
+                        NavigationLink(destination: NoteView(note: note)) {
                             HStack {
                                 Text(note.wrappedNoteName)
                                     .foregroundColor(Color.textForeground)
@@ -196,7 +193,7 @@ struct GroupDetailView: View {
             }
             
             newNote.noteLevel = "TEST LEVEL" // note lvl or whatever it can be for user
-            newNote.noteID = (notes.last?.noteID ?? 0) + 1 // note id, which will place notes in the right order
+            // newNote.noteID = (notes.last?.noteID ?? 0) + 1 // note id, which will place notes in the right order
             
             newNote.noteName = "CREATED NOTE TEST \(newNote.noteID)" // note name
             newNote.noteIsMarked = false // note isn't marked yet, so user can do it later

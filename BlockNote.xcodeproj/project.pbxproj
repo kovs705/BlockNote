@@ -118,11 +118,10 @@
 			isa = PBXGroup;
 			children = (
 				4EB0E6B8274F76F9001839F2 /* UIKit Views */,
-				4E5984E7272152AF006F6A7B /* C1 */,
-				4EF65CA72724B19000708A61 /* groupCreate */,
-				4E7588A2270513E9004B38C1 /* GroupDetailView.swift */,
-				4EAE6FD7270E14140018072C /* NoteListDebug.swift */,
+				4E5984E7272152AF006F6A7B /* C1Navigation */,
+				4E8F972B2757FD1E0047225E /* Group */,
 				4EF893822739BC3A002C2483 /* Note */,
+				4EAE6FD7270E14140018072C /* NoteListDebug.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -157,14 +156,14 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
-		4E5984E7272152AF006F6A7B /* C1 */ = {
+		4E5984E7272152AF006F6A7B /* C1Navigation */ = {
 			isa = PBXGroup;
 			children = (
 				4E101DF326EF3586009800FB /* C1NavigationView.swift */,
 				4EB197A2273346D7003BDA61 /* buttonTest.swift */,
 				4E5984E8272152CB006F6A7B /* C1NavViewModel.swift */,
 			);
-			path = C1;
+			path = C1Navigation;
 			sourceTree = "<group>";
 		};
 		4E75D52A273C3C2700B7806D /* ItemListObject */ = {
@@ -174,6 +173,15 @@
 				4E75D528273C3C1B00B7806D /* ItemListObjectModel.swift */,
 			);
 			path = ItemListObject;
+			sourceTree = "<group>";
+		};
+		4E8F972B2757FD1E0047225E /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				4ECB305D272AD5AE003B3483 /* GroupCreateView.swift */,
+				4E7588A2270513E9004B38C1 /* GroupDetailView.swift */,
+			);
+			path = Group;
 			sourceTree = "<group>";
 		};
 		4E901A2026E6813900249C15 = {
@@ -238,14 +246,6 @@
 				4E60007C26FD0F7800AFE192 /* BarButton.swift */,
 			);
 			path = Objects;
-			sourceTree = "<group>";
-		};
-		4EF65CA72724B19000708A61 /* groupCreate */ = {
-			isa = PBXGroup;
-			children = (
-				4ECB305D272AD5AE003B3483 /* GroupCreateView.swift */,
-			);
-			path = groupCreate;
 			sourceTree = "<group>";
 		};
 		4EF893822739BC3A002C2483 /* Note */ = {
