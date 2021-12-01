@@ -69,7 +69,7 @@ struct NoteList: UIViewRepresentable {
             
             
             if tableViewCell.host == nil {
-                // let controller = UIHostingController(rootView: AnyView(view))
+                print("Nothing on cells")
                 let controller = UIHostingController(rootView: AnyView(viewTest))
                 tableViewCell.host = controller
                 

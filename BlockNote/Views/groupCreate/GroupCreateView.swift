@@ -170,6 +170,7 @@ struct groupCreateView: View {
             
             for type in types { // for each group in CoreData:
                 if nameOfGroup == type.groupName { // if the name is equal as an existing name
+                    // MARK: - TODO: prevent from creating the group with the same name!!!
                     newGroup.groupName = "THE SAME GROUP"
                 } else if nameOfGroup == "" { // or this name is empty
                     newGroup.groupName = "Unknown group"
