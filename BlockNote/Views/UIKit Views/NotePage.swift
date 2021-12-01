@@ -18,8 +18,7 @@ struct NotePage: View {
     var body: some View {
         
         // add Plus button to create Cell test with EmptyBlockTest!!!!!!!!!!!
-        
-        NotePageViewController(notes: [notes])
+        NotePageViewController(notesPages: [notes], notes: notes)
             
     }
 }
