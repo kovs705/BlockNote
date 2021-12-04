@@ -17,16 +17,16 @@ extension NoteItem {
     }
 
     @NSManaged public var noteItemName: String?
-    @NSManaged public var noteItemText: String?
+    @NSManaged public var noteItemText: String
     
     @NSManaged public var note: Note?
     
     public var wrappedNoteItemName: String {
         noteItemName ?? "Unknown NoteItem name"
     }
-    public var wrappedNoteItemText: String {
-        noteItemText ?? "Unknown text"
-    }
+//    public var wrappedNoteItemText: String {
+//        noteItemText ?? "Unknown text"
+//    }
     public var wrappedNoteItemOrder: Int {
         noteItemOrder
     }

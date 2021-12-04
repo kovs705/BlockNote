@@ -19,6 +19,8 @@ struct NoteView: View {
     
     @ObservedObject var note: Note
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @Environment(\.managedObjectContext) private var viewContext
+    
     var buttonBack: some View {
         Button(action: {
             self.presentationMode.wrappedValue.dismiss()
@@ -29,6 +31,15 @@ struct NoteView: View {
         }
     }
     // "chevron.left.circle.fill"
+    var buttonCreate: some View {
+        Button(action: {
+            createNoteItem()
+        }) {
+            Image(systemName: "plus")
+                .font(.system(size: 19))
+                .foregroundColor(returnColorFromString(nameOfColor: note.typeOfNote?.groupColor ?? "GreenAvocado"))
+        }
+    }
     
     var body: some View {
         ScrollView {
@@ -53,6 +64,24 @@ struct NoteView: View {
         
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: buttonBack)
+        .navigationBarItems(trailing: buttonCreate)
+    }
+    
+    func createNoteItem() {
+        let newNoteItem = NoteItem(context: viewContext)
+        newNoteItem.noteItemName = "New Note Item"
+        newNoteItem.noteItemText = "Some text to show in preview of the NoteItem just for debugging bla bla bla"
+        newNoteItem.noteItemOrder = (note.noteItemArray.last?.noteItemOrder ?? 0) + 1
+        newNoteItem.type = .textBlock
+        
+        do {
+            try self.viewContext.save()
+            print("NoteItem is added!")
+        } catch {
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
+        
     }
 }
 
