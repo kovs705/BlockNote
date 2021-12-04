@@ -23,11 +23,12 @@ struct NoteView: View {
         Button(action: {
             self.presentationMode.wrappedValue.dismiss()
         }) {
-            Image(systemName: "chevron.left.circle.fill")
-                .font(.system(size: 17))
-                .foregroundColor(.red)
+            Image(systemName: "chevron.backward")
+                .font(.system(size: 19))
+                .foregroundColor(returnColorFromString(nameOfColor: note.typeOfNote?.groupColor ?? "GreenAvocado"))
         }
     }
+    // "chevron.left.circle.fill"
     
     var body: some View {
         ScrollView {
@@ -50,9 +51,8 @@ struct NoteView: View {
         }
         // ScrollView
         
-        .navigationBarHidden(true)
-        .navigationBarItems(leading: buttonBack)
         .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: buttonBack)
     }
 }
 
