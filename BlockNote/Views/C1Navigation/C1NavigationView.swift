@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import UIKit
 import Combine
 import CoreData
 // import SwiftUIKitView
@@ -36,19 +35,17 @@ struct C1NavigationView: View {
     
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     @State var time = Timer.publish(every: 0, on: .main, in: .tracking).autoconnect()
-    
+    // MARK: - !!!
     @StateObject private var C1ViewModel = C1NavViewModel() // MVVM
     
     @State private var showAddGroupSheet: Bool = false
     @State private var color: Color = .greenAvocado
     @State private var nameOfGroup = ""
-    @State private var numberOfGroup = 0
     
     // MARK: - Body
     var body: some View {
         NavigationView {
             ZStack {
-                
                 Color.darkBack
                 ScrollView(.vertical, showsIndicators: false) {
                     HStack {
