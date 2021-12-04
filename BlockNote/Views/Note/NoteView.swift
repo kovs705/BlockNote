@@ -18,15 +18,28 @@ import CoreData
 struct NoteView: View {
     
     @ObservedObject var note: Note
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    var buttonBack: some View {
+        Button(action: {
+            self.presentationMode.wrappedValue.dismiss()
+        }) {
+            Image(systemName: "chevron.left.circle.fill")
+                .font(.system(size: 17))
+                .foregroundColor(.red)
+        }
+    }
     
     var body: some View {
         ScrollView {
-            VStack {
+            VStack(alignment: .leading) {
                 Text(note.wrappedNoteName)
                     .bold()
                     .font(.title)
+                    .padding(.horizontal)
+                
                 Divider()
-                    .padding(10)
+                    .foregroundColor(Color.gray)
+                    .padding(.horizontal)
                 
                 ForEach(note.noteItemArray, id: \.self) { noteItem in
                     Text(noteItem.wrappedNoteItemName)
@@ -36,6 +49,10 @@ struct NoteView: View {
             // VStack
         }
         // ScrollView
+        
+        .navigationBarHidden(true)
+        .navigationBarItems(leading: buttonBack)
+        .navigationBarBackButtonHidden(true)
     }
 }
 
