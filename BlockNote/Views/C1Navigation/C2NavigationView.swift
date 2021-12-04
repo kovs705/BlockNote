@@ -66,6 +66,21 @@ struct C2NavigationView: View {
                     }
                     .frame(height: 40)
                     
+                    // MARK: - Statistics and Sheet
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(Color.lightPart)
+                            .frame(width: UIScreen.main.bounds.width - 85, height: 200)
+                            .shadow(color: Color.black.opacity(0.3), radius: 10, x: 0, y: 5)
+                        Button(action: {
+                            showAddGroupSheet.toggle()
+                            // self.addItem()
+                        }) {
+                            Text("Add group")
+                        }
+                    }
+                    .frame(height: 250)
+                    
                     // MARK: - Groups
                     LazyVGrid(columns: columns, spacing: 10) {
                         ForEach(types, id: \.self) { type in
@@ -93,6 +108,10 @@ struct C2NavigationView: View {
             //ZStack
         }
         // NavigationView
+        .sheet(isPresented: $showAddGroupSheet) {
+            groupCreateView(chosenColor: $color, nameOfGroup: $nameOfGroup)
+        }
+        .navigationTitle("")
     }
     
     // MARK: - Functions
