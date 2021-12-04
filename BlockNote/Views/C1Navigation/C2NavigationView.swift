@@ -16,7 +16,7 @@ struct C2NavigationView: View {
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     @State var time = Timer.publish(every: 0, on: .main, in: .tracking).autoconnect()
     // MARK: - !!!
-    @StateObject private var C1ViewModel = C1NavViewModel() // MVVM
+    @StateObject private var C2ViewModel = C2NavViewModel() // MVVM
     
     @State private var showAddGroupSheet: Bool = false
     @State private var color: Color = .greenAvocado
@@ -32,12 +32,45 @@ struct C2NavigationView: View {
                     }
                     .frame(height: 90)
                     
+                    // MARK: - geometryGreeting
+                    GeometryReader { geometry in
+                        HStack {
+                            Spacer()
+                            VStack(alignment: .center) {
+                                Text(C2ViewModel.greeting)
+                                    .bold()
+                                    .lineLimit(1)
+                                    .font(.system(size: 28))
+                                    .onAppear(perform: {
+                                        C2ViewModel.showGreeting()
+                                        
+                                    })
+                                    // .animation(.easeInOut)
+                            }
+                            .onReceive(self.time) { (_) in
+                                // to see if user scrolled downwards and doesn't see the greeting:
+                                let Y = geometry.frame(in: .global).minY
+                                if -Y > (UIScreen.main.bounds.height / 8) - 90 {
+                                    withAnimation(.easeInOut) {
+                                        C2ViewModel.showBar = true
+                                    }
+                                } else {
+                                    withAnimation(.easeInOut) {
+                                        C2ViewModel.showBar = false
+                                    }
+                                }
+                            }
+                            Spacer()
+                        }
+                        // end of HStack
+                    }
+                    .frame(height: 40)
+                    
+                    // MARK: - Groups
                     LazyVGrid(columns: columns, spacing: 10) {
                         ForEach(types, id: \.self) { type in
                             // transition to the DetailView:
                             NavigationLink(destination: GroupDetailView(groupType: type)) {
-                                
-                                // TODO: - sort objects to avoid the same types:
                                 
                                 ZStack {
                                     GridObject(groupType: type)
