@@ -130,15 +130,15 @@ struct C1NavigationView: View {
 //                            }
                             
                             // MARK: - Changing view button
-                            NavigationLink(destination: NoteListDebug()) {
-                                ZStack {
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .fill(Color.lightPart)
-                                        .frame(width: 35, height: 35)
-                                    Image(systemName: "lineweight")
-                                        .foregroundColor(Color.textForeground)
-                                }
-                            }
+//                            NavigationLink(destination: NoteListDebug()) {
+//                                ZStack {
+//                                    RoundedRectangle(cornerRadius: 10)
+//                                        .fill(Color.lightPart)
+//                                        .frame(width: 35, height: 35)
+//                                    Image(systemName: "lineweight")
+//                                        .foregroundColor(Color.textForeground)
+//                                }
+//                            }
                             
                         }
                         .frame(width: UIScreen.main.bounds.width - 50)

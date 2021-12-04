@@ -15,7 +15,7 @@ struct BlockNoteApp: App {
     
     var body: some Scene {
         WindowGroup {
-            C2NavigationView()
+            C1NavigationView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

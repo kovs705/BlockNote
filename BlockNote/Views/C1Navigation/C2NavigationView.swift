@@ -81,6 +81,35 @@ struct C2NavigationView: View {
                     }
                     .frame(height: 250)
                     
+                    // MARK: - Buttons
+                    HStack {
+                        Text("List of groups")
+                            .font(.system(size: 22))
+                            .bold()
+                        Spacer()
+                        
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color.lightPart)
+                                .frame(width: 35, height: 35)
+                            Image(systemName: "pencil")
+                                .foregroundColor(Color.textForeground)
+                        }
+                        
+//                        NavigationLink(destination: NoteListDebug()) {
+//                            ZStack {
+//                                RoundedRectangle(cornerRadius: 10)
+//                                    .fill(Color.lightPart)
+//                                    .frame(width: 35, height: 35)
+//                                Image(systemName: "lineweight")
+//                                
+//                                    .foregroundColor(Color.textForeground)
+//                            }
+//                        }
+                        
+                    }
+                    .frame(width: UIScreen.main.bounds.width - 50)
+                    
                     // MARK: - Groups
                     LazyVGrid(columns: columns, spacing: 10) {
                         ForEach(types, id: \.self) { type in
