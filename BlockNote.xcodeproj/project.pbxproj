@@ -43,20 +43,9 @@
 		4EF45C3127514C0100FBBAFC /* NotePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF45C3027514C0100FBBAFC /* NotePage.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		4E13131C270F626E00FF6A8D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4E131318270F626D00FF6A8D /* CoreDataTest.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 4E131301270F626A00FF6A8D;
-			remoteInfo = CoreDataTest;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		4E09EA2D275424A60033BCAD /* NoteViewUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewUI.swift; sourceTree = "<group>"; };
 		4E101DF326EF3586009800FB /* C1NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NavigationView.swift; sourceTree = "<group>"; };
-		4E131318270F626D00FF6A8D /* CoreDataTest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CoreDataTest.xcodeproj; path = ../../CoreDataTest/CoreDataTest.xcodeproj; sourceTree = "<group>"; };
 		4E13C4D326E93E840089D365 /* NoteItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4E13C4D426E93E840089D365 /* NoteItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4E13C4D526E93E840089D365 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -126,22 +115,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		4E1312F7270F624D00FF6A8D /* Test */ = {
-			isa = PBXGroup;
-			children = (
-				4E131318270F626D00FF6A8D /* CoreDataTest.xcodeproj */,
-			);
-			path = Test;
-			sourceTree = "<group>";
-		};
-		4E131319270F626D00FF6A8D /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				4E13131D270F626E00FF6A8D /* CoreDataTest.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		4E13C4D226E937360089D365 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,7 +161,6 @@
 			isa = PBXGroup;
 			children = (
 				4E901A2B26E6813900249C15 /* BlockNote */,
-				4E1312F7270F624D00FF6A8D /* Test */,
 				4E901A2A26E6813900249C15 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -309,28 +281,12 @@
 			);
 			productRefGroup = 4E901A2A26E6813900249C15 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 4E131319270F626D00FF6A8D /* Products */;
-					ProjectRef = 4E131318270F626D00FF6A8D /* CoreDataTest.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				4E901A2826E6813900249C15 /* BlockNote */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		4E13131D270F626E00FF6A8D /* CoreDataTest.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = CoreDataTest.app;
-			remoteRef = 4E13131C270F626E00FF6A8D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		4E901A2726E6813900249C15 /* Resources */ = {
