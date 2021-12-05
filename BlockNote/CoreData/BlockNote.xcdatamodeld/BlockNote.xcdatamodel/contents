@@ -24,7 +24,7 @@
         <attribute name="noteItemName" optional="YES" attributeType="String"/>
         <attribute name="noteItemOrder" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="noteItemText" attributeType="String" defaultValueString="&quot;&quot;"/>
-        <attribute name="noteItemType" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="noteItemType" optional="YES" attributeType="String"/>
         <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="noteItems" inverseEntity="Note"/>
     </entity>
     <elements>

@@ -11,25 +11,25 @@ import CoreData
 
 // @objc(NoteItem
 
-enum NoteItemType: Int {
-    case textBlock
-    case vocabularyBlock
-    case countDownBlock
-    case emptyBlockTest
-    // and so on
-}
+//enum NoteItemType: Int {
+//    case textBlock
+//    case vocabularyBlock
+//    case countDownBlock
+//    case emptyBlockTest
+//    // and so on
+//}
 
 public class NoteItem: NSManagedObject {
     @NSManaged var noteItemOrder: Int
     // @NSManaged fileprivate var noteTypeValue: Int
-    @NSManaged fileprivate var noteItemType: Int
+    // @NSManaged var noteItemType: Int
     
-    var type: NoteItemType {
-        get {
-            return NoteItemType(rawValue: noteItemType) ?? .emptyBlockTest
-        }
-        set {
-            noteItemType = newValue.rawValue
-        }
-    }
+//    var type: NoteItemType {
+//        get {
+//            return NoteItemType(rawValue: noteItemType) ?? .emptyBlockTest
+//        }
+//        set {
+//            noteItemType = newValue.rawValue
+//        }
+//    }
 }

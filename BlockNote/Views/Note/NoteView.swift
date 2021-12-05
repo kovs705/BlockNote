@@ -54,7 +54,8 @@ struct NoteView: View {
                     .padding(.horizontal)
                 
                 ForEach(note.noteItemArray, id: \.self) { noteItem in
-                    Text(noteItem.wrappedNoteItemName)
+                    NoteItemObject(noteItem: noteItem)
+                    // Text(noteItem.wrappedNoteItemName)
                 }
                 
             }
@@ -71,8 +72,11 @@ struct NoteView: View {
         let newNoteItem = NoteItem(context: viewContext)
         newNoteItem.noteItemName = "New Note Item"
         newNoteItem.noteItemText = "Some text to show in preview of the NoteItem just for debugging bla bla bla"
-        newNoteItem.noteItemOrder = (note.noteItemArray.last?.noteItemOrder ?? 0) + 1
-        newNoteItem.type = .textBlock
+        // newNoteItem.noteItemOrder = (note.noteItemArray.last?.noteItemOrder ?? 0) + 1
+        newNoteItem.noteItemType = "textBlock"
+        
+        
+        self.note.addObject(value: newNoteItem, forKey: "noteItems")
         
         do {
             try self.viewContext.save()

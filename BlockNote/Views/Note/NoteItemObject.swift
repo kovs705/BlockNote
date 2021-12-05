@@ -17,17 +17,21 @@ struct NoteItemObject: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var noteItem: NoteItem
+    @State var textString = ""
     
     var body: some View {
-        if noteItem.type == .textBlock {
-            ZStack {
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(Color.darkBack)
-                TextEditor(text: $noteItem.noteItemText) // can be buggy
-                    .onSubmit {
-                        try? viewContext.save()
-                    }
-            }
+        if noteItem.noteItemType == "textBlock" {
+            TextEditor(text: $noteItem.noteItemText) // can be buggy
+                .onSubmit {
+                    let textString = noteItem.noteItemText
+                    noteItem.noteItemText = textString
+                    try? viewContext.save()
+                }
+                .padding()
+                .frame(width: UIScreen.main.bounds.width - 30)
+                .cornerRadius(15)
+        } else {
+            Text(noteItem.wrappedNoteItemName)
         }
         
     }
@@ -42,7 +46,8 @@ struct NoteItemObject_Previews: PreviewProvider {
         newNoteItem.noteItemName = "Preview note name"
         newNoteItem.noteItemText = "Some text to show in preview of the NoteItem just for debugging bla bla bla"
         newNoteItem.noteItemOrder = 1
-        newNoteItem.type = .textBlock
+        newNoteItem.noteItemType = "textBlock"
+
         
         return NavigationView {
             NoteItemObject(noteItem: newNoteItem)
