@@ -17,6 +17,8 @@
 		4E21170E273E712F00A2A292 /* C1NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E21170D273E712F00A2A292 /* C1NoteView.swift */; };
 		4E2D626B26F9234500C079D7 /* GroupType+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2D626926F9234500C079D7 /* GroupType+CoreDataClass.swift */; };
 		4E2D626C26F9234500C079D7 /* GroupType+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2D626A26F9234500C079D7 /* GroupType+CoreDataProperties.swift */; };
+		4E52E466275E3DB300CA7EA3 /* Fuse in Frameworks */ = {isa = PBXBuildFile; productRef = 4E52E465275E3DB300CA7EA3 /* Fuse */; };
+		4E52E46A275E3F6E00CA7EA3 /* CoreStore in Frameworks */ = {isa = PBXBuildFile; productRef = 4E52E469275E3F6E00CA7EA3 /* CoreStore */; };
 		4E5984E9272152CB006F6A7B /* C1NavViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5984E8272152CB006F6A7B /* C1NavViewModel.swift */; };
 		4E5984EB272158AF006F6A7B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5984EA272158AF006F6A7B /* Extensions.swift */; };
 		4E59C7EF275BC57800162A4B /* NoteItemObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59C7EE275BC57800162A4B /* NoteItemObject.swift */; };
@@ -35,7 +37,6 @@
 		4EB197A3273346D7003BDA61 /* buttonTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB197A2273346D7003BDA61 /* buttonTest.swift */; };
 		4ECB305E272AD5AE003B3483 /* GroupCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECB305D272AD5AE003B3483 /* GroupCreateView.swift */; };
 		4EF0ABAB26FB9458008EF8AE /* GridObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0ABAA26FB9458008EF8AE /* GridObject.swift */; };
-		4EF45C2E275149AF00FBBAFC /* SwiftUIKitView in Frameworks */ = {isa = PBXBuildFile; productRef = 4EF45C2D275149AF00FBBAFC /* SwiftUIKitView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,7 +77,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EF45C2E275149AF00FBBAFC /* SwiftUIKitView in Frameworks */,
+				4E52E466275E3DB300CA7EA3 /* Fuse in Frameworks */,
+				4E52E46A275E3F6E00CA7EA3 /* CoreStore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,7 +218,8 @@
 			);
 			name = BlockNote;
 			packageProductDependencies = (
-				4EF45C2D275149AF00FBBAFC /* SwiftUIKitView */,
+				4E52E465275E3DB300CA7EA3 /* Fuse */,
+				4E52E469275E3F6E00CA7EA3 /* CoreStore */,
 			);
 			productName = BlockNote;
 			productReference = 4E901A2926E6813900249C15 /* BlockNote.app */;
@@ -246,7 +249,9 @@
 			);
 			mainGroup = 4E901A2026E6813900249C15;
 			packageReferences = (
-				4EF45C2C275149AF00FBBAFC /* XCRemoteSwiftPackageReference "SwiftUIKitView" */,
+				4E52E463275E3D7E00CA7EA3 /* XCRemoteSwiftPackageReference "Highlightr" */,
+				4E52E464275E3DB300CA7EA3 /* XCRemoteSwiftPackageReference "fuse-swift" */,
+				4E52E468275E3F6E00CA7EA3 /* XCRemoteSwiftPackageReference "CoreStore" */,
 			);
 			productRefGroup = 4E901A2A26E6813900249C15 /* Products */;
 			projectDirPath = "";
@@ -492,21 +497,42 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		4EF45C2C275149AF00FBBAFC /* XCRemoteSwiftPackageReference "SwiftUIKitView" */ = {
+		4E52E463275E3D7E00CA7EA3 /* XCRemoteSwiftPackageReference "Highlightr" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AvdLee/SwiftUIKitView";
+			repositoryURL = "https://github.com/raspu/Highlightr";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		4E52E464275E3DB300CA7EA3 /* XCRemoteSwiftPackageReference "fuse-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/krisk/fuse-swift";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.0.0;
 			};
 		};
+		4E52E468275E3F6E00CA7EA3 /* XCRemoteSwiftPackageReference "CoreStore" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JohnEstropia/CoreStore";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4EF45C2D275149AF00FBBAFC /* SwiftUIKitView */ = {
+		4E52E465275E3DB300CA7EA3 /* Fuse */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4EF45C2C275149AF00FBBAFC /* XCRemoteSwiftPackageReference "SwiftUIKitView" */;
-			productName = SwiftUIKitView;
+			package = 4E52E464275E3DB300CA7EA3 /* XCRemoteSwiftPackageReference "fuse-swift" */;
+			productName = Fuse;
+		};
+		4E52E469275E3F6E00CA7EA3 /* CoreStore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E52E468275E3F6E00CA7EA3 /* XCRemoteSwiftPackageReference "CoreStore" */;
+			productName = CoreStore;
 		};
 /* End XCSwiftPackageProductDependency section */
 
