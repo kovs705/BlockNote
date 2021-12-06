@@ -18,6 +18,7 @@ struct NoteItemObject: View {
     @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var noteItem: NoteItem
     @State var textString = ""
+    @FocusState var isInputActive: Bool
     
     var body: some View {
         if noteItem.noteItemType == "textBlock" {
@@ -26,6 +27,18 @@ struct NoteItemObject: View {
                     let textString = noteItem.noteItemText
                     noteItem.noteItemText = textString
                     try? viewContext.save()
+                }
+                .focused($isInputActive)
+                .toolbar {
+                    ToolbarItemGroup(placement: .keyboard) {
+                        Spacer()
+                        
+                        Button("Done") {
+                            isInputActive = false
+                            hideKeyboard()
+                            try? viewContext.save()
+                        }
+                    }
                 }
                 .padding()
                 .frame(width: UIScreen.main.bounds.width - 30)
@@ -36,6 +49,14 @@ struct NoteItemObject: View {
         
     }
 }
+
+#if canImport(UIKit)
+extension View {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+#endif
 
 struct NoteItemObject_Previews: PreviewProvider {
     
