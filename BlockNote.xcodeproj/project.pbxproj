@@ -24,6 +24,7 @@
 		4E59C7EF275BC57800162A4B /* NoteItemObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59C7EE275BC57800162A4B /* NoteItemObject.swift */; };
 		4E60007D26FD0F7800AFE192 /* BarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E60007C26FD0F7800AFE192 /* BarButton.swift */; };
 		4E6F7745270A326700613FCE /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6F7744270A326700613FCE /* NoteView.swift */; };
+		4E6F943F275E9EEC00979CDA /* UITextViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6F943E275E9EEC00979CDA /* UITextViewContainer.swift */; };
 		4E7588A3270513E9004B38C1 /* GroupDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7588A2270513E9004B38C1 /* GroupDetailView.swift */; };
 		4E901A2D26E6813900249C15 /* BlockNoteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E901A2C26E6813900249C15 /* BlockNoteApp.swift */; };
 		4E901A2F26E6813900249C15 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E901A2E26E6813900249C15 /* ContentView.swift */; };
@@ -55,6 +56,7 @@
 		4E59C7EE275BC57800162A4B /* NoteItemObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteItemObject.swift; sourceTree = "<group>"; };
 		4E60007C26FD0F7800AFE192 /* BarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarButton.swift; sourceTree = "<group>"; };
 		4E6F7744270A326700613FCE /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
+		4E6F943E275E9EEC00979CDA /* UITextViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewContainer.swift; sourceTree = "<group>"; };
 		4E7588A2270513E9004B38C1 /* GroupDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailView.swift; sourceTree = "<group>"; };
 		4E901A2926E6813900249C15 /* BlockNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlockNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E901A2C26E6813900249C15 /* BlockNoteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockNoteApp.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				4E09EA2D275424A60033BCAD /* NoteViewUI.swift */,
 				4E95CB5F2755747A0011D076 /* CellNoteView.swift */,
 				4E95CB6227557A260011D076 /* CellNoteViewModel.swift */,
+				4E6F943E275E9EEC00979CDA /* UITextViewContainer.swift */,
 			);
 			path = "UIKit Views";
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				4E13C4D726E93E840089D365 /* NoteItem+CoreDataClass.swift in Sources */,
 				4E09EA2E275424A60033BCAD /* NoteViewUI.swift in Sources */,
 				4E59C7EF275BC57800162A4B /* NoteItemObject.swift in Sources */,
+				4E6F943F275E9EEC00979CDA /* UITextViewContainer.swift in Sources */,
 				4E901A2F26E6813900249C15 /* ContentView.swift in Sources */,
 				4E7588A3270513E9004B38C1 /* GroupDetailView.swift in Sources */,
 				4E2D626C26F9234500C079D7 /* GroupType+CoreDataProperties.swift in Sources */,

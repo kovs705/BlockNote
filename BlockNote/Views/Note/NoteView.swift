@@ -15,6 +15,14 @@
 import SwiftUI
 import CoreData
 
+#if canImport(UIKit)
+extension View {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+#endif
+
 struct NoteView: View {
     
     @ObservedObject var note: Note
@@ -53,10 +61,11 @@ struct NoteView: View {
                     .foregroundColor(Color.gray)
                     .padding(.horizontal)
                 
-                ForEach(note.noteItemArray, id: \.self) { noteItem in
-                    NoteItemObject(noteItem: noteItem)
-                    // Text(noteItem.wrappedNoteItemName)
-                }
+                    ForEach(note.noteItemArray, id: \.self) { noteItem in
+                        // NoteItemObject(noteItem: noteItem)
+                        UITextViewContainer(noteItem: noteItem)
+                        
+                    }
                 
             }
             // VStack

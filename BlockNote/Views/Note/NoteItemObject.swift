@@ -23,18 +23,13 @@ struct NoteItemObject: View {
     var body: some View {
         if noteItem.noteItemType == "textBlock" {
             TextEditor(text: $noteItem.noteItemText) // can be buggy
-                .onSubmit {
-                    let textString = noteItem.noteItemText
-                    noteItem.noteItemText = textString
-                    try? viewContext.save()
-                }
-                .focused($isInputActive)
+                // .focused($isInputActive)
                 .toolbar {
                     ToolbarItemGroup(placement: .keyboard) {
                         Spacer()
                         
                         Button("Done") {
-                            isInputActive = false
+                            // isInputActive = false
                             hideKeyboard()
                             try? viewContext.save()
                         }
@@ -50,13 +45,7 @@ struct NoteItemObject: View {
     }
 }
 
-#if canImport(UIKit)
-extension View {
-    func hideKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
-}
-#endif
+
 
 struct NoteItemObject_Previews: PreviewProvider {
     
