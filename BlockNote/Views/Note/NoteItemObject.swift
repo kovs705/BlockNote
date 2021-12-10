@@ -24,17 +24,6 @@ struct NoteItemObject: View {
         if noteItem.noteItemType == "textBlock" {
             TextEditor(text: $noteItem.noteItemText) // can be buggy
                 // .focused($isInputActive)
-                .toolbar {
-                    ToolbarItemGroup(placement: .keyboard) {
-                        Spacer()
-                        
-                        Button("Done") {
-                            // isInputActive = false
-                            hideKeyboard()
-                            try? viewContext.save()
-                        }
-                    }
-                }
                 .padding()
                 .frame(width: UIScreen.main.bounds.width - 30)
                 .cornerRadius(15)

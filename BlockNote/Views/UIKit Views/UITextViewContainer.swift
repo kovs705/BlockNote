@@ -16,6 +16,7 @@ struct UITextViewContainer: UIViewRepresentable {
         let textView = UITextView()
         textView.isScrollEnabled = false
         textView.isEditable = true
+        textView.font = .systemFont(ofSize: 16)
         return textView
     }
     func updateUIView(_ uiView: UITextView, context: UIViewRepresentableContext<Self>) {
