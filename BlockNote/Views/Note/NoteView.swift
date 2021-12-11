@@ -15,6 +15,7 @@
 import SwiftUI
 import CoreData
 import UIKit
+import UniformTypeIdentifiers // for moving noteItemObjects
 
 struct NoteView: View {
     
@@ -22,12 +23,19 @@ struct NoteView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @Environment(\.managedObjectContext) private var viewContext
     
+//    @State var draggedObject: NoteItem
+//    
+//    lazy var noteItemObjects = note.noteItemArray.sorted {
+//        $0.noteItemOrder < $1.noteItemOrder
+//    }
+    
     // MARK: - Gesture
     @GestureState var swipeToTheRight = false
 //    var swipeGesture: some Gesture {
 //        // UISwipeGestureRecognizer()
 //    }
     
+    // MARK: - buttons back and add
     var buttonBack: some View {
         Button(action: {
             self.presentationMode.wrappedValue.dismiss()
@@ -48,6 +56,7 @@ struct NoteView: View {
         }
     }
     
+    // MARK: Body
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -60,12 +69,13 @@ struct NoteView: View {
                     .foregroundColor(Color.gray)
                     .padding(.horizontal)
                 
-                List {
+                LazyVStack {
                     ForEach(note.noteItemArray, id: \.self) { noteItem in
                         NoteItemObject(noteItem: noteItem)
-                        
-                        // UITextViewContainer(noteItem: noteItem)
-                        //
+//                            .onDrag({
+//                                self.draggedObject = NoteItemObject
+//                                return NSItemProvider(item: nil, typeIdentifier: NoteItemObject)
+//                            })
                     }
                     
                 }
@@ -125,18 +135,44 @@ extension View {
 }
 #endif
 
-struct NoteView_Previews: PreviewProvider {
-    
-    static let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-    
-    static var previews: some View {
-        let note = Note(context: moc)
-        note.noteIsMarked = false
-        note.noteName = "Preview Name"
-        note.noteType = "Preview type"
-        
-        return NavigationView {
-            NoteView(note: note)
+//struct NoteView_Previews: PreviewProvider {
+//
+//    static let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+//
+//    static var previews: some View {
+//        let note = Note(context: moc)
+//        note.noteIsMarked = false
+//        note.noteName = "Preview Name"
+//        note.noteType = "Preview type"
+//
+//        return NavigationView {
+//            NoteView(note: note)
+//        }
+//    }
+//}
+
+// MARK: - Drag and Drop delegate
+struct DragAndDropDelegate : DropDelegate {
+
+    let item : NoteItem
+    @Binding var items : [NoteItem]
+    @Binding var draggedItem : NoteItem?
+
+    func performDrop(info: DropInfo) -> Bool {
+        return true
+    }
+
+    func dropEntered(info: DropInfo) {
+        guard let draggedItem = self.draggedItem else {
+            return
+        }
+
+        if draggedItem != item {
+            let from = items.firstIndex(of: draggedItem)!
+            let to = items.firstIndex(of: item)!
+            withAnimation(.default) {
+                self.items.move(fromOffsets: IndexSet(integer: from), toOffset: to > from ? to + 1 : to)
+            }
         }
     }
 }
