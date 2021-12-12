@@ -24,7 +24,7 @@ public class NoteItem: NSManagedObject {
     // @NSManaged fileprivate var noteTypeValue: Int
     // @NSManaged var noteItemType: Int
     
-//    var type: NoteItemType {
+//    var type: NoteItemType {/Users/pk/Documents/BigPP/BlockNote app/BlockNote app/CoreData/Note/Note+CoreDataClass.swift
 //        get {
 //            return NoteItemType(rawValue: noteItemType) ?? .emptyBlockTest
 //        }
