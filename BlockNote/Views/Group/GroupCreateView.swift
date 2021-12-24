@@ -34,7 +34,7 @@ struct groupCreateView: View {
 //        self._chosenColor = chosenColor
 //    }
     
-    let colorToPick: [Color] = [.blueBerry, .brownSugar, .greenAvocado, .greyCloud, .purpleBlackBerry, .redStrawBerry, .rosePink, .yellowLemon]
+    let colorToPick: [String] = ["BlueBerry", "BrownSugar", "GreenAvocad", "GreyCloud", "PurpleBlackBerry", "RedStrawBerry", "RosePink", "YellowLemon"]
     
     var body: some View {
         ZStack {
@@ -95,7 +95,7 @@ struct groupCreateView: View {
                     ForEach(colorToPick, id: \.self) { color in
                         
                         Button(action: {
-                            // give the color to the binding
+                            colorPick(chosenColor: color)
                         }) {
                             ZStack {
                                 color
@@ -104,7 +104,7 @@ struct groupCreateView: View {
                                     .cornerRadius(isSelected ? 12.5 : 20)
                                     .shadow(radius: 8)
                                     .overlay(
-                                        RoundedRectangle(cornerRadius: 12.5).stroke(isSelected ? Color.clear : Color.white, lineWidth: 2.0)
+                                        RoundedRectangle(cornerRadius: 12.5).stroke(isSelected ? Color.black : Color.white, lineWidth: 2.0)
                                     )
                             }
                         }
@@ -164,6 +164,10 @@ struct groupCreateView: View {
     }
     // body
     
+    func colorPick(chosenColor: Color) {
+        self.chosenColor = chosenColor
+    }
+    
     // MARK: - Add new group func
     func addNewGroup(nameOfGroup: String) {
         let newGroup = GroupType(context: viewContext)
@@ -175,6 +179,7 @@ struct groupCreateView: View {
                 newGroup.groupName = nameOfGroup
             }
         }
+        
         //
         //            if nameOfGroup == "" {
         //                newGroup.groupName = "Unknown group"
@@ -186,7 +191,7 @@ struct groupCreateView: View {
         newGroup.noteTypes = [] // for future notes?
         
         // MARK: - function for colorPicker
-        newGroup.groupColor = "RedStrawBerry"
+        newGroup.groupColor = chosenColor
         
         do {
             try self.viewContext.save()
@@ -199,8 +204,6 @@ struct groupCreateView: View {
 }
 
 // MARK: - Color picker
-
-
 func returnColorFromStringForPreview(nameOfColor: String) -> Color {
     if nameOfColor == "" {
         let nameOfColor = "GreenAvocado"
@@ -209,7 +212,6 @@ func returnColorFromStringForPreview(nameOfColor: String) -> Color {
         return Color.init(nameOfColor)
     }
 }
-
 
 //
 //struct groupCreate_Previews: PreviewProvider {
