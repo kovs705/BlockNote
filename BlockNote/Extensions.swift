@@ -141,6 +141,14 @@ extension Color {
     }
 }
 
+extension Animation {
+    static func ripple() -> Animation {
+        Animation.spring(dampingFraction: 0.5)
+            .speed(2)
+            .delay(0.03)
+    }
+}
+
 /*
  LinearGradient(gradient: Gradient(colors: [.pink, .blue]),
                 startPoint: .top,
@@ -169,3 +177,12 @@ extension Color {
                                     }
  */
 
+
+// MARK: - Designs
+
+//ZStack {
+//            LinearGradient(gradient: Gradient(colors: [Color.gray, Color.gray.opacity(0.8), Color.gray]),
+//                           startPoint: .top,
+//                           endPoint: .bottom)
+//                .edgesIgnoringSafeArea(.all)
+//        }

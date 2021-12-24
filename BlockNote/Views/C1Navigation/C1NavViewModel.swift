@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import CoreData
+import SpriteKit
 
 final class C1NavViewModel: ObservableObject {
     @Environment(\.managedObjectContext) private var viewContext

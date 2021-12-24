@@ -166,38 +166,35 @@ struct groupCreateView: View {
     
     // MARK: - Add new group func
     func addNewGroup(nameOfGroup: String) {
-            let newGroup = GroupType(context: viewContext)
-            
-            for type in types { // for each group in CoreData:
-                if nameOfGroup == type.groupName { // if the name is equal as an existing name
-                    // MARK: - TODO: prevent from creating the group with the same name!!!
-                    newGroup.groupName = "THE SAME GROUP"
-                } else if nameOfGroup == "" { // or this name is empty
-                    newGroup.groupName = "Unknown group"
-                } else {
-                    newGroup.groupName = nameOfGroup
-                }
+        let newGroup = GroupType(context: viewContext)
+        
+        for type in types { // for each group in CoreData:
+            if nameOfGroup == type.groupName { // if the name is equal as an existing name
+                newGroup.groupName = "THE SAME GROUP"
+            } else {
+                newGroup.groupName = nameOfGroup
             }
-//
-//            if nameOfGroup == "" {
-//                newGroup.groupName = "Unknown group"
-//            } else {
-//                newGroup.groupName = nameOfGroup
-//            }
-            
-            newGroup.number = (types.last?.number ?? 0) + 1
-            newGroup.noteTypes = [] // for future notes?
-            
-            // MARK: - function for colorPicker
-            newGroup.groupColor = "RedStrawBerry"
-            
-            do {
-                try self.viewContext.save()
-                print("Group is added!")
-            } catch {
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
+        }
+        //
+        //            if nameOfGroup == "" {
+        //                newGroup.groupName = "Unknown group"
+        //            } else {
+        //                newGroup.groupName = nameOfGroup
+        //            }
+        
+        newGroup.number = (types.last?.number ?? 0) + 1
+        newGroup.noteTypes = [] // for future notes?
+        
+        // MARK: - function for colorPicker
+        newGroup.groupColor = "RedStrawBerry"
+        
+        do {
+            try self.viewContext.save()
+            print("Group is added!")
+        } catch {
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
     }
 }
 

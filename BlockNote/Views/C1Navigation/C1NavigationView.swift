@@ -8,6 +8,7 @@
 import SwiftUI
 import Combine
 import CoreData
+import SpriteKit
 // import SwiftUIKitView
 
 // MARK: - Instructions
@@ -25,12 +26,24 @@ import CoreData
     ///
 //
 
+class SnowFall: SKScene {
+    override func didMove(to view: SKView) {
+        backgroundColor = UIColor(Color.darkBack)
+        if let snowParticles = SKEmitterNode(fileNamed: "SnowBackground.sks") {
+            snowParticles.position = CGPoint(x: size.width/2, y: size.height) // top
+            snowParticles.name = "snowParticle"
+            snowParticles.targetNode = scene
+            
+            addChild(snowParticles)
+        }
+    }
+}
+
 struct C1NavigationView: View {
-    
-    
     @FetchRequest(entity: GroupType.entity(), sortDescriptors: [NSSortDescriptor(key: "number", ascending: true)]) var types: FetchedResults<GroupType>
     
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.colorScheme) var colorScheme
     
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     @State var time = Timer.publish(every: 0, on: .main, in: .tracking).autoconnect()
@@ -41,11 +54,23 @@ struct C1NavigationView: View {
     @State private var color: Color = .greenAvocado
     @State private var nameOfGroup = ""
     
+    var scene: SKScene {
+        let scene = SnowFall()
+        scene.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        scene.scaleMode = .fill
+        return scene
+    }
+    
     // MARK: - Body
     var body: some View {
         NavigationView {
             ZStack {
                 Color.darkBack
+                
+                SpriteView(scene: scene)
+                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                    .ignoresSafeArea()
+                
                 ScrollView(.vertical, showsIndicators: false) {
                     HStack {
                         // empty space
@@ -178,13 +203,16 @@ struct C1NavigationView: View {
                 // end of VStack
                 
                 // MARK: - TabBar
-                        VStack {
-                            Spacer()
-                            BarButton()
-                                .offset(y: C1ViewModel.showBar ? 0 : UIScreen.main.bounds.height)
-                                .animation(.spring())
-                                .padding(.vertical)
-                        }
+                withAnimation(.spring()) {
+                    VStack {
+                        Spacer()
+                        BarButton()
+                            .offset(y: C1ViewModel.showBar ? 0 : UIScreen.main.bounds.height)
+                            //.animation(.spring())
+                            .padding(.vertical)
+                    }
+                }
+                
                         // .transition(.move(edge: .bottom))
                         
                 // TODO: - fix the animation on launching (init the position on launch?)
