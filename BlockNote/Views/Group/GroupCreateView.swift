@@ -53,7 +53,7 @@ struct groupCreateView: View {
                 // MARK: - Preview
                 ZStack {
                     RoundedRectangle(cornerRadius: 20)
-                        .fill(groupColor)
+                        .fill($chosenColor)
                         .frame(width: 175, height: 175)
                     VStack {
                         Spacer()
