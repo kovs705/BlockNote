@@ -66,9 +66,9 @@ struct C1NavigationView: View {
             ZStack {
                 Color.darkBack
                 
-//                SpriteView(scene: scene)
-//                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-//                    .ignoresSafeArea()
+                SpriteView(scene: scene)
+                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                    .ignoresSafeArea()
                 
                 ScrollView(.vertical, showsIndicators: false) {
                     HStack {

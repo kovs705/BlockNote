@@ -71,7 +71,7 @@ struct KeyboardAdaptive: ViewModifier {
                     self.bottomPadding = max(0, focusedTextInputBottom - keyboardTop - geometry.safeAreaInsets.bottom)
             }
                 
-            .animation(.easeOut(duration: 0.16))
+            //.animation(.easeOut(duration: 0.16))
             .animation(.easeOut(duration: 0.16), value: true)
         }
     }
