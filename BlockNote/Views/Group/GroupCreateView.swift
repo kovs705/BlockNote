@@ -19,14 +19,14 @@ import CoreData
 
 struct groupCreateView: View {
     
-    @Binding var chosenColor: Color
+    @Binding var chosenColor: String
     @Binding var nameOfGroup: String
     
     @FetchRequest(entity: GroupType.entity(), sortDescriptors: [NSSortDescriptor(key: "groupName", ascending: true)]) var types: FetchedResults<GroupType>
     @Environment(\.managedObjectContext) private var viewContext
     @State private var isEditing = false // textFields checker
     
-    @State private var groupColor: Color = .greenAvocado // colorPicker base color
+    @State private var groupColor: String = "GreenAvocado" // colorPicker base color
     @State private var isDragging: Bool = false // colorPicker gesture
     @State private var isSelected: Bool = false
     
@@ -34,7 +34,7 @@ struct groupCreateView: View {
 //        self._chosenColor = chosenColor
 //    }
     
-    let colorToPick: [String] = ["BlueBerry", "BrownSugar", "GreenAvocad", "GreyCloud", "PurpleBlackBerry", "RedStrawBerry", "RosePink", "YellowLemon"]
+    let colorToPick = ["BlueBerry", "BrownSugar", "GreenAvocad", "GreyCloud", "PurpleBlackBerry", "RedStrawBerry", "RosePink", "YellowLemon"]
     
     var body: some View {
         ZStack {
@@ -53,7 +53,7 @@ struct groupCreateView: View {
                 // MARK: - Preview
                 ZStack {
                     RoundedRectangle(cornerRadius: 20)
-                        .fill($chosenColor)
+                        .fill(returnColorFromString(nameOfColor: groupColor))
                         .frame(width: 175, height: 175)
                     VStack {
                         Spacer()
@@ -94,20 +94,23 @@ struct groupCreateView: View {
                 HStack(alignment: .center, spacing: 5) {
                     ForEach(colorToPick, id: \.self) { color in
                         
-                        Button(action: {
-                            colorPick(chosenColor: color)
-                        }) {
-                            ZStack {
-                                color
-                                    .animation(.spring())
-                                    .frame(width: isSelected ? 40 : 25, height: isSelected ? 40 : 25)
-                                    .cornerRadius(isSelected ? 12.5 : 20)
-                                    .shadow(radius: 8)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 12.5).stroke(isSelected ? Color.black : Color.white, lineWidth: 2.0)
-                                    )
+                        // withAnimation() {
+                            Button(action: {
+                                colorPick(chosenColor: color)
+                            }) {
+                                ZStack {
+                                    returnColorFromString(nameOfColor: color)
+                                        .animation(.spring())
+                                        .frame(width: isSelected ? 40 : 25, height: isSelected ? 40 : 25)
+                                        .cornerRadius(isSelected ? 12.5 : 20)
+                                        .shadow(radius: 8)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 12.5).stroke(isSelected ? Color.black : Color.white, lineWidth: 2.0)
+                                        )
+                                }
                             }
-                        }
+                        // }
+                        
                         .gesture(
                             DragGesture().onChanged({ (value) in
                                 self.isSelected = true
@@ -164,8 +167,10 @@ struct groupCreateView: View {
     }
     // body
     
-    func colorPick(chosenColor: Color) {
+    // MARK: - Color pick func
+    func colorPick(chosenColor: String) {
         self.chosenColor = chosenColor
+        self.chosenColor = groupColor
     }
     
     // MARK: - Add new group func

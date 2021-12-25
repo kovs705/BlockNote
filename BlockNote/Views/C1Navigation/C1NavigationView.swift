@@ -9,7 +9,6 @@ import SwiftUI
 import Combine
 import CoreData
 import SpriteKit
-// import SwiftUIKitView
 
 // MARK: - Instructions
     ///
@@ -33,7 +32,7 @@ class SnowFall: SKScene {
             snowParticles.position = CGPoint(x: size.width/2, y: size.height) // top
             snowParticles.name = "snowParticle"
             snowParticles.targetNode = scene
-            
+
             addChild(snowParticles)
         }
     }
@@ -51,7 +50,7 @@ struct C1NavigationView: View {
     @StateObject private var C1ViewModel = C1NavViewModel() // MVVM
     
     @State private var showAddGroupSheet: Bool = false
-    @State private var color: Color = .greenAvocado
+    @State private var color: String = "GreenAvocado"
     @State private var nameOfGroup = ""
     
     var scene: SKScene {
@@ -67,9 +66,9 @@ struct C1NavigationView: View {
             ZStack {
                 Color.darkBack
                 
-                SpriteView(scene: scene)
-                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-                    .ignoresSafeArea()
+//                SpriteView(scene: scene)
+//                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+//                    .ignoresSafeArea()
                 
                 ScrollView(.vertical, showsIndicators: false) {
                     HStack {
