@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E0ADBBE277CFEDC00160D67 /* UINoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0ADBBD277CFEDC00160D67 /* UINoteView.swift */; };
 		4E101DF426EF3586009800FB /* C1NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E101DF326EF3586009800FB /* C1NavigationView.swift */; };
 		4E13C4D726E93E840089D365 /* NoteItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E13C4D326E93E840089D365 /* NoteItem+CoreDataClass.swift */; };
 		4E13C4D826E93E840089D365 /* NoteItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E13C4D426E93E840089D365 /* NoteItem+CoreDataProperties.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E0ADBBD277CFEDC00160D67 /* UINoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINoteView.swift; sourceTree = "<group>"; };
 		4E101DF326EF3586009800FB /* C1NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C1NavigationView.swift; sourceTree = "<group>"; };
 		4E13C4D326E93E840089D365 /* NoteItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4E13C4D426E93E840089D365 /* NoteItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 		4EB0E6B8274F76F9001839F2 /* UIKit Views */ = {
 			isa = PBXGroup;
 			children = (
+				4E0ADBBD277CFEDC00160D67 /* UINoteView.swift */,
 			);
 			path = "UIKit Views";
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 			files = (
 				4E901A3626E6813C00249C15 /* Persistence.swift in Sources */,
 				4E13C4D726E93E840089D365 /* NoteItem+CoreDataClass.swift in Sources */,
+				4E0ADBBE277CFEDC00160D67 /* UINoteView.swift in Sources */,
 				4E59C7EF275BC57800162A4B /* NoteItemObject.swift in Sources */,
 				4E901A2F26E6813900249C15 /* ContentView.swift in Sources */,
 				4E7588A3270513E9004B38C1 /* GroupDetailView.swift in Sources */,
