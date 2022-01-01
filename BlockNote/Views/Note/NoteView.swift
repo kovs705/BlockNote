@@ -19,6 +19,8 @@ import UniformTypeIdentifiers // for moving noteItemObjects
 
 struct NoteView: View {
     
+    #warning("Work on reordering objects")
+    
     @ObservedObject var note: Note
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @Environment(\.managedObjectContext) private var viewContext

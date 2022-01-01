@@ -7,11 +7,15 @@
 
 import SwiftUI
 import CoreData
+import CodeEditor
 
 //  case textBlock
+//  case codeBlock
+
 //  case vocabularyBlock
 //  case countDownBlock
 //  case emptyBlockTest
+//  case NavLink to the next View with tasks, its own color/theme etc
 
 struct NoteItemObject: View {
     
@@ -22,19 +26,47 @@ struct NoteItemObject: View {
     
     var body: some View {
         if noteItem.noteItemType == "textBlock" {
-            TextEditor(text: $noteItem.noteItemText) // can be buggy
-                // .focused($isInputActive)
-                .padding()
-                .frame(width: UIScreen.main.bounds.width - 30)
-                .cornerRadius(15)
+            TextBlockObject(noteItem: noteItem) // 'Usual' block for the text
+        } else if noteItem.noteItemType == "codeBlock" {
+            CodeBlockObject(noteItem: noteItem)
         } else {
             Text(noteItem.wrappedNoteItemName)
         }
         
     }
+    
+    struct TextBlockObject: View {
+        @ObservedObject var noteItem: NoteItem
+        
+        var body: some View {
+            ZStack {
+                TextEditor(text: $noteItem.noteItemText) // can be buggy
+                // .focused($isInputActive)
+                    .padding(5)
+                    .frame(width: UIScreen.main.bounds.width - 30)
+                    .cornerRadius(15)
+                    .font(.system(size: 17))
+            }
+            .cornerRadius(10)
+            .background(Color.darkBack)
+        }
+    }
+    
+    struct CodeBlockObject: View {
+        @ObservedObject var noteItem: NoteItem
+        
+        var body: some View {
+            CodeEditor(source: $noteItem.noteItemText)
+                .padding(5)
+                .frame(width: UIScreen.main.bounds.width - 30)
+                .cornerRadius(15)
+                .font(.system(size: 17))
+        }
+    }
+    
 }
 
-
+    
 
 struct NoteItemObject_Previews: PreviewProvider {
     

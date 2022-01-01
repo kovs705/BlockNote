@@ -13,7 +13,6 @@ import SpriteKit
 // MARK: - Instructions
     ///
     /// 20.09.2021 - Making this istructions-block
-    /// think about what to add or how to group Notes
     /// сделать ColorPicker в виде линии цветных шариков, при наведении пальца на которые пользователь
     /// будет видеть название того или иного цвета
     /// посмотрите свои уроки за неделю, которые вы прошли
@@ -83,9 +82,8 @@ struct C1NavigationView: View {
                             Spacer()
                             VStack(alignment: .center) {
                                 Text(C1ViewModel.greeting)
-                                    .bold()
                                     .lineLimit(1)
-                                    .font(.system(size: 28))
+                                    .font(.system(size: 28, weight: .bold, design: .rounded))
                                     .onAppear(perform: {
                                         C1ViewModel.showGreeting()
                                         

@@ -18,7 +18,7 @@ struct NoteList<Note, NoteItem, Row: View>: UIViewRepresentable {
     
     // MARK: - Make/Update
     func updateUIView(_ uiView: UITableView, context: Context) {
-        context.coordinator.data = notes
+        // context.coordinator.data = notes
         uiView.reloadData()
     }
     

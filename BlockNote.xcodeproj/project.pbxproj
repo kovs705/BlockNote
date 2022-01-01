@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4E0ADBBE277CFEDC00160D67 /* UINoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0ADBBD277CFEDC00160D67 /* UINoteView.swift */; };
+		4E0ADBC1277E28B700160D67 /* CodeEditor in Frameworks */ = {isa = PBXBuildFile; productRef = 4E0ADBC0277E28B700160D67 /* CodeEditor */; };
 		4E101DF426EF3586009800FB /* C1NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E101DF326EF3586009800FB /* C1NavigationView.swift */; };
 		4E13C4D726E93E840089D365 /* NoteItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E13C4D326E93E840089D365 /* NoteItem+CoreDataClass.swift */; };
 		4E13C4D826E93E840089D365 /* NoteItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E13C4D426E93E840089D365 /* NoteItem+CoreDataProperties.swift */; };
@@ -78,6 +79,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E52E466275E3DB300CA7EA3 /* Fuse in Frameworks */,
+				4E0ADBC1277E28B700160D67 /* CodeEditor in Frameworks */,
 				4E52E46A275E3F6E00CA7EA3 /* CoreStore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,6 +230,7 @@
 			packageProductDependencies = (
 				4E52E465275E3DB300CA7EA3 /* Fuse */,
 				4E52E469275E3F6E00CA7EA3 /* CoreStore */,
+				4E0ADBC0277E28B700160D67 /* CodeEditor */,
 			);
 			productName = BlockNote;
 			productReference = 4E901A2926E6813900249C15 /* BlockNote.app */;
@@ -260,6 +263,7 @@
 				4E52E463275E3D7E00CA7EA3 /* XCRemoteSwiftPackageReference "Highlightr" */,
 				4E52E464275E3DB300CA7EA3 /* XCRemoteSwiftPackageReference "fuse-swift" */,
 				4E52E468275E3F6E00CA7EA3 /* XCRemoteSwiftPackageReference "CoreStore" */,
+				4E0ADBBF277E28B700160D67 /* XCRemoteSwiftPackageReference "CodeEditor" */,
 			);
 			productRefGroup = 4E901A2A26E6813900249C15 /* Products */;
 			projectDirPath = "";
@@ -505,6 +509,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4E0ADBBF277E28B700160D67 /* XCRemoteSwiftPackageReference "CodeEditor" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ZeeZide/CodeEditor.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		4E52E463275E3D7E00CA7EA3 /* XCRemoteSwiftPackageReference "Highlightr" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/raspu/Highlightr";
@@ -532,6 +544,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4E0ADBC0277E28B700160D67 /* CodeEditor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E0ADBBF277E28B700160D67 /* XCRemoteSwiftPackageReference "CodeEditor" */;
+			productName = CodeEditor;
+		};
 		4E52E465275E3DB300CA7EA3 /* Fuse */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4E52E464275E3DB300CA7EA3 /* XCRemoteSwiftPackageReference "fuse-swift" */;
