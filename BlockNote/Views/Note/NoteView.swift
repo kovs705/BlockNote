@@ -25,6 +25,7 @@ struct NoteView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @Environment(\.managedObjectContext) private var viewContext
     
+    @State private var pickedObjectType = ["Text"]
 //    @State var draggedObject: NoteItem
 //    
 //    lazy var noteItemObjects = note.noteItemArray.sorted {

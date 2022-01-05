@@ -187,8 +187,7 @@ struct groupCreateView: View {
                 newGroup.groupName = "THE SAME GROUP"
                 #warning("Alert notification in the future")
             } else {
-                // newGroup.groupName = nameOfGroup
-                return
+                newGroup.groupName = nameOfGroup
             }
         }
         #warning("check on creating the first group")
