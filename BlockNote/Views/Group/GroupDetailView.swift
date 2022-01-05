@@ -121,7 +121,7 @@ struct GroupDetailView: View {
                 
                 // MARK: - List of notes
                 VStack {
-                    Text("HELLO")
+                    Text("")
                         .padding()
                     ForEach(self.groupType.typesOfNoteArray, id: \.self) { note in
                         NavigationLink(destination: NoteView(note: note)) {

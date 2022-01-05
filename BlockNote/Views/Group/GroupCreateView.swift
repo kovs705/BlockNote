@@ -51,7 +51,6 @@ struct groupCreateView: View {
                 .frame(height: 40)
                 
                 // MARK: - Preview
-                #warning("Check 1")
                 ZStack {
                     if chosenColor == "" {
                     RoundedRectangle(cornerRadius: 20)
@@ -177,7 +176,6 @@ struct groupCreateView: View {
     // MARK: - Color pick func
     func colorPick(chosenColor: String) {
         self.chosenColor = chosenColor
-        self.chosenColor = groupColor
     }
     
     // MARK: - Add new group func
@@ -187,17 +185,18 @@ struct groupCreateView: View {
         for type in types { // for each group in CoreData:
             if nameOfGroup == type.groupName { // if the name is equal as an existing name
                 newGroup.groupName = "THE SAME GROUP"
+                #warning("Alert notification in the future")
             } else {
-                newGroup.groupName = nameOfGroup
+                // newGroup.groupName = nameOfGroup
+                return
             }
         }
-        
-        //
-        //            if nameOfGroup == "" {
-        //                newGroup.groupName = "Unknown group"
-        //            } else {
-        //                newGroup.groupName = nameOfGroup
-        //            }
+        #warning("check on creating the first group")
+        if nameOfGroup == "" {
+            newGroup.groupName = "Unknown group name"
+        } else {
+            newGroup.groupName = nameOfGroup
+        }
         
         newGroup.number = (types.last?.number ?? 0) + 1
         newGroup.noteTypes = [] // for future notes?
