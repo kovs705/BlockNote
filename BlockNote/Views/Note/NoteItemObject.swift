@@ -11,6 +11,7 @@ import CodeEditor
 
 //  case textBlock
 //  case codeBlock
+//  case TaskBlock
 
 //  case vocabularyBlock
 //  case countDownBlock
@@ -19,49 +20,52 @@ import CodeEditor
 
 struct NoteItemObject: View {
     
+    #warning("Work in Figma")
+    
     @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var noteItem: NoteItem
     @State var textString = ""
     @FocusState var isInputActive: Bool
     
-    var body: some View {
-        if noteItem.noteItemType == "textBlock" {
-            TextBlockObject(noteItem: noteItem) // 'Usual' block for the text
-        } else if noteItem.noteItemType == "codeBlock" {
-            CodeBlockObject(noteItem: noteItem)
-        } else {
-            Text(noteItem.wrappedNoteItemName)
-        }
-        
-    }
+    @State private var height: CGFloat = .zero
+    // @State private var noteItemText: String
     
-    struct TextBlockObject: View {
-        @ObservedObject var noteItem: NoteItem
-        
-        var body: some View {
+    var body: some View {
+        // MARK: - TextBlock
+        if noteItem.noteItemType == "textBlock" {
             ZStack {
+                
+                // to change the size of textEditor:
+//                Text(noteItemText).foregroundColor(.clear).padding(5).font(.system(size: 17))
+//                    .background(GeometryReader {
+//                        Color.clear.preference(key: ViewHeightKey.self, value: $0.frame(in: .local).size.height as! ViewHeightKey.Value)
+//                    })
+                
                 TextEditor(text: $noteItem.noteItemText) // can be buggy
                 // .focused($isInputActive)
                     .padding(5)
                     .frame(width: UIScreen.main.bounds.width - 30)
                     .cornerRadius(15)
                     .font(.system(size: 17))
+                
+                    .frame(minHeight: height)
             }
+            .onPreferenceChange(ViewHeightKey.self) { height = $0 }
+            // .frame(height: $noteItem.noteItemText * 20))
             .cornerRadius(10)
             .background(Color.darkBack)
-        }
-    }
-    
-    struct CodeBlockObject: View {
-        @ObservedObject var noteItem: NoteItem
-        
-        var body: some View {
+        // MARK: - CodeBlock
+        } else if noteItem.noteItemType == "codeBlock" {
             CodeEditor(source: $noteItem.noteItemText)
                 .padding(5)
                 .frame(width: UIScreen.main.bounds.width - 30)
                 .cornerRadius(15)
                 .font(.system(size: 17))
+        // MARK: - TaskBlock
+        } else {
+            Text(noteItem.wrappedNoteItemName)
         }
+        
     }
     
 }

@@ -34,7 +34,7 @@ struct groupCreateView: View {
 //        self._chosenColor = chosenColor
 //    }
     
-    let colorToPick = ["BlueBerry", "BrownSugar", "GreenAvocad", "GreyCloud", "PurpleBlackBerry", "RedStrawBerry", "RosePink", "YellowLemon"]
+    let colorToPick = ["BlueBerry", "BrownSugar", "GreenAvocado", "GreyCloud", "PurpleBlackBerry", "RedStrawBerry", "RosePink", "YellowLemon"]
     
     var body: some View {
         ZStack {
@@ -51,10 +51,17 @@ struct groupCreateView: View {
                 .frame(height: 40)
                 
                 // MARK: - Preview
+                #warning("Check 1")
                 ZStack {
+                    if chosenColor == "" {
                     RoundedRectangle(cornerRadius: 20)
-                        .fill(returnColorFromString(nameOfColor: groupColor))
+                        .fill(returnColorFromString(nameOfColor: "GreenAvocado"))
                         .frame(width: 175, height: 175)
+                    } else {
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(returnColorFromString(nameOfColor: chosenColor))
+                            .frame(width: 175, height: 175)
+                    }
                     VStack {
                         Spacer()
                         if nameOfGroup == "" {

@@ -148,6 +148,7 @@ struct GroupDetailView: View {
                 .font(.system(size: 17))
         })
         .navigationTitle(groupType.wrappedGroupName)
+        .background(Color.darkBack)
         
     }
     
