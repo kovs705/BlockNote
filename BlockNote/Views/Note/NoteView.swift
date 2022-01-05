@@ -25,7 +25,7 @@ struct NoteView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @Environment(\.managedObjectContext) private var viewContext
     
-    @State private var pickedObjectType = ["Text"]
+    @State private var pickedObjectType = ["Text", "Code"]
 //    @State var draggedObject: NoteItem
 //    
 //    lazy var noteItemObjects = note.noteItemArray.sorted {
@@ -116,7 +116,7 @@ struct NoteView: View {
         newNoteItem.noteItemText = "Some text to show in preview of the NoteItem just for debugging bla bla bla"
         newNoteItem.noteItemOrder = (note.noteItemArray.last?.noteItemOrder ?? 0) + 1
         // newNoteItem.noteItemOrder = 1
-        newNoteItem.noteItemType = "textBlock"
+        newNoteItem.noteItemType = "Text"
         
         
         self.note.addObject(value: newNoteItem, forKey: "noteItems")

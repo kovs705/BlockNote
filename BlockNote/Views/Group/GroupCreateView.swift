@@ -190,7 +190,6 @@ struct groupCreateView: View {
                 newGroup.groupName = nameOfGroup
             }
         }
-        #warning("check on creating the first group")
         if nameOfGroup == "" {
             newGroup.groupName = "Unknown group name"
         } else {

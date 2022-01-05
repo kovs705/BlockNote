@@ -92,9 +92,11 @@ struct GroupDetailView: View {
                                     // MARK: Put a navigationLink here:
                                     // 
                                 }) {
+                                    #warning("Think about making buttons standing out of the panel")
                                     ZStack {
                                         RoundedRectangle(cornerRadius: 20)
                                             .fill(returnColorFromString(nameOfColor: groupType.groupColor ?? "GreenAvocado"))
+                                            // .saturation(0.8)
                                             .frame(width: 75, height: 75)
                                             .shadow(color: .black.opacity(0.25), radius: 10, y: 5)
                                         Image(systemName: "plus")
@@ -158,8 +160,6 @@ struct GroupDetailView: View {
     func deleteGroup(groupName: String) {
         
         if groupType.wrappedGroupName == groupName {
-            
-            // let note = Note(context: viewContext)
             
             if !self.groupType.typesOfNoteArray.isEmpty {
                 for noteObject in self.groupType.typesOfNoteArray {

@@ -9,15 +9,6 @@
 import Foundation
 import CoreData
 
-// @objc(NoteItem
-
-//enum NoteItemType: Int {
-//    case textBlock
-//    case vocabularyBlock
-//    case countDownBlock
-//    case emptyBlockTest
-//    // and so on
-//}
 
 public class NoteItem: NSManagedObject {
     @NSManaged var noteItemOrder: Int

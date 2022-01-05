@@ -9,9 +9,10 @@ import SwiftUI
 import CoreData
 import CodeEditor
 
-//  case textBlock
-//  case codeBlock
-//  case TaskBlock
+//  case Test
+//  case Code
+
+//  case TaskBlock          -------- in progress
 
 //  case vocabularyBlock
 //  case countDownBlock
@@ -32,14 +33,10 @@ struct NoteItemObject: View {
     
     var body: some View {
         // MARK: - TextBlock
-        if noteItem.noteItemType == "textBlock" {
+        if noteItem.noteItemType == "Text" {
             ZStack {
-                
-                // to change the size of textEditor:
-//                Text(noteItemText).foregroundColor(.clear).padding(5).font(.system(size: 17))
-//                    .background(GeometryReader {
-//                        Color.clear.preference(key: ViewHeightKey.self, value: $0.frame(in: .local).size.height as! ViewHeightKey.Value)
-//                    })
+                #warning("Working on TextBlockObject!!!")
+                Text(self.$noteItem.noteItemText.wrappedValue)
                 
                 TextEditor(text: $noteItem.noteItemText) // can be buggy
                 // .focused($isInputActive)
@@ -52,10 +49,11 @@ struct NoteItemObject: View {
             }
             .onPreferenceChange(ViewHeightKey.self) { height = $0 }
             // .frame(height: $noteItem.noteItemText * 20))
+            
             .cornerRadius(10)
             .background(Color.darkBack)
         // MARK: - CodeBlock
-        } else if noteItem.noteItemType == "codeBlock" {
+        } else if noteItem.noteItemType == "Code" {
             CodeEditor(source: $noteItem.noteItemText)
                 .padding(5)
                 .frame(width: UIScreen.main.bounds.width - 30)
@@ -81,7 +79,7 @@ struct NoteItemObject_Previews: PreviewProvider {
         newNoteItem.noteItemName = "Preview note name"
         newNoteItem.noteItemText = "Some text to show in preview of the NoteItem just for debugging bla bla bla"
         newNoteItem.noteItemOrder = 1
-        newNoteItem.noteItemType = "textBlock"
+        newNoteItem.noteItemType = "Text"
 
         
         return NavigationView {
