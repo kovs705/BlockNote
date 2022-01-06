@@ -13,6 +13,7 @@
 		4E13C4D726E93E840089D365 /* NoteItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E13C4D326E93E840089D365 /* NoteItem+CoreDataClass.swift */; };
 		4E13C4D826E93E840089D365 /* NoteItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E13C4D426E93E840089D365 /* NoteItem+CoreDataProperties.swift */; };
 		4E143215270F0BBD0041A989 /* ListForGroupDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E143214270F0BBD0041A989 /* ListForGroupDetail.swift */; };
+		4E1F54FB278798180043EDC4 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 4E1F54FA278798180043EDC4 /* SwiftUIX */; };
 		4E21170E273E712F00A2A292 /* C1NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E21170D273E712F00A2A292 /* C1NoteView.swift */; };
 		4E2D626B26F9234500C079D7 /* GroupType+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2D626926F9234500C079D7 /* GroupType+CoreDataClass.swift */; };
 		4E2D626C26F9234500C079D7 /* GroupType+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2D626A26F9234500C079D7 /* GroupType+CoreDataProperties.swift */; };
@@ -81,6 +82,7 @@
 				4E52E466275E3DB300CA7EA3 /* Fuse in Frameworks */,
 				4E0ADBC1277E28B700160D67 /* CodeEditor in Frameworks */,
 				4E52E46A275E3F6E00CA7EA3 /* CoreStore in Frameworks */,
+				4E1F54FB278798180043EDC4 /* SwiftUIX in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +233,7 @@
 				4E52E465275E3DB300CA7EA3 /* Fuse */,
 				4E52E469275E3F6E00CA7EA3 /* CoreStore */,
 				4E0ADBC0277E28B700160D67 /* CodeEditor */,
+				4E1F54FA278798180043EDC4 /* SwiftUIX */,
 			);
 			productName = BlockNote;
 			productReference = 4E901A2926E6813900249C15 /* BlockNote.app */;
@@ -264,6 +267,7 @@
 				4E52E464275E3DB300CA7EA3 /* XCRemoteSwiftPackageReference "fuse-swift" */,
 				4E52E468275E3F6E00CA7EA3 /* XCRemoteSwiftPackageReference "CoreStore" */,
 				4E0ADBBF277E28B700160D67 /* XCRemoteSwiftPackageReference "CodeEditor" */,
+				4E1F54F9278798180043EDC4 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 			);
 			productRefGroup = 4E901A2A26E6813900249C15 /* Products */;
 			projectDirPath = "";
@@ -517,6 +521,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		4E1F54F9278798180043EDC4 /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		4E52E463275E3D7E00CA7EA3 /* XCRemoteSwiftPackageReference "Highlightr" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/raspu/Highlightr";
@@ -548,6 +560,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4E0ADBBF277E28B700160D67 /* XCRemoteSwiftPackageReference "CodeEditor" */;
 			productName = CodeEditor;
+		};
+		4E1F54FA278798180043EDC4 /* SwiftUIX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E1F54F9278798180043EDC4 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
+			productName = SwiftUIX;
 		};
 		4E52E465275E3DB300CA7EA3 /* Fuse */ = {
 			isa = XCSwiftPackageProductDependency;

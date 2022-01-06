@@ -8,6 +8,7 @@
 import SwiftUI
 import CoreData
 import CodeEditor
+import SwiftUIX
 
 //  case Test
 //  case Code
@@ -25,7 +26,7 @@ struct NoteItemObject: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var noteItem: NoteItem
-    @State var textString = ""
+    @State var textString: String = ""
     @FocusState var isInputActive: Bool
     
     @State private var height: CGFloat = .zero
@@ -34,24 +35,19 @@ struct NoteItemObject: View {
     var body: some View {
         // MARK: - TextBlock
         if noteItem.noteItemType == "Text" {
-            ZStack {
-                #warning("Working on TextBlockObject!!!")
-                Text(self.$noteItem.noteItemText.wrappedValue)
-                
-                TextEditor(text: $noteItem.noteItemText) // can be buggy
-                // .focused($isInputActive)
-                    .padding(5)
-                    .frame(width: UIScreen.main.bounds.width - 30)
-                    .cornerRadius(15)
-                    .font(.system(size: 17))
-                
-                    .frame(minHeight: height)
-            }
-            .onPreferenceChange(ViewHeightKey.self) { height = $0 }
-            // .frame(height: $noteItem.noteItemText * 20))
+
+            TextView(text: $noteItem.noteItemText, onCommit: {
+                hideKeyboard()
+                print("Saved!")
+                try? viewContext.save()
+            })
+                .padding(5)
+                .cornerRadius(15)
+                .frame(width: UIScreen.main.bounds.width - 30)
+                .background(Color.darkBack)
+                .font(.system(size: 17))
+                .isScrollEnabled(false)
             
-            .cornerRadius(10)
-            .background(Color.darkBack)
         // MARK: - CodeBlock
         } else if noteItem.noteItemType == "Code" {
             CodeEditor(source: $noteItem.noteItemText)

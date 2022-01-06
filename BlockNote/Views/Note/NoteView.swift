@@ -108,6 +108,7 @@ struct NoteView: View {
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: buttonBack)
         .navigationBarItems(trailing: buttonCreate)
+#warning("Add a picker with different types on blocks")
     }
     
     func createNoteItem() {

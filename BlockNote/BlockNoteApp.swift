@@ -20,6 +20,11 @@ struct BlockNoteApp: App {
         }
     }
     
+    init() {
+        UITextView.appearance().backgroundColor = .clear
+        UITextView.appearance().textDragInteraction?.isEnabled = false
+        UITextView.appearance().isScrollEnabled  = false
+    }
     
 }
 

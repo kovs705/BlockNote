@@ -200,14 +200,12 @@ struct C1NavigationView: View {
                 // end of VStack
                 
                 // MARK: - TabBar
-                withAnimation(.spring()) {
-                    VStack {
-                        Spacer()
+                VStack {
+                    Spacer()
                         BarButton()
                             .offset(y: C1ViewModel.showBar ? 0 : UIScreen.main.bounds.height)
-                            //.animation(.spring())
+                            .animation(.spring())
                             .padding(.vertical)
-                    }
                 }
                 
                         // .transition(.move(edge: .bottom))
