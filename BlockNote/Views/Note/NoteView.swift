@@ -16,6 +16,7 @@ import SwiftUI
 import CoreData
 import UIKit
 import UniformTypeIdentifiers // for moving noteItemObjects
+import SwiftUIX
 
 struct NoteView: View {
     
@@ -63,17 +64,22 @@ struct NoteView: View {
     
     // MARK: Body
     var body: some View {
-        ScrollView {
+        CocoaScrollView() {
             VStack(alignment: .leading) {
+                
+                
+                // ----------------------
                 Text(note.wrappedNoteName)
                     .bold()
                     .font(.title)
                     .padding(.horizontal)
                 
+                // ----------------------
                 Divider()
                     .foregroundColor(Color.gray)
                     .padding(.horizontal)
                 
+                // ----------------------
                 LazyVStack {
                     ForEach(note.noteItemArray, id: \.self) { noteItem in
                         NoteItemObject(noteItem: noteItem)
@@ -84,8 +90,10 @@ struct NoteView: View {
                     }
                     
                 }
+                // ----------------------
                 
             }
+            // VStack
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
                     Spacer()
@@ -100,6 +108,8 @@ struct NoteView: View {
             }
             // VStack
         }
+        
+        // CococaScrollView
         
         // MARK: - Swipe to the right to close the view:
     

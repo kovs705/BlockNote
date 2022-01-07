@@ -9,6 +9,7 @@ import SwiftUI
 import CoreData
 import CodeEditor
 import SwiftUIX
+import UIKit
 
 //  case Test
 //  case Code
@@ -36,17 +37,15 @@ struct NoteItemObject: View {
         // MARK: - TextBlock
         if noteItem.noteItemType == "Text" {
 
-            TextView(text: $noteItem.noteItemText, onCommit: {
-                hideKeyboard()
-                print("Saved!")
-                try? viewContext.save()
-            })
+            TextView(text: $noteItem.noteItemText)
+                .border(.ultraThickMaterial, cornerRadius: 10)
                 .padding(5)
-                .cornerRadius(15)
-                .frame(width: UIScreen.main.bounds.width - 30)
+                .frame(width: UIScreen.main.bounds.width - 40)
                 .background(Color.darkBack)
                 .font(.system(size: 17))
                 .isScrollEnabled(false)
+                .minHeight(20)
+                // .onSwipeLeft(perform: saveSwipeAction)
             
         // MARK: - CodeBlock
         } else if noteItem.noteItemType == "Code" {
@@ -62,9 +61,14 @@ struct NoteItemObject: View {
         
     }
     
+    func saveSwipeAction() {
+        hideKeyboard()
+        print("Saved!")
+        try? viewContext.save()
+    }
+    
 }
 
-    
 
 struct NoteItemObject_Previews: PreviewProvider {
     

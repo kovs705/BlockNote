@@ -36,6 +36,7 @@
 		4E901A3626E6813C00249C15 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E901A3526E6813C00249C15 /* Persistence.swift */; };
 		4E901A3926E6813C00249C15 /* BlockNote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E901A3726E6813C00249C15 /* BlockNote.xcdatamodeld */; };
 		4EAE6FD8270E14140018072C /* NoteListDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAE6FD7270E14140018072C /* NoteListDebug.swift */; };
+		4EB0158C278877F5003228E3 /* SwiftUIKitView in Frameworks */ = {isa = PBXBuildFile; productRef = 4EB0158B278877F5003228E3 /* SwiftUIKitView */; };
 		4EB197A3273346D7003BDA61 /* buttonTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB197A2273346D7003BDA61 /* buttonTest.swift */; };
 		4ECB305E272AD5AE003B3483 /* GroupCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECB305D272AD5AE003B3483 /* GroupCreateView.swift */; };
 		4EF0ABAB26FB9458008EF8AE /* GridObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0ABAA26FB9458008EF8AE /* GridObject.swift */; };
@@ -79,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EB0158C278877F5003228E3 /* SwiftUIKitView in Frameworks */,
 				4E52E466275E3DB300CA7EA3 /* Fuse in Frameworks */,
 				4E0ADBC1277E28B700160D67 /* CodeEditor in Frameworks */,
 				4E52E46A275E3F6E00CA7EA3 /* CoreStore in Frameworks */,
@@ -234,6 +236,7 @@
 				4E52E469275E3F6E00CA7EA3 /* CoreStore */,
 				4E0ADBC0277E28B700160D67 /* CodeEditor */,
 				4E1F54FA278798180043EDC4 /* SwiftUIX */,
+				4EB0158B278877F5003228E3 /* SwiftUIKitView */,
 			);
 			productName = BlockNote;
 			productReference = 4E901A2926E6813900249C15 /* BlockNote.app */;
@@ -268,6 +271,7 @@
 				4E52E468275E3F6E00CA7EA3 /* XCRemoteSwiftPackageReference "CoreStore" */,
 				4E0ADBBF277E28B700160D67 /* XCRemoteSwiftPackageReference "CodeEditor" */,
 				4E1F54F9278798180043EDC4 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
+				4EB0158A278877F5003228E3 /* XCRemoteSwiftPackageReference "SwiftUIKitView" */,
 			);
 			productRefGroup = 4E901A2A26E6813900249C15 /* Products */;
 			projectDirPath = "";
@@ -553,6 +557,14 @@
 				minimumVersion = 8.0.0;
 			};
 		};
+		4EB0158A278877F5003228E3 /* XCRemoteSwiftPackageReference "SwiftUIKitView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AvdLee/SwiftUIKitView";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -575,6 +587,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4E52E468275E3F6E00CA7EA3 /* XCRemoteSwiftPackageReference "CoreStore" */;
 			productName = CoreStore;
+		};
+		4EB0158B278877F5003228E3 /* SwiftUIKitView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4EB0158A278877F5003228E3 /* XCRemoteSwiftPackageReference "SwiftUIKitView" */;
+			productName = SwiftUIKitView;
 		};
 /* End XCSwiftPackageProductDependency section */
 
