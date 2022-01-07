@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 import CodeEditor
 import SwiftUIX
-import UIKit
+import SwiftUIKitView
 
 //  case Test
 //  case Code

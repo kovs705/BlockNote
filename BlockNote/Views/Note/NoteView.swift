@@ -69,6 +69,9 @@ struct NoteView: View {
                 
                 
                 // ----------------------
+                
+                // UITextView
+                
                 Text(note.wrappedNoteName)
                     .bold()
                     .font(.title)
@@ -108,8 +111,9 @@ struct NoteView: View {
             }
             // VStack
         }
-        
-        // CococaScrollView
+        .scrollBounceDisabled(false)
+        .alwaysBounceVertical(true)
+        .alwaysBounceHorizontal(false)
         
         // MARK: - Swipe to the right to close the view:
     
@@ -118,6 +122,7 @@ struct NoteView: View {
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: buttonBack)
         .navigationBarItems(trailing: buttonCreate)
+        .navigationBarTitleDisplayMode(.inline)
 #warning("Add a picker with different types on blocks")
     }
     
