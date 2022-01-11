@@ -35,6 +35,7 @@
 		4E901A3426E6813C00249C15 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E901A3326E6813C00249C15 /* Preview Assets.xcassets */; };
 		4E901A3626E6813C00249C15 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E901A3526E6813C00249C15 /* Persistence.swift */; };
 		4E901A3926E6813C00249C15 /* BlockNote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E901A3726E6813C00249C15 /* BlockNote.xcdatamodeld */; };
+		4E9C7CD6278DC1000092CBA0 /* TextView in Frameworks */ = {isa = PBXBuildFile; productRef = 4E9C7CD5278DC1000092CBA0 /* TextView */; };
 		4EAE6FD8270E14140018072C /* NoteListDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAE6FD7270E14140018072C /* NoteListDebug.swift */; };
 		4EB0158C278877F5003228E3 /* SwiftUIKitView in Frameworks */ = {isa = PBXBuildFile; productRef = 4EB0158B278877F5003228E3 /* SwiftUIKitView */; };
 		4EB197A3273346D7003BDA61 /* buttonTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB197A2273346D7003BDA61 /* buttonTest.swift */; };
@@ -84,6 +85,7 @@
 				4E52E466275E3DB300CA7EA3 /* Fuse in Frameworks */,
 				4E0ADBC1277E28B700160D67 /* CodeEditor in Frameworks */,
 				4E52E46A275E3F6E00CA7EA3 /* CoreStore in Frameworks */,
+				4E9C7CD6278DC1000092CBA0 /* TextView in Frameworks */,
 				4E1F54FB278798180043EDC4 /* SwiftUIX in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -237,6 +239,7 @@
 				4E0ADBC0277E28B700160D67 /* CodeEditor */,
 				4E1F54FA278798180043EDC4 /* SwiftUIX */,
 				4EB0158B278877F5003228E3 /* SwiftUIKitView */,
+				4E9C7CD5278DC1000092CBA0 /* TextView */,
 			);
 			productName = BlockNote;
 			productReference = 4E901A2926E6813900249C15 /* BlockNote.app */;
@@ -272,6 +275,7 @@
 				4E0ADBBF277E28B700160D67 /* XCRemoteSwiftPackageReference "CodeEditor" */,
 				4E1F54F9278798180043EDC4 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 				4EB0158A278877F5003228E3 /* XCRemoteSwiftPackageReference "SwiftUIKitView" */,
+				4E9C7CD4278DC0FF0092CBA0 /* XCRemoteSwiftPackageReference "TextView" */,
 			);
 			productRefGroup = 4E901A2A26E6813900249C15 /* Products */;
 			projectDirPath = "";
@@ -557,6 +561,14 @@
 				minimumVersion = 8.0.0;
 			};
 		};
+		4E9C7CD4278DC0FF0092CBA0 /* XCRemoteSwiftPackageReference "TextView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftUI-Plus/TextView";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		4EB0158A278877F5003228E3 /* XCRemoteSwiftPackageReference "SwiftUIKitView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AvdLee/SwiftUIKitView";
@@ -587,6 +599,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4E52E468275E3F6E00CA7EA3 /* XCRemoteSwiftPackageReference "CoreStore" */;
 			productName = CoreStore;
+		};
+		4E9C7CD5278DC1000092CBA0 /* TextView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E9C7CD4278DC0FF0092CBA0 /* XCRemoteSwiftPackageReference "TextView" */;
+			productName = TextView;
 		};
 		4EB0158B278877F5003228E3 /* SwiftUIKitView */ = {
 			isa = XCSwiftPackageProductDependency;

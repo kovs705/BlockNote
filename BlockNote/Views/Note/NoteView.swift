@@ -70,10 +70,8 @@ struct NoteView: View {
                 
                 // ----------------------
                 
-                // UITextView
-                UITextView()
-                    .swiftUIView(layout: .fixedWidth(width: UIScreen.main.bounds.width - 30))
-                
+                // textview instead of just the title:
+                //
                 Text(note.wrappedNoteName)
                     .bold()
                     .font(.title)

@@ -8,8 +8,9 @@
 import SwiftUI
 import CoreData
 import CodeEditor
-import SwiftUIX
-import SwiftUIKitView
+//import SwiftUIX
+//import SwiftUIKitView
+import TextView
 
 //  case Test
 //  case Code
@@ -36,16 +37,31 @@ struct NoteItemObject: View {
     var body: some View {
         // MARK: - TextBlock
         if noteItem.noteItemType == "Text" {
-
-            TextView(text: $noteItem.noteItemText)
-                .border(.ultraThickMaterial, cornerRadius: 10)
+            
+            TextView($noteItem.noteItemText)
+                .placeholder("New block..") { view in
+                    view.foregroundColor(.gray)
+                }
                 .padding(5)
-                .frame(width: UIScreen.main.bounds.width - 40)
-                .background(Color.darkBack)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(lineWidth: 1)
+                        .foregroundColor(Color.greyCloud)
+                )
                 .font(.system(size: 17))
+                .background(Color.darkBack)
                 .isScrollEnabled(false)
-                .minHeight(20)
-                // .onSwipeLeft(perform: saveSwipeAction)
+            
+//            TextView(text: $noteItem.noteItemText)
+//                .lineLimit(0)
+//                .border(.ultraThickMaterial, cornerRadius: 10)
+//                .padding(5)
+//                .frame(width: UIScreen.main.bounds.width - 40)
+//                .background(Color.darkBack)
+//                .font(.system(size: 17))
+//                .isScrollEnabled(false)
+//                .minHeight(50)
+//                // .onSwipeLeft(perform: saveSwipeAction)
             
         // MARK: - CodeBlock
         } else if noteItem.noteItemType == "Code" {
